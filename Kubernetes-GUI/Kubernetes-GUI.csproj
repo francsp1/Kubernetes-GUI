@@ -6,8 +6,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{1AB50708-6CBC-4D5F-B33F-4C2484032F77}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>OpenStack_GUI</RootNamespace>
-    <AssemblyName>OpenStack-GUI</AssemblyName>
+    <RootNamespace>Kubernetes_GUI</RootNamespace>
+    <AssemblyName>Kubernetes-GUI</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>

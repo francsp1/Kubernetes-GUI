@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace OpenStack_GUI.Models
+namespace Kubernetes_GUI.Models
 {
 
     public static class GlobalSessionDetails

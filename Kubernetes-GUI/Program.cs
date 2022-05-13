@@ -1,12 +1,12 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
-using OpenStack_GUI.Forms;
+using Kubernetes_GUI.Forms;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace OpenStack_GUI
+namespace Kubernetes_GUI
 {
     static class Program
     {

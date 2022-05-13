@@ -1,5 +1,5 @@
 ﻿
-namespace OpenStack_GUI.Forms
+namespace Kubernetes_GUI.Forms
 {
     partial class VolumesForm
     {
@@ -241,7 +241,7 @@ namespace OpenStack_GUI.Forms
             // 
             this.edit.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
             this.edit.HeaderText = "Edit";
-            this.edit.Image = global::OpenStack_GUI.Properties.Resources.edit_button;
+            this.edit.Image = global::Kubernetes_GUI.Properties.Resources.edit_button;
             this.edit.MinimumWidth = 6;
             this.edit.Name = "edit";
             this.edit.ReadOnly = true;
@@ -252,7 +252,7 @@ namespace OpenStack_GUI.Forms
             // 
             this.delete.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
             this.delete.HeaderText = "Delete";
-            this.delete.Image = global::OpenStack_GUI.Properties.Resources.remove__1_;
+            this.delete.Image = global::Kubernetes_GUI.Properties.Resources.remove__1_;
             this.delete.MinimumWidth = 6;
             this.delete.Name = "delete";
             this.delete.ReadOnly = true;
@@ -674,7 +674,7 @@ namespace OpenStack_GUI.Forms
             // 
             this.dataGridViewImageColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
             this.dataGridViewImageColumn1.HeaderText = "Edit";
-            this.dataGridViewImageColumn1.Image = global::OpenStack_GUI.Properties.Resources.edit_button;
+            this.dataGridViewImageColumn1.Image = global::Kubernetes_GUI.Properties.Resources.edit_button;
             this.dataGridViewImageColumn1.MinimumWidth = 6;
             this.dataGridViewImageColumn1.Name = "dataGridViewImageColumn1";
             this.dataGridViewImageColumn1.Resizable = System.Windows.Forms.DataGridViewTriState.True;

@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace OpenStack_GUI.Models
+namespace Kubernetes_GUI.Models
 {
     //public class Images
     //{

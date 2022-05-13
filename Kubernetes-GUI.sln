@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31911.196
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kubernetes-GUI", "OpenStack-GUI\Kubernetes-GUI.csproj", "{1AB50708-6CBC-4D5F-B33F-4C2484032F77}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kubernetes-GUI", "Kubernetes-GUI\Kubernetes-GUI.csproj", "{1AB50708-6CBC-4D5F-B33F-4C2484032F77}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -20,6 +20,6 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {80DCCCB0-F9CB-4A57-8EA2-89307DB0A820}
+		SolutionGuid = {6BF5D9BD-DDCB-464D-ABF7-4BA79CC8CD4C}
 	EndGlobalSection
 EndGlobal

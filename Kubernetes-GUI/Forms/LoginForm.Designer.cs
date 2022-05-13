@@ -1,5 +1,5 @@
 ﻿
-namespace OpenStack_GUI.Forms
+namespace Kubernetes_GUI.Forms
 {
     partial class LoginForm
     {
@@ -280,7 +280,7 @@ namespace OpenStack_GUI.Forms
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Image = global::OpenStack_GUI.Properties.Resources.OpenStackLogo;
+            this.pictureBox1.Image = global::Kubernetes_GUI.Properties.Resources.OpenStackLogo;
             this.pictureBox1.Location = new System.Drawing.Point(172, 85);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(189, 87);

@@ -1,5 +1,5 @@
 ﻿
-namespace OpenStack_GUI.Forms
+namespace Kubernetes_GUI.Forms
 {
     partial class KeyPairForm
     {
@@ -228,7 +228,7 @@ namespace OpenStack_GUI.Forms
             // deleteColumn
             // 
             this.deleteColumn.HeaderText = "Delete";
-            this.deleteColumn.Image = global::OpenStack_GUI.Properties.Resources.remove__1_;
+            this.deleteColumn.Image = global::Kubernetes_GUI.Properties.Resources.remove__1_;
             this.deleteColumn.Name = "deleteColumn";
             // 
             // KeyPairForm

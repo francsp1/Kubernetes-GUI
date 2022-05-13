@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
-using OpenStack_GUI.Models;
+using Kubernetes_GUI.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,7 +13,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace OpenStack_GUI.Forms
+namespace Kubernetes_GUI.Forms
 {
     public partial class VolumesForm : Form
     {

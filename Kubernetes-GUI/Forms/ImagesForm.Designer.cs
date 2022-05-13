@@ -1,5 +1,5 @@
 ﻿
-namespace OpenStack_GUI.Forms
+namespace Kubernetes_GUI.Forms
 {
     partial class ImagesForm
     {
@@ -293,7 +293,7 @@ namespace OpenStack_GUI.Forms
             // 
             this.collumnEditImage.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
             this.collumnEditImage.HeaderText = "Edit";
-            this.collumnEditImage.Image = global::OpenStack_GUI.Properties.Resources.edit_button;
+            this.collumnEditImage.Image = global::Kubernetes_GUI.Properties.Resources.edit_button;
             this.collumnEditImage.MinimumWidth = 6;
             this.collumnEditImage.Name = "collumnEditImage";
             this.collumnEditImage.ReadOnly = true;
@@ -305,7 +305,7 @@ namespace OpenStack_GUI.Forms
             this.columnDeleteImage.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
             this.columnDeleteImage.FillWeight = 28.877F;
             this.columnDeleteImage.HeaderText = "Delete";
-            this.columnDeleteImage.Image = global::OpenStack_GUI.Properties.Resources.remove__1_;
+            this.columnDeleteImage.Image = global::Kubernetes_GUI.Properties.Resources.remove__1_;
             this.columnDeleteImage.MinimumWidth = 6;
             this.columnDeleteImage.Name = "columnDeleteImage";
             this.columnDeleteImage.ReadOnly = true;

@@ -1,5 +1,5 @@
 ﻿
-namespace OpenStack_GUI.Forms
+namespace Kubernetes_GUI.Forms
 {
     partial class ContainersForm
     {
@@ -164,7 +164,7 @@ namespace OpenStack_GUI.Forms
             // 
             this.editCollumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
             this.editCollumn.HeaderText = "Edit";
-            this.editCollumn.Image = global::OpenStack_GUI.Properties.Resources.edit_button;
+            this.editCollumn.Image = global::Kubernetes_GUI.Properties.Resources.edit_button;
             this.editCollumn.MinimumWidth = 6;
             this.editCollumn.Name = "editCollumn";
             this.editCollumn.ReadOnly = true;
@@ -176,7 +176,7 @@ namespace OpenStack_GUI.Forms
             // 
             this.deleteCollumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
             this.deleteCollumn.HeaderText = "Delete";
-            this.deleteCollumn.Image = global::OpenStack_GUI.Properties.Resources.remove__1_;
+            this.deleteCollumn.Image = global::Kubernetes_GUI.Properties.Resources.remove__1_;
             this.deleteCollumn.MinimumWidth = 6;
             this.deleteCollumn.Name = "deleteCollumn";
             this.deleteCollumn.ReadOnly = true;

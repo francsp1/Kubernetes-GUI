@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
-using OpenStack_GUI.Models;
+using Kubernetes_GUI.Models;
 using RestSharp;
 using System;
 using System.Collections.Generic;
@@ -16,7 +16,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace OpenStack_GUI.Forms
+namespace Kubernetes_GUI.Forms
 {
     public partial class ImagesForm : Form
     {
