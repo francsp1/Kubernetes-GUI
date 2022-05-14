@@ -211,6 +211,7 @@
   <ItemGroup>
     <None Include="Resources\remove %281%29.png" />
     <None Include="Resources\edit-button.png" />
+    <None Include="Resources\download.png" />
     <Content Include="Resources\OpenStackLogo.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

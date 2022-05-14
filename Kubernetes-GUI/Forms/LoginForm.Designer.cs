@@ -59,6 +59,7 @@ namespace Kubernetes_GUI.Forms
             this.lblUsername.Size = new System.Drawing.Size(72, 19);
             this.lblUsername.TabIndex = 0;
             this.lblUsername.Text = "Username";
+            this.lblUsername.Visible = false;
             // 
             // lblPassword
             // 
@@ -71,30 +72,32 @@ namespace Kubernetes_GUI.Forms
             this.lblPassword.Size = new System.Drawing.Size(71, 19);
             this.lblPassword.TabIndex = 1;
             this.lblPassword.Text = "Password";
+            this.lblPassword.Visible = false;
             // 
             // txtUsername
             // 
             this.txtUsername.AnimateReadOnly = false;
             this.txtUsername.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtUsername.Depth = 0;
-            this.txtUsername.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.txtUsername.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.txtUsername.LeadingIcon = null;
             this.txtUsername.Location = new System.Drawing.Point(39, 361);
             this.txtUsername.MaxLength = 50;
             this.txtUsername.MouseState = MaterialSkin.MouseState.OUT;
             this.txtUsername.Multiline = false;
             this.txtUsername.Name = "txtUsername";
-            this.txtUsername.Size = new System.Drawing.Size(470, 50);
+            this.txtUsername.Size = new System.Drawing.Size(532, 50);
             this.txtUsername.TabIndex = 2;
             this.txtUsername.Text = "";
             this.txtUsername.TrailingIcon = null;
+            this.txtUsername.Visible = false;
             // 
             // txtPassword
             // 
             this.txtPassword.AnimateReadOnly = false;
             this.txtPassword.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtPassword.Depth = 0;
-            this.txtPassword.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.txtPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.txtPassword.LeadingIcon = null;
             this.txtPassword.Location = new System.Drawing.Point(39, 455);
             this.txtPassword.MaxLength = 50;
@@ -102,10 +105,11 @@ namespace Kubernetes_GUI.Forms
             this.txtPassword.Multiline = false;
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.Password = true;
-            this.txtPassword.Size = new System.Drawing.Size(470, 50);
+            this.txtPassword.Size = new System.Drawing.Size(532, 50);
             this.txtPassword.TabIndex = 3;
             this.txtPassword.Text = "";
             this.txtPassword.TrailingIcon = null;
+            this.txtPassword.Visible = false;
             // 
             // btnLogin
             // 
@@ -134,7 +138,7 @@ namespace Kubernetes_GUI.Forms
             this.btnExit.Depth = 0;
             this.btnExit.HighEmphasis = true;
             this.btnExit.Icon = null;
-            this.btnExit.Location = new System.Drawing.Point(422, 532);
+            this.btnExit.Location = new System.Drawing.Point(482, 532);
             this.btnExit.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btnExit.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnExit.Name = "btnExit";
@@ -188,7 +192,7 @@ namespace Kubernetes_GUI.Forms
             this.txtDomain.AnimateReadOnly = false;
             this.txtDomain.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtDomain.Depth = 0;
-            this.txtDomain.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.txtDomain.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.txtDomain.LeadingIcon = null;
             this.txtDomain.Location = new System.Drawing.Point(205, 267);
             this.txtDomain.MaxLength = 50;
@@ -217,14 +221,14 @@ namespace Kubernetes_GUI.Forms
             this.txtPort.AnimateReadOnly = false;
             this.txtPort.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtPort.Depth = 0;
-            this.txtPort.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.txtPort.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.txtPort.LeadingIcon = null;
             this.txtPort.Location = new System.Drawing.Point(431, 267);
             this.txtPort.MaxLength = 50;
             this.txtPort.MouseState = MaterialSkin.MouseState.OUT;
             this.txtPort.Multiline = false;
             this.txtPort.Name = "txtPort";
-            this.txtPort.Size = new System.Drawing.Size(78, 50);
+            this.txtPort.Size = new System.Drawing.Size(140, 50);
             this.txtPort.TabIndex = 10;
             this.txtPort.Text = "";
             this.txtPort.TrailingIcon = null;
@@ -271,19 +275,19 @@ namespace Kubernetes_GUI.Forms
             this.materialLabel1.AutoSize = true;
             this.materialLabel1.Depth = 0;
             this.materialLabel1.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.materialLabel1.Location = new System.Drawing.Point(118, 190);
+            this.materialLabel1.Location = new System.Drawing.Point(72, 201);
             this.materialLabel1.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel1.Name = "materialLabel1";
-            this.materialLabel1.Size = new System.Drawing.Size(243, 19);
+            this.materialLabel1.Size = new System.Drawing.Size(353, 19);
             this.materialLabel1.TabIndex = 14;
-            this.materialLabel1.Text = "Login to Your OpenStack Platform";
+            this.materialLabel1.Text = "Specify the IP and the Port of your Kubernetes API";
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Image = global::Kubernetes_GUI.Properties.Resources.OpenStackLogo;
-            this.pictureBox1.Location = new System.Drawing.Point(172, 85);
+            this.pictureBox1.Image = global::Kubernetes_GUI.Properties.Resources.download;
+            this.pictureBox1.Location = new System.Drawing.Point(205, 85);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(189, 87);
+            this.pictureBox1.Size = new System.Drawing.Size(191, 103);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 15;
             this.pictureBox1.TabStop = false;
@@ -292,7 +296,7 @@ namespace Kubernetes_GUI.Forms
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(550, 600);
+            this.ClientSize = new System.Drawing.Size(600, 600);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.materialLabel1);
             this.Controls.Add(this.lblPort);
@@ -310,8 +314,8 @@ namespace Kubernetes_GUI.Forms
             this.Controls.Add(this.lblPassword);
             this.Controls.Add(this.lblUsername);
             this.MaximizeBox = false;
-            this.MaximumSize = new System.Drawing.Size(550, 600);
-            this.MinimumSize = new System.Drawing.Size(550, 600);
+            this.MaximumSize = new System.Drawing.Size(600, 600);
+            this.MinimumSize = new System.Drawing.Size(600, 600);
             this.Name = "LoginForm";
             this.Sizable = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

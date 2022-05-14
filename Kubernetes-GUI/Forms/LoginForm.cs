@@ -20,9 +20,10 @@ namespace Kubernetes_GUI.Forms
 
             materialSkinInitialize();
 
+            
+            txtDomain.Text = "192.168.100.150";
+            txtPort.Text = "8001";
             /*
-            txtDomain.Text = "192.168.100.140";
-            txtPort.Text = "80";
             txtUsername.Text = "demo";
             //txtPassword.Text = "secret";
             txtPassword.Text = "password";
@@ -75,41 +76,16 @@ namespace Kubernetes_GUI.Forms
                 GlobalSessionDetails.Port = port;
             }
 
-            string username = (string)txtUsername.Text;
-            if (String.IsNullOrWhiteSpace(username))
-            {
-                aux = true;
-                MessageBox.Show("Please, enter a username", "Invalid field!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            else
-            {
-                GlobalSessionDetails.Username = username;
-            }
-
-            string password = (string)txtPassword.Text;
-            if (String.IsNullOrWhiteSpace(password))
-            {
-                aux = true;
-                MessageBox.Show("Please, enter a password", "Invalid field!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            else
-            {
-                GlobalSessionDetails.Password = password;
-            }
-
             if(aux == true)
             {
                 return;
             }
 
-            if (GlobalSessionDetails.getUnscopedToken())
-            {
-                this.Hide();
-                this.Controls.Clear();
-                this.InitializeComponent();
-                MainForm mainForm = new MainForm();
-                this.Show();
-            }
+            this.Hide();
+            this.Controls.Clear();
+            this.InitializeComponent();
+            MainForm mainForm = new MainForm();
+            this.Show();
 
             return;
         }

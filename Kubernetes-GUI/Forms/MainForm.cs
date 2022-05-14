@@ -23,29 +23,7 @@ namespace Kubernetes_GUI.Forms
 
             materialSkinInitialize();
 
-            if (fillProjectsComboBox()){
-                string username = GlobalSessionDetails.Username;
-                if (username != null)
-                {
-                    this.Text = "User: " + username; //  + " | " + "ID: "+ GlobalSessionDetails.UserId;
-                }
-
-                comboBoxProjects.SelectedIndex = 0;
-
-                GlobalSessionDetails.ProjectId = getSelectedProjectId();
-
-                if (GlobalSessionDetails.getScopedToken())
-                {
-                    comboBoxProjects.SelectedIndexChanged += new System.EventHandler(this.comboBoxProjects_SelectedIndexChanged);
-
-                    fillMainTabControl();
-
-                    this.ShowDialog();
-                }
-
-            }
-
-
+            this.ShowDialog();
         }
 
         private bool fillProjectsComboBox()  //Get the  project list of the user and fill the project's combo box
@@ -77,11 +55,13 @@ namespace Kubernetes_GUI.Forms
 
         private void fillMainTabControl()
         {
+            /*
             fillmageServiceTab();
             fillVolumesTab();
             fillinstanceTab();
             fillKeyTab();
             fillContainersTab();
+            */
         }
 
         private void fillVolumesTab()
