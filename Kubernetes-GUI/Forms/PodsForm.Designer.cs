@@ -35,8 +35,8 @@ namespace Kubernetes_GUI.Forms
             this.podsDataGridView = new System.Windows.Forms.DataGridView();
             this.createPodTab = new System.Windows.Forms.TabPage();
             this.editPodTab = new System.Windows.Forms.TabPage();
-            this.collumnEditImage = new System.Windows.Forms.DataGridViewImageColumn();
-            this.columnDeleteImage = new System.Windows.Forms.DataGridViewImageColumn();
+            this.collumnEditPod = new System.Windows.Forms.DataGridViewImageColumn();
+            this.columnDeletePod = new System.Windows.Forms.DataGridViewImageColumn();
             this.podsTabControl.SuspendLayout();
             this.podsTab.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.podsDataGridView)).BeginInit();
@@ -93,8 +93,8 @@ namespace Kubernetes_GUI.Forms
             this.podsDataGridView.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.podsDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.podsDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.collumnEditImage,
-            this.columnDeleteImage});
+            this.collumnEditPod,
+            this.columnDeletePod});
             this.podsDataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.podsDataGridView.GridColor = System.Drawing.Color.White;
             this.podsDataGridView.Location = new System.Drawing.Point(3, 2);
@@ -128,28 +128,28 @@ namespace Kubernetes_GUI.Forms
             this.editPodTab.TabIndex = 3;
             this.editPodTab.Text = "Edit Pod";
             // 
-            // collumnEditImage
+            // collumnEditPod
             // 
-            this.collumnEditImage.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.collumnEditImage.HeaderText = "Edit";
-            this.collumnEditImage.Image = global::Kubernetes_GUI.Properties.Resources.edit_button;
-            this.collumnEditImage.MinimumWidth = 6;
-            this.collumnEditImage.Name = "collumnEditImage";
-            this.collumnEditImage.ReadOnly = true;
-            this.collumnEditImage.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.collumnEditImage.Width = 50;
+            this.collumnEditPod.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.collumnEditPod.HeaderText = "Edit";
+            this.collumnEditPod.Image = global::Kubernetes_GUI.Properties.Resources.edit_button;
+            this.collumnEditPod.MinimumWidth = 6;
+            this.collumnEditPod.Name = "collumnEditPod";
+            this.collumnEditPod.ReadOnly = true;
+            this.collumnEditPod.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.collumnEditPod.Width = 50;
             // 
-            // columnDeleteImage
+            // columnDeletePod
             // 
-            this.columnDeleteImage.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.columnDeleteImage.FillWeight = 28.877F;
-            this.columnDeleteImage.HeaderText = "Delete";
-            this.columnDeleteImage.Image = global::Kubernetes_GUI.Properties.Resources.remove__1_;
-            this.columnDeleteImage.MinimumWidth = 6;
-            this.columnDeleteImage.Name = "columnDeleteImage";
-            this.columnDeleteImage.ReadOnly = true;
-            this.columnDeleteImage.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.columnDeleteImage.Width = 50;
+            this.columnDeletePod.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.columnDeletePod.FillWeight = 28.877F;
+            this.columnDeletePod.HeaderText = "Delete";
+            this.columnDeletePod.Image = global::Kubernetes_GUI.Properties.Resources.remove__1_;
+            this.columnDeletePod.MinimumWidth = 6;
+            this.columnDeletePod.Name = "columnDeletePod";
+            this.columnDeletePod.ReadOnly = true;
+            this.columnDeletePod.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.columnDeletePod.Width = 50;
             // 
             // PodsForm
             // 
@@ -184,7 +184,7 @@ namespace Kubernetes_GUI.Forms
         private System.Windows.Forms.DataGridView podsDataGridView;
         private System.Windows.Forms.TabPage createPodTab;
         private System.Windows.Forms.TabPage editPodTab;
-        private System.Windows.Forms.DataGridViewImageColumn collumnEditImage;
-        private System.Windows.Forms.DataGridViewImageColumn columnDeleteImage;
+        private System.Windows.Forms.DataGridViewImageColumn collumnEditPod;
+        private System.Windows.Forms.DataGridViewImageColumn columnDeletePod;
     }
 }
