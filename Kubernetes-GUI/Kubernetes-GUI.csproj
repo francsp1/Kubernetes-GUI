@@ -111,11 +111,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Forms\ImagesForm.cs">
+    <Compile Include="Forms\PodsForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\ImagesForm.Designer.cs">
-      <DependentUpon>ImagesForm.cs</DependentUpon>
+    <Compile Include="Forms\PodsForm.Designer.cs">
+      <DependentUpon>PodsForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\InstancesForm.cs">
       <SubType>Form</SubType>
@@ -160,8 +160,8 @@
     <Compile Include="Forms\VolumesForm.Designer.cs">
       <DependentUpon>VolumesForm.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Forms\ImagesForm.resx">
-      <DependentUpon>ImagesForm.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\PodsForm.resx">
+      <DependentUpon>PodsForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\InstancesForm.resx">
       <DependentUpon>InstancesForm.cs</DependentUpon>
