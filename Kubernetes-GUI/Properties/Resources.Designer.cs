@@ -83,16 +83,6 @@ namespace Kubernetes_GUI.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap OpenStackLogo {
-            get {
-                object obj = ResourceManager.GetObject("OpenStackLogo", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
         internal static System.Drawing.Bitmap remove__1_ {
             get {
                 object obj = ResourceManager.GetObject("remove (1)", resourceCulture);

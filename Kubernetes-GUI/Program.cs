@@ -16,7 +16,7 @@ namespace Kubernetes_GUI
         static void ConfigureServices()
         {
             var services = new ServiceCollection();
-            services.AddHttpClient("OpenStack");
+            services.AddHttpClient("Kubernetes");
             ServiceProvider = services.BuildServiceProvider();
         }
 
