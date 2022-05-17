@@ -17,7 +17,11 @@ namespace Kubernetes_GUI.Forms
         {
             InitializeComponent();
 
+            fillDashboardTab();
+
             this.ShowDialog();
+
+            
         }
 
         private void mainTabControl_SelectedIndexChanged(object sender, EventArgs e)
