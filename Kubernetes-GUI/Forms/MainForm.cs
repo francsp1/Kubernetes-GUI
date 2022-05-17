@@ -61,7 +61,7 @@ namespace Kubernetes_GUI.Forms
 
         private void fillDashboardTab()
         {
-            MessageBox.Show("Implementar dashboard", "Implementar dashboard", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //MessageBox.Show("Implementar dashboard", "Implementar dashboard", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
         }
 
