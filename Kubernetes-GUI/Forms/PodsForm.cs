@@ -26,22 +26,16 @@ namespace Kubernetes_GUI.Forms
 
             podsTabControl.TabPages.Remove(editPodTab);
 
-            fillImagesDataGridView();
-
-            /*
-            txtImageFile.Text = "C:\\Users\\franc\\Downloads\\cirros-0.4.0-x86_64-disk.img";
-            txtImageName.Text = "Teste";
-            txtImageDescription.Text = "T desc";
-            */
+            fillPodsDataGridView();
 
         }
 
-        private void fillImagesDataGridView()
+        private void fillPodsDataGridView()
         {
             podsDataGridView.Rows.Clear();
             podsDataGridView.Refresh();
            
-
+            /*
             string url = GlobalSessionDetails.Protocol + "://" + GlobalSessionDetails.Domain + ":" + GlobalSessionDetails.Port + "/image/v2/images";
 
             var client = GlobalSessionDetails._clientFactory.CreateClient();
@@ -92,7 +86,7 @@ namespace Kubernetes_GUI.Forms
                 }
 
             } while (responseJsonObject["next"] != null);  // get the images while there is a next filed in the response 
-
+            */
         }
 
         
