@@ -35,58 +35,93 @@ namespace Kubernetes_GUI.Forms
             podsDataGridView.Rows.Clear();
             podsDataGridView.Refresh();
            
-            /*
-            string url = GlobalSessionDetails.Protocol + "://" + GlobalSessionDetails.Domain + ":" + GlobalSessionDetails.Port + "/image/v2/images";
+            
+            string url = GlobalSessionDetails.Protocol + "://" + GlobalSessionDetails.Domain + ":" + GlobalSessionDetails.Port + "/api/v1/pods";
 
             var client = GlobalSessionDetails._clientFactory.CreateClient();
 
-            client.DefaultRequestHeaders.Add("X-Auth-Token", GlobalSessionDetails.ScopedToken);
+            var request = new HttpRequestMessage(HttpMethod.Get, url);
 
-            var responseJsonObject = new JObject();
-            do
+            HttpResponseMessage response = client.SendAsync(request).Result;
+            var responseString = response.Content.ReadAsStringAsync().Result;
+            if (!response.IsSuccessStatusCode)
             {
-                var request = new HttpRequestMessage(HttpMethod.Get, url);
+                MessageBox.Show(response.ReasonPhrase, "Could not get the Images", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
 
-                HttpResponseMessage response = client.SendAsync(request).Result;
-                var responseString = response.Content.ReadAsStringAsync().Result;
-                if (!response.IsSuccessStatusCode)
+            var responseJsonObject = JObject.Parse(responseString);
+            JArray pods = (JArray)responseJsonObject["items"];
+
+            var stop = "s";
+            
+            for (int i = 0; i < pods.Count; i++)
+            {
+                var currentPod = pods[i];
+
+                var name = currentPod["metadata"]["name"];
+                var nspace = currentPod["metadata"]["namespace"];
+
+                HashSet<string> imagesList = new HashSet<string>();
+                foreach (var item in currentPod["spec"]["containers"])
                 {
-                    MessageBox.Show(response.ReasonPhrase, "Could not get the Images", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
+                    imagesList.Add(item["image"].ToString());
                 }
 
-                responseJsonObject = JObject.Parse(responseString);
-                JArray images = (JArray)responseJsonObject["images"];
-
-                for (int i = 0; i < images.Count; i++)
+                string images = null;
+                if(imagesList.Count > 0)
                 {
-                    var currentImage = images[i];
-                    var imageSize = currentImage["size"].ToString();
-                    podsDataGridView.Rows.Add(
-                        podsDataGridView.Rows.Count + 1, 
-                        false, 
-                        currentImage["id"].ToString(), 
-                        currentImage["owner"].ToString(), 
-                        currentImage["name"].ToString(), 
-                        currentImage["description"] is null ? "" : currentImage["description"].ToString(), 
-                        currentImage["status"].ToString(), 
-                        currentImage["visibility"].ToString(), bool.Parse(currentImage["protected"].ToString()) ? "Yes" : "No", 
-                        currentImage["disk_format"].ToString(), 
-                        currentImage["min_disk"].ToString(), 
-                        currentImage["min_ram"].ToString(), 
-                        currentImage["container_format"].ToString(), 
-                        (((float)long.Parse( string.IsNullOrWhiteSpace(imageSize)  ? "0" : imageSize) / 1048576)).ToString("0.00") + "MB"
-                        );
-                }
-                var teste = responseJsonObject["next"];
-
-                if (responseJsonObject["next"] != null)
-                {
-                    url = GlobalSessionDetails.Protocol + "://" + GlobalSessionDetails.Domain + ":" + GlobalSessionDetails.Port + "/image" + responseJsonObject["next"].ToString();
+                    images = string.Join("\n", imagesList.ToArray());
                 }
 
-            } while (responseJsonObject["next"] != null);  // get the images while there is a next filed in the response 
-            */
+                string labels = null;
+                foreach (var item in currentPod["metadata"]["labels"])
+                {
+                    labels = labels + item.ToString() + "\n";
+                }
+                if(labels != null)
+                {
+                    labels = labels.Replace("\"", string.Empty);
+                }
+
+                var node = currentPod["spec"]["nodeName"];
+
+                var status = currentPod["status"]["phase"];
+
+                podsDataGridView.Rows.Add(
+                    name   is null    ? "" : name.ToString(),
+                    nspace is null    ? "" : nspace.ToString(),
+                    images is null    ? "" : images.ToString(),
+                    labels is null    ? "" : labels.ToString(),
+                    node   is null    ? "" : node.ToString(),
+                    status is null    ? "" : status.ToString(),
+                    "Restarts",
+                    "CPU ",
+                    "Memory",
+                    "Created"
+                    ) ;
+                /*
+                var currentPod = pods[i];
+                var imageSize = currentPod["size"].ToString();
+                podsDataGridView.Rows.Add(
+                    podsDataGridView.Rows.Count + 1,
+                    false,
+                    currentPod["id"].ToString(),
+                    currentPod["owner"].ToString(),
+                    currentPod["name"].ToString(),
+                    currentPod["description"] is null ? "" : currentPod["description"].ToString(),
+                    currentPod["status"].ToString(),
+                    currentPod["visibility"].ToString(), bool.Parse(currentPod["protected"].ToString()) ? "Yes" : "No",
+                    currentPod["disk_format"].ToString(),
+                    currentPod["min_disk"].ToString(),
+                    currentPod["min_ram"].ToString(),
+                    currentPod["container_format"].ToString(),
+                    (((float)long.Parse(string.IsNullOrWhiteSpace(imageSize) ? "0" : imageSize) / 1048576)).ToString("0.00") + "MB"
+                    );
+
+                */
+            }
+            
         }
 
         

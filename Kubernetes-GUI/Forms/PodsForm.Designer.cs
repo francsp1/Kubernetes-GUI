@@ -35,6 +35,16 @@ namespace Kubernetes_GUI.Forms
             this.podsDataGridView = new System.Windows.Forms.DataGridView();
             this.createPodTab = new System.Windows.Forms.TabPage();
             this.editPodTab = new System.Windows.Forms.TabPage();
+            this.ColumnName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnNamespace = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnImages = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnLabels = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnNode = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnRestarts = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnCpuUsage = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnMemoryUsage = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnCreated = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.collumnEditPod = new System.Windows.Forms.DataGridViewImageColumn();
             this.columnDeletePod = new System.Windows.Forms.DataGridViewImageColumn();
             this.podsTabControl.SuspendLayout();
@@ -93,6 +103,16 @@ namespace Kubernetes_GUI.Forms
             this.podsDataGridView.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.podsDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.podsDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.ColumnName,
+            this.ColumnNamespace,
+            this.ColumnImages,
+            this.ColumnLabels,
+            this.ColumnNode,
+            this.ColumnStatus,
+            this.ColumnRestarts,
+            this.ColumnCpuUsage,
+            this.ColumnMemoryUsage,
+            this.ColumnCreated,
             this.collumnEditPod,
             this.columnDeletePod});
             this.podsDataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -127,6 +147,76 @@ namespace Kubernetes_GUI.Forms
             this.editPodTab.Size = new System.Drawing.Size(1511, 639);
             this.editPodTab.TabIndex = 3;
             this.editPodTab.Text = "Edit Pod";
+            // 
+            // ColumnName
+            // 
+            this.ColumnName.HeaderText = "Name";
+            this.ColumnName.MinimumWidth = 6;
+            this.ColumnName.Name = "ColumnName";
+            this.ColumnName.ReadOnly = true;
+            // 
+            // ColumnNamespace
+            // 
+            this.ColumnNamespace.HeaderText = "Namespace";
+            this.ColumnNamespace.MinimumWidth = 6;
+            this.ColumnNamespace.Name = "ColumnNamespace";
+            this.ColumnNamespace.ReadOnly = true;
+            // 
+            // ColumnImages
+            // 
+            this.ColumnImages.HeaderText = "Images";
+            this.ColumnImages.MinimumWidth = 6;
+            this.ColumnImages.Name = "ColumnImages";
+            this.ColumnImages.ReadOnly = true;
+            // 
+            // ColumnLabels
+            // 
+            this.ColumnLabels.HeaderText = "Labels";
+            this.ColumnLabels.MinimumWidth = 6;
+            this.ColumnLabels.Name = "ColumnLabels";
+            this.ColumnLabels.ReadOnly = true;
+            // 
+            // ColumnNode
+            // 
+            this.ColumnNode.HeaderText = "Node";
+            this.ColumnNode.MinimumWidth = 6;
+            this.ColumnNode.Name = "ColumnNode";
+            this.ColumnNode.ReadOnly = true;
+            // 
+            // ColumnStatus
+            // 
+            this.ColumnStatus.HeaderText = "Status";
+            this.ColumnStatus.MinimumWidth = 6;
+            this.ColumnStatus.Name = "ColumnStatus";
+            this.ColumnStatus.ReadOnly = true;
+            // 
+            // ColumnRestarts
+            // 
+            this.ColumnRestarts.HeaderText = "Restarts";
+            this.ColumnRestarts.MinimumWidth = 6;
+            this.ColumnRestarts.Name = "ColumnRestarts";
+            this.ColumnRestarts.ReadOnly = true;
+            // 
+            // ColumnCpuUsage
+            // 
+            this.ColumnCpuUsage.HeaderText = "CPU Usage (cores)";
+            this.ColumnCpuUsage.MinimumWidth = 6;
+            this.ColumnCpuUsage.Name = "ColumnCpuUsage";
+            this.ColumnCpuUsage.ReadOnly = true;
+            // 
+            // ColumnMemoryUsage
+            // 
+            this.ColumnMemoryUsage.HeaderText = "Memory Usage (bytes)";
+            this.ColumnMemoryUsage.MinimumWidth = 6;
+            this.ColumnMemoryUsage.Name = "ColumnMemoryUsage";
+            this.ColumnMemoryUsage.ReadOnly = true;
+            // 
+            // ColumnCreated
+            // 
+            this.ColumnCreated.HeaderText = "Created";
+            this.ColumnCreated.MinimumWidth = 6;
+            this.ColumnCreated.Name = "ColumnCreated";
+            this.ColumnCreated.ReadOnly = true;
             // 
             // collumnEditPod
             // 
@@ -184,6 +274,16 @@ namespace Kubernetes_GUI.Forms
         private System.Windows.Forms.DataGridView podsDataGridView;
         private System.Windows.Forms.TabPage createPodTab;
         private System.Windows.Forms.TabPage editPodTab;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnNamespace;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnImages;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnLabels;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnNode;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnStatus;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnRestarts;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnCpuUsage;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnMemoryUsage;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnCreated;
         private System.Windows.Forms.DataGridViewImageColumn collumnEditPod;
         private System.Windows.Forms.DataGridViewImageColumn columnDeletePod;
     }
