@@ -73,8 +73,13 @@ namespace Kubernetes_GUI.Forms
 
         private void fillNamespacesTab()
         {
-            MessageBox.Show("Implementar namespaces", "Implementar namespaces", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
+            namespacesPanel.Controls.Clear();
+            NamespacesForm namespacesForm = new NamespacesForm();
+            namespacesForm.TopLevel = false;
+            namespacesForm.AutoScroll = true;
+            namespacesPanel.Controls.Add(namespacesForm);
+            namespacesForm.Show();
+            namespacesForm.Dock = DockStyle.Fill;
         }
 
         private void fillPodsTab()

@@ -52,8 +52,6 @@ namespace Kubernetes_GUI.Forms
 
             var responseJsonObject = JObject.Parse(responseString);
             JArray pods = (JArray)responseJsonObject["items"];
-
-            var stop = "s";
             
             for (int i = 0; i < pods.Count; i++)
             {
@@ -99,27 +97,7 @@ namespace Kubernetes_GUI.Forms
                     "CPU ",
                     "Memory",
                     "Created"
-                    ) ;
-                /*
-                var currentPod = pods[i];
-                var imageSize = currentPod["size"].ToString();
-                podsDataGridView.Rows.Add(
-                    podsDataGridView.Rows.Count + 1,
-                    false,
-                    currentPod["id"].ToString(),
-                    currentPod["owner"].ToString(),
-                    currentPod["name"].ToString(),
-                    currentPod["description"] is null ? "" : currentPod["description"].ToString(),
-                    currentPod["status"].ToString(),
-                    currentPod["visibility"].ToString(), bool.Parse(currentPod["protected"].ToString()) ? "Yes" : "No",
-                    currentPod["disk_format"].ToString(),
-                    currentPod["min_disk"].ToString(),
-                    currentPod["min_ram"].ToString(),
-                    currentPod["container_format"].ToString(),
-                    (((float)long.Parse(string.IsNullOrWhiteSpace(imageSize) ? "0" : imageSize) / 1048576)).ToString("0.00") + "MB"
                     );
-
-                */
             }
             
         }
