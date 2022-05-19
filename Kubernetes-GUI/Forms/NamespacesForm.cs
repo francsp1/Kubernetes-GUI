@@ -77,10 +77,14 @@ namespace Kubernetes_GUI.Forms
                     created = diffOfDate.Days + " days " + diffOfDate.Hours + " hours and " + diffOfDate.Minutes + " min.";
                 }
 
+                namespacesDataGridView.Rows.Add(
+                    name is null   ? "" : name.ToString(),
+                    labels is null ? "" : labels.ToString(),
+                    phase is null   ? "" : phase.ToString(),
+                    created is null ? "" : created.ToString()
+                    );
+
             }
-
-            MessageBox.Show("Images obtained with success", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
 
         }
 
