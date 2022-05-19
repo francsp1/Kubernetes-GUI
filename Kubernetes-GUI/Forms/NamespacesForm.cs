@@ -67,19 +67,18 @@ namespace Kubernetes_GUI.Forms
 
                 string created = null;
                 var creationTimestamp = currentNamespace["metadata"]["creationTimestamp"];
-
                 if(creationTimestamp != null)
                 {
-                    DateTime prevDate = Convert.ToDateTime(creationTimestamp);
-                    DateTime today = DateTime.Today;
+                    DateTime prevDate = Convert.ToDateTime(creationTimestamp).ToUniversalTime(); ;
+                    DateTime today = DateTime.Now.ToUniversalTime();
 
-                    var diffOfDate = today - prevDate;
-                    created = diffOfDate.Days + " days " + diffOfDate.Hours + " hours and " + diffOfDate.Minutes + " min.";
+                    var diffOfDate = (today - prevDate);
+                    created = diffOfDate.Days + " days " + diffOfDate.Hours + " hours and " + diffOfDate.Minutes + " min. ago";
                 }
 
                 namespacesDataGridView.Rows.Add(
-                    name is null   ? "" : name.ToString(),
-                    labels is null ? "" : labels.ToString(),
+                    name is null    ? "" : name.ToString(),
+                    labels is null  ? "" : labels.ToString(),
                     phase is null   ? "" : phase.ToString(),
                     created is null ? "" : created.ToString()
                     );
@@ -104,7 +103,7 @@ namespace Kubernetes_GUI.Forms
             }
         }
 
-        private void deleteVolume(string volumeID)
+        private void deleteNamespace(string volumeID)
         {
             
             fillNamespacesDataGrdiView();

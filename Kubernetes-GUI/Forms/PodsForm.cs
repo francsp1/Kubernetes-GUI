@@ -86,6 +86,17 @@ namespace Kubernetes_GUI.Forms
 
                 var status = currentPod["status"]["phase"];
 
+                string created = null;
+                var creationTimestamp = currentPod["metadata"]["creationTimestamp"];
+                if (creationTimestamp != null)
+                {
+                    DateTime prevDate = Convert.ToDateTime(creationTimestamp).ToUniversalTime(); ;
+                    DateTime today = DateTime.Now.ToUniversalTime();
+
+                    var diffOfDate = (today - prevDate);
+                    created = diffOfDate.Days + " days " + diffOfDate.Hours + " hours and " + diffOfDate.Minutes + " min. ago";
+                }
+
                 podsDataGridView.Rows.Add(
                     name   is null    ? "" : name.ToString(),
                     nspace is null    ? "" : nspace.ToString(),
@@ -96,7 +107,7 @@ namespace Kubernetes_GUI.Forms
                     "Restarts",
                     "CPU ",
                     "Memory",
-                    "Created"
+                    created is null   ? "" : created.ToString()
                     );
             }
             
