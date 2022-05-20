@@ -117,11 +117,11 @@
     <Compile Include="Forms\PodsForm.Designer.cs">
       <DependentUpon>PodsForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\InstancesForm.cs">
+    <Compile Include="Forms\NodesForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\InstancesForm.Designer.cs">
-      <DependentUpon>InstancesForm.cs</DependentUpon>
+    <Compile Include="Forms\NodesForm.Designer.cs">
+      <DependentUpon>NodesForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\KeyPairForm.cs">
       <SubType>Form</SubType>
@@ -163,8 +163,8 @@
     <EmbeddedResource Include="Forms\PodsForm.resx">
       <DependentUpon>PodsForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\InstancesForm.resx">
-      <DependentUpon>InstancesForm.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\NodesForm.resx">
+      <DependentUpon>NodesForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\KeyPairForm.resx">
       <DependentUpon>KeyPairForm.cs</DependentUpon>

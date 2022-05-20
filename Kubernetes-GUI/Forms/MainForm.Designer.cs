@@ -44,8 +44,10 @@ namespace Kubernetes_GUI.Forms
             this.servicesTab = new System.Windows.Forms.TabPage();
             this.servicesPanel = new System.Windows.Forms.Panel();
             this.mainTabControlImageList = new System.Windows.Forms.ImageList(this.components);
+            this.nodePanel = new System.Windows.Forms.Panel();
             this.mainTabControl.SuspendLayout();
             this.dashboardTab.SuspendLayout();
+            this.nodesTab.SuspendLayout();
             this.namespacesTab.SuspendLayout();
             this.podsTab.SuspendLayout();
             this.deploymentsTab.SuspendLayout();
@@ -63,12 +65,13 @@ namespace Kubernetes_GUI.Forms
             this.mainTabControl.Depth = 0;
             this.mainTabControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.mainTabControl.ImageList = this.mainTabControlImageList;
-            this.mainTabControl.Location = new System.Drawing.Point(3, 64);
+            this.mainTabControl.Location = new System.Drawing.Point(2, 52);
+            this.mainTabControl.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.mainTabControl.MouseState = MaterialSkin.MouseState.HOVER;
             this.mainTabControl.Multiline = true;
             this.mainTabControl.Name = "mainTabControl";
             this.mainTabControl.SelectedIndex = 0;
-            this.mainTabControl.Size = new System.Drawing.Size(1594, 833);
+            this.mainTabControl.Size = new System.Drawing.Size(1196, 677);
             this.mainTabControl.TabIndex = 0;
             this.mainTabControl.SelectedIndexChanged += new System.EventHandler(this.mainTabControl_SelectedIndexChanged);
             // 
@@ -78,25 +81,29 @@ namespace Kubernetes_GUI.Forms
             this.dashboardTab.Controls.Add(this.dashboardPanel);
             this.dashboardTab.ImageKey = "dashboard (1).png";
             this.dashboardTab.Location = new System.Drawing.Point(4, 39);
+            this.dashboardTab.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.dashboardTab.Name = "dashboardTab";
-            this.dashboardTab.Padding = new System.Windows.Forms.Padding(3);
-            this.dashboardTab.Size = new System.Drawing.Size(1586, 790);
+            this.dashboardTab.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dashboardTab.Size = new System.Drawing.Size(1188, 634);
             this.dashboardTab.TabIndex = 0;
             this.dashboardTab.Text = "Dashboard";
             // 
             // dashboardPanel
             // 
             this.dashboardPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dashboardPanel.Location = new System.Drawing.Point(3, 3);
+            this.dashboardPanel.Location = new System.Drawing.Point(2, 2);
+            this.dashboardPanel.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.dashboardPanel.Name = "dashboardPanel";
-            this.dashboardPanel.Size = new System.Drawing.Size(1580, 784);
+            this.dashboardPanel.Size = new System.Drawing.Size(1184, 630);
             this.dashboardPanel.TabIndex = 0;
             // 
             // nodesTab
             // 
+            this.nodesTab.Controls.Add(this.nodePanel);
             this.nodesTab.Location = new System.Drawing.Point(4, 39);
+            this.nodesTab.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.nodesTab.Name = "nodesTab";
-            this.nodesTab.Size = new System.Drawing.Size(1586, 790);
+            this.nodesTab.Size = new System.Drawing.Size(1188, 634);
             this.nodesTab.TabIndex = 5;
             this.nodesTab.Text = "Nodes";
             this.nodesTab.UseVisualStyleBackColor = true;
@@ -106,18 +113,20 @@ namespace Kubernetes_GUI.Forms
             this.namespacesTab.BackColor = System.Drawing.Color.White;
             this.namespacesTab.Controls.Add(this.namespacesPanel);
             this.namespacesTab.Location = new System.Drawing.Point(4, 39);
+            this.namespacesTab.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.namespacesTab.Name = "namespacesTab";
-            this.namespacesTab.Padding = new System.Windows.Forms.Padding(3);
-            this.namespacesTab.Size = new System.Drawing.Size(1586, 790);
+            this.namespacesTab.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.namespacesTab.Size = new System.Drawing.Size(1188, 634);
             this.namespacesTab.TabIndex = 1;
             this.namespacesTab.Text = "Namespaces";
             // 
             // namespacesPanel
             // 
             this.namespacesPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.namespacesPanel.Location = new System.Drawing.Point(3, 3);
+            this.namespacesPanel.Location = new System.Drawing.Point(2, 2);
+            this.namespacesPanel.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.namespacesPanel.Name = "namespacesPanel";
-            this.namespacesPanel.Size = new System.Drawing.Size(1580, 784);
+            this.namespacesPanel.Size = new System.Drawing.Size(1184, 630);
             this.namespacesPanel.TabIndex = 0;
             // 
             // podsTab
@@ -125,8 +134,9 @@ namespace Kubernetes_GUI.Forms
             this.podsTab.BackColor = System.Drawing.Color.White;
             this.podsTab.Controls.Add(this.podsPanel);
             this.podsTab.Location = new System.Drawing.Point(4, 39);
+            this.podsTab.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.podsTab.Name = "podsTab";
-            this.podsTab.Size = new System.Drawing.Size(1586, 790);
+            this.podsTab.Size = new System.Drawing.Size(1188, 634);
             this.podsTab.TabIndex = 2;
             this.podsTab.Text = "Pods";
             // 
@@ -134,8 +144,9 @@ namespace Kubernetes_GUI.Forms
             // 
             this.podsPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.podsPanel.Location = new System.Drawing.Point(0, 0);
+            this.podsPanel.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.podsPanel.Name = "podsPanel";
-            this.podsPanel.Size = new System.Drawing.Size(1586, 790);
+            this.podsPanel.Size = new System.Drawing.Size(1188, 634);
             this.podsPanel.TabIndex = 0;
             // 
             // deploymentsTab
@@ -143,8 +154,9 @@ namespace Kubernetes_GUI.Forms
             this.deploymentsTab.BackColor = System.Drawing.Color.White;
             this.deploymentsTab.Controls.Add(this.deploymentsPanel);
             this.deploymentsTab.Location = new System.Drawing.Point(4, 39);
+            this.deploymentsTab.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.deploymentsTab.Name = "deploymentsTab";
-            this.deploymentsTab.Size = new System.Drawing.Size(1586, 790);
+            this.deploymentsTab.Size = new System.Drawing.Size(1188, 634);
             this.deploymentsTab.TabIndex = 3;
             this.deploymentsTab.Text = "Deployments";
             // 
@@ -152,8 +164,9 @@ namespace Kubernetes_GUI.Forms
             // 
             this.deploymentsPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.deploymentsPanel.Location = new System.Drawing.Point(0, 0);
+            this.deploymentsPanel.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.deploymentsPanel.Name = "deploymentsPanel";
-            this.deploymentsPanel.Size = new System.Drawing.Size(1586, 790);
+            this.deploymentsPanel.Size = new System.Drawing.Size(1188, 634);
             this.deploymentsPanel.TabIndex = 0;
             // 
             // servicesTab
@@ -161,8 +174,9 @@ namespace Kubernetes_GUI.Forms
             this.servicesTab.BackColor = System.Drawing.Color.White;
             this.servicesTab.Controls.Add(this.servicesPanel);
             this.servicesTab.Location = new System.Drawing.Point(4, 39);
+            this.servicesTab.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.servicesTab.Name = "servicesTab";
-            this.servicesTab.Size = new System.Drawing.Size(1586, 790);
+            this.servicesTab.Size = new System.Drawing.Size(1188, 634);
             this.servicesTab.TabIndex = 4;
             this.servicesTab.Text = "Services";
             // 
@@ -170,8 +184,9 @@ namespace Kubernetes_GUI.Forms
             // 
             this.servicesPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.servicesPanel.Location = new System.Drawing.Point(0, 0);
+            this.servicesPanel.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.servicesPanel.Name = "servicesPanel";
-            this.servicesPanel.Size = new System.Drawing.Size(1586, 790);
+            this.servicesPanel.Size = new System.Drawing.Size(1188, 634);
             this.servicesPanel.TabIndex = 0;
             // 
             // mainTabControlImageList
@@ -181,18 +196,29 @@ namespace Kubernetes_GUI.Forms
             this.mainTabControlImageList.Images.SetKeyName(0, "dashboard.png");
             this.mainTabControlImageList.Images.SetKeyName(1, "dashboard (1).png");
             // 
+            // nodePanel
+            // 
+            this.nodePanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.nodePanel.Location = new System.Drawing.Point(0, 0);
+            this.nodePanel.Name = "nodePanel";
+            this.nodePanel.Size = new System.Drawing.Size(1188, 634);
+            this.nodePanel.TabIndex = 0;
+            // 
             // MainForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1600, 900);
+            this.ClientSize = new System.Drawing.Size(1200, 731);
             this.Controls.Add(this.mainTabControl);
             this.DrawerTabControl = this.mainTabControl;
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "MainForm";
+            this.Padding = new System.Windows.Forms.Padding(2, 52, 2, 2);
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.mainTabControl.ResumeLayout(false);
             this.dashboardTab.ResumeLayout(false);
+            this.nodesTab.ResumeLayout(false);
             this.namespacesTab.ResumeLayout(false);
             this.podsTab.ResumeLayout(false);
             this.deploymentsTab.ResumeLayout(false);
@@ -216,5 +242,6 @@ namespace Kubernetes_GUI.Forms
         private System.Windows.Forms.Panel servicesPanel;
         private System.Windows.Forms.ImageList mainTabControlImageList;
         private System.Windows.Forms.TabPage nodesTab;
+        private System.Windows.Forms.Panel nodePanel;
     }
 }

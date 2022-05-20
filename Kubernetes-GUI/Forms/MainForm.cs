@@ -67,8 +67,13 @@ namespace Kubernetes_GUI.Forms
 
         private void fillNodesTab()
         {
-            MessageBox.Show("Implementar nodes", "Implementar nodes", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
+            nodePanel.Controls.Clear();
+            NodesForm nodesform = new NodesForm();
+            nodesform.TopLevel = false;
+            nodesform.AutoScroll = true;
+            nodePanel.Controls.Add(nodesform);
+            nodesform.Show();
+            nodesform.Dock = DockStyle.Fill;
         }
 
         private void fillNamespacesTab()
