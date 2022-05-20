@@ -34,12 +34,6 @@ namespace Kubernetes_GUI.Forms
             this.namespacesTabControl = new MaterialSkin.Controls.MaterialTabControl();
             this.namespacesTab = new System.Windows.Forms.TabPage();
             this.namespacesDataGridView = new System.Windows.Forms.DataGridView();
-            this.collumnNamespaceName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.collumnNamespaceLabels = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.collumnNamespacePhase = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.collumnNamespaceCreated = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.collumnNamespaceEdit = new System.Windows.Forms.DataGridViewImageColumn();
-            this.collumnNamespaceDelete = new System.Windows.Forms.DataGridViewImageColumn();
             this.createNamespaceTab = new System.Windows.Forms.TabPage();
             this.editNamespacesTab = new System.Windows.Forms.TabPage();
             this.dataGridViewImageEditNamepace = new System.Windows.Forms.DataGridViewImageColumn();
@@ -47,6 +41,12 @@ namespace Kubernetes_GUI.Forms
             this.lblNamespaceName = new MaterialSkin.Controls.MaterialLabel();
             this.txtNamespaceName = new MaterialSkin.Controls.MaterialTextBox();
             this.btnCreateNamespace = new MaterialSkin.Controls.MaterialButton();
+            this.collumnNamespaceName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.collumnNamespaceLabels = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.collumnNamespacePhase = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.collumnNamespaceCreated = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.collumnNamespaceEdit = new System.Windows.Forms.DataGridViewImageColumn();
+            this.collumnNamespaceDelete = new System.Windows.Forms.DataGridViewImageColumn();
             this.namespacesTabControl.SuspendLayout();
             this.namespacesTab.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.namespacesDataGridView)).BeginInit();
@@ -121,55 +121,6 @@ namespace Kubernetes_GUI.Forms
             this.namespacesDataGridView.Size = new System.Drawing.Size(1505, 635);
             this.namespacesDataGridView.TabIndex = 0;
             this.namespacesDataGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.namespacesDataGridView_CellContentClick);
-            // 
-            // collumnNamespaceName
-            // 
-            this.collumnNamespaceName.HeaderText = "Name";
-            this.collumnNamespaceName.MinimumWidth = 6;
-            this.collumnNamespaceName.Name = "collumnNamespaceName";
-            this.collumnNamespaceName.ReadOnly = true;
-            // 
-            // collumnNamespaceLabels
-            // 
-            this.collumnNamespaceLabels.HeaderText = "Labels";
-            this.collumnNamespaceLabels.MinimumWidth = 6;
-            this.collumnNamespaceLabels.Name = "collumnNamespaceLabels";
-            this.collumnNamespaceLabels.ReadOnly = true;
-            // 
-            // collumnNamespacePhase
-            // 
-            this.collumnNamespacePhase.HeaderText = "Phase";
-            this.collumnNamespacePhase.MinimumWidth = 6;
-            this.collumnNamespacePhase.Name = "collumnNamespacePhase";
-            this.collumnNamespacePhase.ReadOnly = true;
-            // 
-            // collumnNamespaceCreated
-            // 
-            this.collumnNamespaceCreated.HeaderText = "Created";
-            this.collumnNamespaceCreated.MinimumWidth = 6;
-            this.collumnNamespaceCreated.Name = "collumnNamespaceCreated";
-            this.collumnNamespaceCreated.ReadOnly = true;
-            // 
-            // collumnNamespaceEdit
-            // 
-            this.collumnNamespaceEdit.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.collumnNamespaceEdit.HeaderText = "Edit";
-            this.collumnNamespaceEdit.Image = global::Kubernetes_GUI.Properties.Resources.edit_button;
-            this.collumnNamespaceEdit.MinimumWidth = 6;
-            this.collumnNamespaceEdit.Name = "collumnNamespaceEdit";
-            this.collumnNamespaceEdit.ReadOnly = true;
-            this.collumnNamespaceEdit.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.collumnNamespaceEdit.Width = 38;
-            // 
-            // collumnNamespaceDelete
-            // 
-            this.collumnNamespaceDelete.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.collumnNamespaceDelete.HeaderText = "Delete";
-            this.collumnNamespaceDelete.Image = global::Kubernetes_GUI.Properties.Resources.remove__1_;
-            this.collumnNamespaceDelete.MinimumWidth = 6;
-            this.collumnNamespaceDelete.Name = "collumnNamespaceDelete";
-            this.collumnNamespaceDelete.ReadOnly = true;
-            this.collumnNamespaceDelete.Width = 55;
             // 
             // createNamespaceTab
             // 
@@ -265,6 +216,56 @@ namespace Kubernetes_GUI.Forms
             this.btnCreateNamespace.UseVisualStyleBackColor = true;
             this.btnCreateNamespace.Click += new System.EventHandler(this.btnCreateNamespace_Click);
             // 
+            // collumnNamespaceName
+            // 
+            this.collumnNamespaceName.HeaderText = "Name";
+            this.collumnNamespaceName.MinimumWidth = 6;
+            this.collumnNamespaceName.Name = "collumnNamespaceName";
+            this.collumnNamespaceName.ReadOnly = true;
+            // 
+            // collumnNamespaceLabels
+            // 
+            this.collumnNamespaceLabels.HeaderText = "Labels";
+            this.collumnNamespaceLabels.MinimumWidth = 6;
+            this.collumnNamespaceLabels.Name = "collumnNamespaceLabels";
+            this.collumnNamespaceLabels.ReadOnly = true;
+            // 
+            // collumnNamespacePhase
+            // 
+            this.collumnNamespacePhase.HeaderText = "Phase";
+            this.collumnNamespacePhase.MinimumWidth = 6;
+            this.collumnNamespacePhase.Name = "collumnNamespacePhase";
+            this.collumnNamespacePhase.ReadOnly = true;
+            // 
+            // collumnNamespaceCreated
+            // 
+            this.collumnNamespaceCreated.HeaderText = "Created";
+            this.collumnNamespaceCreated.MinimumWidth = 6;
+            this.collumnNamespaceCreated.Name = "collumnNamespaceCreated";
+            this.collumnNamespaceCreated.ReadOnly = true;
+            // 
+            // collumnNamespaceEdit
+            // 
+            this.collumnNamespaceEdit.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.collumnNamespaceEdit.HeaderText = "Edit";
+            this.collumnNamespaceEdit.Image = global::Kubernetes_GUI.Properties.Resources.edit_button;
+            this.collumnNamespaceEdit.MinimumWidth = 6;
+            this.collumnNamespaceEdit.Name = "collumnNamespaceEdit";
+            this.collumnNamespaceEdit.ReadOnly = true;
+            this.collumnNamespaceEdit.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.collumnNamespaceEdit.Visible = false;
+            this.collumnNamespaceEdit.Width = 38;
+            // 
+            // collumnNamespaceDelete
+            // 
+            this.collumnNamespaceDelete.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.collumnNamespaceDelete.HeaderText = "Delete";
+            this.collumnNamespaceDelete.Image = global::Kubernetes_GUI.Properties.Resources.remove__1_;
+            this.collumnNamespaceDelete.MinimumWidth = 6;
+            this.collumnNamespaceDelete.Name = "collumnNamespaceDelete";
+            this.collumnNamespaceDelete.ReadOnly = true;
+            this.collumnNamespaceDelete.Width = 55;
+            // 
             // NamespacesForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -302,14 +303,14 @@ namespace Kubernetes_GUI.Forms
         private System.Windows.Forms.DataGridViewImageColumn dataGridViewImageEditNamepace;
         private System.Windows.Forms.DataGridViewImageColumn dataGridViewImageDeleteNamespace;
         private System.Windows.Forms.TabPage editNamespacesTab;
+        private MaterialSkin.Controls.MaterialButton btnCreateNamespace;
+        private MaterialSkin.Controls.MaterialTextBox txtNamespaceName;
+        private MaterialSkin.Controls.MaterialLabel lblNamespaceName;
         private System.Windows.Forms.DataGridViewTextBoxColumn collumnNamespaceName;
         private System.Windows.Forms.DataGridViewTextBoxColumn collumnNamespaceLabels;
         private System.Windows.Forms.DataGridViewTextBoxColumn collumnNamespacePhase;
         private System.Windows.Forms.DataGridViewTextBoxColumn collumnNamespaceCreated;
         private System.Windows.Forms.DataGridViewImageColumn collumnNamespaceEdit;
         private System.Windows.Forms.DataGridViewImageColumn collumnNamespaceDelete;
-        private MaterialSkin.Controls.MaterialButton btnCreateNamespace;
-        private MaterialSkin.Controls.MaterialTextBox txtNamespaceName;
-        private MaterialSkin.Controls.MaterialLabel lblNamespaceName;
     }
 }
