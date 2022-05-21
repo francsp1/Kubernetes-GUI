@@ -36,8 +36,7 @@ namespace Kubernetes_GUI.Forms
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.nodesGridView = new System.Windows.Forms.DataGridView();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.idColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NameColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nodeNameColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.LabelColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.readyColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cpuColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -103,8 +102,7 @@ namespace Kubernetes_GUI.Forms
             this.nodesGridView.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.nodesGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.nodesGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.idColumn,
-            this.NameColumn,
+            this.nodeNameColumn,
             this.LabelColumn,
             this.readyColumn,
             this.cpuColumn,
@@ -143,33 +141,17 @@ namespace Kubernetes_GUI.Forms
             this.tabPage2.Text = "Cretate Nodes";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
-            // idColumn
+            // nodeNameColumn
             // 
-            this.idColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.idColumn.HeaderText = "ID";
-            this.idColumn.MinimumWidth = 6;
-            this.idColumn.Name = "idColumn";
-            this.idColumn.ReadOnly = true;
-            this.idColumn.Visible = false;
-            // 
-            // NameColumn
-            // 
-            this.NameColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.NameColumn.FillWeight = 58.25241F;
-            this.NameColumn.HeaderText = "Name";
-            this.NameColumn.MinimumWidth = 6;
-            this.NameColumn.Name = "NameColumn";
-            this.NameColumn.ReadOnly = true;
+            this.nodeNameColumn.HeaderText = "Name";
+            this.nodeNameColumn.Name = "nodeNameColumn";
+            this.nodeNameColumn.ReadOnly = true;
             // 
             // LabelColumn
             // 
-            this.LabelColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.LabelColumn.FillWeight = 58.25241F;
             this.LabelColumn.HeaderText = "Label";
-            this.LabelColumn.MinimumWidth = 6;
             this.LabelColumn.Name = "LabelColumn";
             this.LabelColumn.ReadOnly = true;
-            this.LabelColumn.Width = 58;
             // 
             // readyColumn
             // 
@@ -289,8 +271,7 @@ namespace Kubernetes_GUI.Forms
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.DataGridView nodesGridView;
-        private System.Windows.Forms.DataGridViewTextBoxColumn idColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn NameColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nodeNameColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn LabelColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn readyColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn cpuColumn;

@@ -81,6 +81,11 @@ namespace Kubernetes_GUI.Forms
                     name is null ? "" : name.ToString(),
                     labels is null ? "" : labels.ToString(),
                     ready is null ? "" : ready.ToString(),
+                    "value",
+                    "value",
+                    "value",
+                    "value",
+                    "value",
                     created is null ? "" : created.ToString()
                     );
 
