@@ -33,8 +33,6 @@ namespace Kubernetes_GUI.Forms
             this.podsTabControl = new MaterialSkin.Controls.MaterialTabControl();
             this.podsTab = new System.Windows.Forms.TabPage();
             this.podsDataGridView = new System.Windows.Forms.DataGridView();
-            this.createPodTab = new System.Windows.Forms.TabPage();
-            this.editPodTab = new System.Windows.Forms.TabPage();
             this.ColumnName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnNamespace = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnImages = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -47,9 +45,19 @@ namespace Kubernetes_GUI.Forms
             this.ColumnCreated = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.collumnEditPod = new System.Windows.Forms.DataGridViewImageColumn();
             this.columnDeletePod = new System.Windows.Forms.DataGridViewImageColumn();
+            this.createPodTab = new System.Windows.Forms.TabPage();
+            this.editPodTab = new System.Windows.Forms.TabPage();
+            this.materialCheckbox1 = new MaterialSkin.Controls.MaterialCheckbox();
+            this.materialCheckbox2 = new MaterialSkin.Controls.MaterialCheckbox();
+            this.materialCheckbox3 = new MaterialSkin.Controls.MaterialCheckbox();
+            this.materialCheckbox4 = new MaterialSkin.Controls.MaterialCheckbox();
+            this.materialCheckbox5 = new MaterialSkin.Controls.MaterialCheckbox();
+            this.materialCheckbox6 = new MaterialSkin.Controls.MaterialCheckbox();
+            this.materialCheckedListBox1 = new MaterialSkin.Controls.MaterialCheckedListBox();
             this.podsTabControl.SuspendLayout();
             this.podsTab.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.podsDataGridView)).BeginInit();
+            this.createPodTab.SuspendLayout();
             this.SuspendLayout();
             // 
             // podsTabSelector
@@ -125,28 +133,6 @@ namespace Kubernetes_GUI.Forms
             this.podsDataGridView.RowTemplate.Height = 24;
             this.podsDataGridView.Size = new System.Drawing.Size(1505, 635);
             this.podsDataGridView.TabIndex = 1;
-            // 
-            // createPodTab
-            // 
-            this.createPodTab.BackColor = System.Drawing.Color.White;
-            this.createPodTab.Location = new System.Drawing.Point(4, 25);
-            this.createPodTab.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.createPodTab.Name = "createPodTab";
-            this.createPodTab.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.createPodTab.Size = new System.Drawing.Size(1511, 639);
-            this.createPodTab.TabIndex = 1;
-            this.createPodTab.Text = "Create Pod";
-            // 
-            // editPodTab
-            // 
-            this.editPodTab.BackColor = System.Drawing.Color.White;
-            this.editPodTab.Location = new System.Drawing.Point(4, 25);
-            this.editPodTab.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.editPodTab.Name = "editPodTab";
-            this.editPodTab.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.editPodTab.Size = new System.Drawing.Size(1511, 639);
-            this.editPodTab.TabIndex = 3;
-            this.editPodTab.Text = "Edit Pod";
             // 
             // ColumnName
             // 
@@ -241,6 +227,132 @@ namespace Kubernetes_GUI.Forms
             this.columnDeletePod.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.columnDeletePod.Width = 50;
             // 
+            // createPodTab
+            // 
+            this.createPodTab.BackColor = System.Drawing.Color.White;
+            this.createPodTab.Controls.Add(this.materialCheckedListBox1);
+            this.createPodTab.Location = new System.Drawing.Point(4, 25);
+            this.createPodTab.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.createPodTab.Name = "createPodTab";
+            this.createPodTab.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.createPodTab.Size = new System.Drawing.Size(1511, 639);
+            this.createPodTab.TabIndex = 1;
+            this.createPodTab.Text = "Create Pod";
+            // 
+            // editPodTab
+            // 
+            this.editPodTab.BackColor = System.Drawing.Color.White;
+            this.editPodTab.Location = new System.Drawing.Point(4, 25);
+            this.editPodTab.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.editPodTab.Name = "editPodTab";
+            this.editPodTab.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.editPodTab.Size = new System.Drawing.Size(1511, 639);
+            this.editPodTab.TabIndex = 3;
+            this.editPodTab.Text = "Edit Pod";
+            // 
+            // materialCheckbox1
+            // 
+            this.materialCheckbox1.Depth = 0;
+            this.materialCheckbox1.Location = new System.Drawing.Point(0, 0);
+            this.materialCheckbox1.Margin = new System.Windows.Forms.Padding(0);
+            this.materialCheckbox1.MouseLocation = new System.Drawing.Point(-1, -1);
+            this.materialCheckbox1.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialCheckbox1.Name = "materialCheckbox1";
+            this.materialCheckbox1.ReadOnly = false;
+            this.materialCheckbox1.Ripple = true;
+            this.materialCheckbox1.Size = new System.Drawing.Size(104, 37);
+            this.materialCheckbox1.TabIndex = 0;
+            this.materialCheckbox1.Text = "materialCheckbox1";
+            this.materialCheckbox1.UseVisualStyleBackColor = true;
+            // 
+            // materialCheckbox2
+            // 
+            this.materialCheckbox2.Depth = 0;
+            this.materialCheckbox2.Location = new System.Drawing.Point(0, 0);
+            this.materialCheckbox2.Margin = new System.Windows.Forms.Padding(0);
+            this.materialCheckbox2.MouseLocation = new System.Drawing.Point(-1, -1);
+            this.materialCheckbox2.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialCheckbox2.Name = "materialCheckbox2";
+            this.materialCheckbox2.ReadOnly = false;
+            this.materialCheckbox2.Ripple = true;
+            this.materialCheckbox2.Size = new System.Drawing.Size(104, 37);
+            this.materialCheckbox2.TabIndex = 0;
+            this.materialCheckbox2.Text = "materialCheckbox2";
+            this.materialCheckbox2.UseVisualStyleBackColor = true;
+            // 
+            // materialCheckbox3
+            // 
+            this.materialCheckbox3.Depth = 0;
+            this.materialCheckbox3.Location = new System.Drawing.Point(0, 0);
+            this.materialCheckbox3.Margin = new System.Windows.Forms.Padding(0);
+            this.materialCheckbox3.MouseLocation = new System.Drawing.Point(-1, -1);
+            this.materialCheckbox3.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialCheckbox3.Name = "materialCheckbox3";
+            this.materialCheckbox3.ReadOnly = false;
+            this.materialCheckbox3.Ripple = true;
+            this.materialCheckbox3.Size = new System.Drawing.Size(104, 37);
+            this.materialCheckbox3.TabIndex = 0;
+            this.materialCheckbox3.Text = "materialCheckbox3";
+            this.materialCheckbox3.UseVisualStyleBackColor = true;
+            // 
+            // materialCheckbox4
+            // 
+            this.materialCheckbox4.Depth = 0;
+            this.materialCheckbox4.Location = new System.Drawing.Point(0, 0);
+            this.materialCheckbox4.Margin = new System.Windows.Forms.Padding(0);
+            this.materialCheckbox4.MouseLocation = new System.Drawing.Point(-1, -1);
+            this.materialCheckbox4.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialCheckbox4.Name = "materialCheckbox4";
+            this.materialCheckbox4.ReadOnly = false;
+            this.materialCheckbox4.Ripple = true;
+            this.materialCheckbox4.Size = new System.Drawing.Size(104, 37);
+            this.materialCheckbox4.TabIndex = 0;
+            this.materialCheckbox4.Text = "materialCheckbox4";
+            this.materialCheckbox4.UseVisualStyleBackColor = true;
+            // 
+            // materialCheckbox5
+            // 
+            this.materialCheckbox5.Depth = 0;
+            this.materialCheckbox5.Location = new System.Drawing.Point(0, 0);
+            this.materialCheckbox5.Margin = new System.Windows.Forms.Padding(0);
+            this.materialCheckbox5.MouseLocation = new System.Drawing.Point(-1, -1);
+            this.materialCheckbox5.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialCheckbox5.Name = "materialCheckbox5";
+            this.materialCheckbox5.ReadOnly = false;
+            this.materialCheckbox5.Ripple = true;
+            this.materialCheckbox5.Size = new System.Drawing.Size(104, 37);
+            this.materialCheckbox5.TabIndex = 0;
+            this.materialCheckbox5.Text = "materialCheckbox5";
+            this.materialCheckbox5.UseVisualStyleBackColor = true;
+            // 
+            // materialCheckbox6
+            // 
+            this.materialCheckbox6.Depth = 0;
+            this.materialCheckbox6.Location = new System.Drawing.Point(0, 0);
+            this.materialCheckbox6.Margin = new System.Windows.Forms.Padding(0);
+            this.materialCheckbox6.MouseLocation = new System.Drawing.Point(-1, -1);
+            this.materialCheckbox6.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialCheckbox6.Name = "materialCheckbox6";
+            this.materialCheckbox6.ReadOnly = false;
+            this.materialCheckbox6.Ripple = true;
+            this.materialCheckbox6.Size = new System.Drawing.Size(104, 37);
+            this.materialCheckbox6.TabIndex = 0;
+            this.materialCheckbox6.Text = "materialCheckbox6";
+            this.materialCheckbox6.UseVisualStyleBackColor = true;
+            // 
+            // materialCheckedListBox1
+            // 
+            this.materialCheckedListBox1.AutoScroll = true;
+            this.materialCheckedListBox1.BackColor = System.Drawing.Color.White;
+            this.materialCheckedListBox1.Depth = 0;
+            this.materialCheckedListBox1.Location = new System.Drawing.Point(511, 227);
+            this.materialCheckedListBox1.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialCheckedListBox1.Name = "materialCheckedListBox1";
+            this.materialCheckedListBox1.Size = new System.Drawing.Size(200, 100);
+            this.materialCheckedListBox1.Striped = false;
+            this.materialCheckedListBox1.StripeDarkColor = System.Drawing.Color.Empty;
+            this.materialCheckedListBox1.TabIndex = 5;
+            // 
             // PodsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -262,6 +374,7 @@ namespace Kubernetes_GUI.Forms
             this.podsTabControl.ResumeLayout(false);
             this.podsTab.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.podsDataGridView)).EndInit();
+            this.createPodTab.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -286,5 +399,12 @@ namespace Kubernetes_GUI.Forms
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnCreated;
         private System.Windows.Forms.DataGridViewImageColumn collumnEditPod;
         private System.Windows.Forms.DataGridViewImageColumn columnDeletePod;
+        private MaterialSkin.Controls.MaterialCheckedListBox materialCheckedListBox1;
+        private MaterialSkin.Controls.MaterialCheckbox materialCheckbox1;
+        private MaterialSkin.Controls.MaterialCheckbox materialCheckbox2;
+        private MaterialSkin.Controls.MaterialCheckbox materialCheckbox3;
+        private MaterialSkin.Controls.MaterialCheckbox materialCheckbox4;
+        private MaterialSkin.Controls.MaterialCheckbox materialCheckbox5;
+        private MaterialSkin.Controls.MaterialCheckbox materialCheckbox6;
     }
 }

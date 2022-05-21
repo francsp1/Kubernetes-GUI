@@ -31,59 +31,68 @@ namespace Kubernetes_GUI.Forms
             namespacesDataGridView.Rows.Clear();
             namespacesDataGridView.Refresh();
 
-            string url = GlobalSessionDetails.Protocol + "://" + GlobalSessionDetails.Domain + ":" + GlobalSessionDetails.Port + "/api/v1/namespaces";
-
-            var request = new HttpRequestMessage(HttpMethod.Get, url);
-            var client = GlobalSessionDetails._clientFactory.CreateClient();
-
-            var response = client.SendAsync(request).Result;
-            var json = response.Content.ReadAsStringAsync().Result;
-
-            if (!response.IsSuccessStatusCode)
+            try
             {
-                MessageBox.Show(response.ReasonPhrase, "Could not get the Namespaces", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                string url = GlobalSessionDetails.Protocol + "://" + GlobalSessionDetails.Domain + ":" + GlobalSessionDetails.Port + "/api/v1/namespaces";
+
+                var request = new HttpRequestMessage(HttpMethod.Get, url);
+                var client = GlobalSessionDetails._clientFactory.CreateClient();
+
+                var response = client.SendAsync(request).Result;
+                var json = response.Content.ReadAsStringAsync().Result;
+
+                if (!response.IsSuccessStatusCode)
+                {
+                    MessageBox.Show(response.ReasonPhrase, "Could not get the Namespaces", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+                JObject responseJsonObject = JObject.Parse(json);
+                JArray namespaces = (JArray)responseJsonObject["items"];
+
+                for (int i = 0; i < namespaces.Count; i++)
+                {
+                    var currentNamespace = namespaces[i];
+                    var name = currentNamespace["metadata"]["name"];
+
+                    string labels = null;
+                    foreach (var item in currentNamespace["metadata"]["labels"])
+                    {
+                        labels = labels + item.ToString() + "\n";
+                    }
+                    if (labels != null)
+                    {
+                        labels = labels.Replace("\"", string.Empty);
+                    }
+
+                    var phase = currentNamespace["status"]["phase"];
+
+                    string created = null;
+                    var creationTimestamp = currentNamespace["metadata"]["creationTimestamp"];
+                    if (creationTimestamp != null)
+                    {
+                        DateTime prevDate = Convert.ToDateTime(creationTimestamp).ToUniversalTime(); ;
+                        DateTime today = DateTime.Now.ToUniversalTime();
+
+                        var diffOfDate = (today - prevDate);
+                        created = diffOfDate.Days + " days " + diffOfDate.Hours + " hours and " + diffOfDate.Minutes + " min. ago";
+                    }
+
+                    namespacesDataGridView.Rows.Add(
+                        name is null ? "" : name.ToString(),
+                        labels is null ? "" : labels.ToString(),
+                        phase is null ? "" : phase.ToString(),
+                        created is null ? "" : created.ToString()
+                        );
+
+                }
+            }
+            catch (Exception excp)
+            {
+                MessageBox.Show("Could not get the Namespaces! " + excp.InnerException.Message, excp.Message, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-
-            JObject responseJsonObject = JObject.Parse(json);
-            JArray namespaces = (JArray)responseJsonObject["items"];
-
-            for (int i = 0; i < namespaces.Count; i++)
-            {
-                var currentNamespace = namespaces[i];
-                var name = currentNamespace["metadata"]["name"];
-
-                string labels = null;
-                foreach (var item in currentNamespace["metadata"]["labels"])
-                {
-                    labels = labels + item.ToString() + "\n";
-                }
-                if (labels != null)
-                {
-                    labels = labels.Replace("\"", string.Empty);
-                }
-
-                var phase = currentNamespace["status"]["phase"];
-
-                string created = null;
-                var creationTimestamp = currentNamespace["metadata"]["creationTimestamp"];
-                if(creationTimestamp != null)
-                {
-                    DateTime prevDate = Convert.ToDateTime(creationTimestamp).ToUniversalTime(); ;
-                    DateTime today = DateTime.Now.ToUniversalTime();
-
-                    var diffOfDate = (today - prevDate);
-                    created = diffOfDate.Days + " days " + diffOfDate.Hours + " hours and " + diffOfDate.Minutes + " min. ago";
-                }
-
-                namespacesDataGridView.Rows.Add(
-                    name is null    ? "" : name.ToString(),
-                    labels is null  ? "" : labels.ToString(),
-                    phase is null   ? "" : phase.ToString(),
-                    created is null ? "" : created.ToString()
-                    );
-
-            }
+            
 
         }
 
@@ -96,27 +105,36 @@ namespace Kubernetes_GUI.Forms
                 return;
             }
 
-            string url = GlobalSessionDetails.Protocol + "://" + GlobalSessionDetails.Domain + ":" + GlobalSessionDetails.Port + "/api/v1/namespaces";
-
-            string requestJson = "{\"apiVersion\":\"v1\",\"kind\":\"Namespace\",\"metadata\":{\"name\":\"" + name + "\",\"labels\":{\"name\":\"" + name + "\"}}}";
-            var payload = new StringContent(requestJson, Encoding.UTF8, "application/json");
-
-            var request = new HttpRequestMessage(HttpMethod.Post, url)
+            try
             {
-                Content = payload,
-            };
+                string url = GlobalSessionDetails.Protocol + "://" + GlobalSessionDetails.Domain + ":" + GlobalSessionDetails.Port + "/api/v1/namespaces";
 
-            var client = GlobalSessionDetails._clientFactory.CreateClient();
+                string requestJson = "{\"apiVersion\":\"v1\",\"kind\":\"Namespace\",\"metadata\":{\"name\":\"" + name + "\",\"labels\":{\"name\":\"" + name + "\"}}}";
+                var payload = new StringContent(requestJson, Encoding.UTF8, "application/json");
 
-            var response = client.SendAsync(request).Result;
-            var json = response.Content.ReadAsStringAsync().Result;
+                var request = new HttpRequestMessage(HttpMethod.Post, url)
+                {
+                    Content = payload,
+                };
 
-            if (!response.IsSuccessStatusCode)
+                var client = GlobalSessionDetails._clientFactory.CreateClient();
+
+                var response = client.SendAsync(request).Result;
+                var json = response.Content.ReadAsStringAsync().Result;
+
+                if (!response.IsSuccessStatusCode)
+                {
+                    MessageBox.Show(response.ReasonPhrase, "Could not create the Namespace!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+                MessageBox.Show("Namespace created with success", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            }
+            catch (Exception excp)
             {
-                MessageBox.Show(response.ReasonPhrase, "Could not create the Namespace", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Could not create the Namespace! "+ excp.InnerException.Message, excp.Message, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            MessageBox.Show("Namespace created with success", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
             fillNamespacesDataGrdiView();
             namespacesTabControl.SelectedTab = namespacesTab;
@@ -139,20 +157,28 @@ namespace Kubernetes_GUI.Forms
 
         private void deleteNamespace(string namespaceName)
         {
-            string url = GlobalSessionDetails.Protocol + "://" + GlobalSessionDetails.Domain + ":" + GlobalSessionDetails.Port + "/api/v1/namespaces/" + namespaceName;
-
-            var request = new HttpRequestMessage(HttpMethod.Delete, url);
-            var client = GlobalSessionDetails._clientFactory.CreateClient();
-
-            var response = client.SendAsync(request).Result;
-            var json = response.Content.ReadAsStringAsync().Result;
-
-            if (!response.IsSuccessStatusCode)
+            try
             {
-                MessageBox.Show(response.ReasonPhrase, "Could not Delete the namespace", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                string url = GlobalSessionDetails.Protocol + "://" + GlobalSessionDetails.Domain + ":" + GlobalSessionDetails.Port + "/api/v1/namespaces/" + namespaceName;
+
+                var request = new HttpRequestMessage(HttpMethod.Delete, url);
+                var client = GlobalSessionDetails._clientFactory.CreateClient();
+
+                var response = client.SendAsync(request).Result;
+                var json = response.Content.ReadAsStringAsync().Result;
+
+                if (!response.IsSuccessStatusCode)
+                {
+                    MessageBox.Show(response.ReasonPhrase, "Could not Delete the namespace!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+                MessageBox.Show("Namespace deleted with success", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Exception excp)
+            {
+                MessageBox.Show("Could not Delete the namespace! " + excp.InnerException.Message, excp.Message, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            MessageBox.Show("Namespace deleted with success", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
        
