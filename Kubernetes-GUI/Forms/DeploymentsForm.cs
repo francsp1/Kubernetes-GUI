@@ -59,6 +59,10 @@ namespace Kubernetes_GUI.Forms
                     var currentDeployment = deployments[i];
                     var name = currentDeployment["metadata"]["name"];
 
+                    var nspace = currentDeployment["metadata"]["namespace"];
+
+                    var teste = currentDeployment["spec"]["template"];
+
                     string labels = null;
                     foreach (var item in currentDeployment["metadata"]["labels"])
                     {
@@ -82,12 +86,12 @@ namespace Kubernetes_GUI.Forms
                     }
 
                     deploymentsDataGridView.Rows.Add(
-                        name is null ? "" : name.ToString(),
-                        "nspace",
+                        name     is null ? "" : name.ToString(),
+                        nspace   is null ? "" : name.ToString(),
                         "images",
-                        labels is null ? "" : labels.ToString(),
+                        labels   is null ? "" : labels.ToString(),
                         "pods",
-                        created is null ? "" : created.ToString()
+                        created  is null ? "" : created.ToString()
                         );
 
                 }
