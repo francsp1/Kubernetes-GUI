@@ -144,35 +144,4 @@
   <metadata name="createdColumn.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
-  <metadata name="editColumn.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="editColumn.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6
-        JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAAB3RJTUUH5gQKEB0NCw+nSgAAAWlJREFU
-        OE99Uz1PwzAQPSUEZgbEyM7Hb2DuwICjLCwwIRhhYuvIECcKpQIxsDFUZYWJj/+AgAX+BLRILKHwznEc
-        k7g56Sm+83t3PvtCdQuidM0XyYkXyhdfyC+GWocyCzbjVU1zWKc354fxGQQ/IP9OQQ70KerOapU2iFHl
-        sUaeCnAf/iVB8LxOsgHBDbANPFXx5FSJi55bjz2g9e4MCblEW8fzVpKcIrnM1TMdcEGJvTA5RJFvTuKJ
-        ZKfajxPCxqslsKHF8oB9fI+0f1tysH7mE4zLgIGQw4Y4GvqIX9W4I04wsoMgX7sqYz2weRpIYLeAy6So
-        t4A+9+FPuPcWsWmhukQh3/WzXmJzr02sIGRKPJ5weMI4+EEb2aJ6Xz4J2jHkJopnZIPTNxtCfuL7xu2Y
-        mAv4X5RYGcYS1e6dRAdwN3e0exFotTYk4fEEoWzHhVxVbogtC8J0hS+HbxgCnpFxscbUlT0bI/oDTgBs
-        l4krUvQAAAAASUVORK5CYII=
-</value>
-  </data>
-  <metadata name="deleteColumn.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <data name="deleteColumn.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAA
-        WQAAAFkBqp2phgAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAEWSURBVDhPpVPB
-        TsMwDM0FPoZxG0mOQDNxYsf91QaFjcO+BfgK2IdsTRWtFIVnN6qatJUGWHqSaz/bcfIqUivuri6tkbk1
-        6hOwAfBlTrlA65tfTM5Lo19A/gb8COpyptbEDWWNUQDJ94Q8jky9RU3C5GHyCMpMPXNxs7Oqo+T9dUQe
-        idXFrZwIa/RTN1HOb3zlnHebVRsjn2K9Jpl6QAO1i4KA2yx9VVXebdeRn/LQ4AP7q6KXAHjq8cjonibB
-        gU5wSIKMExvs/7+CncnHbvBXl2j0UtBT4ONvz2j0BWuB5JkkT4DMuZiMpQx5DhOHoF/9dHoWyhvjnwny
-        BCFaJ8EXTe4Vd43vBAqjGyaNsE7go3jV7tyaED8dmiQhu1PxjwAAAABJRU5ErkJggg==
-</value>
-  </data>
 </root>

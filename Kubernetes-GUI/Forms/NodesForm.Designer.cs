@@ -29,13 +29,11 @@ namespace Kubernetes_GUI.Forms
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(NodesForm));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.instancesTabSelector = new MaterialSkin.Controls.MaterialTabSelector();
             this.instancesTabControl = new MaterialSkin.Controls.MaterialTabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.nodesGridView = new System.Windows.Forms.DataGridView();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
             this.nodeNameColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.LabelColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.readyColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -45,8 +43,6 @@ namespace Kubernetes_GUI.Forms
             this.memoryLimColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.podsColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.createdColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.editColumn = new System.Windows.Forms.DataGridViewImageColumn();
-            this.deleteColumn = new System.Windows.Forms.DataGridViewImageColumn();
             this.instancesTabControl.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nodesGridView)).BeginInit();
@@ -71,7 +67,6 @@ namespace Kubernetes_GUI.Forms
             // instancesTabControl
             // 
             this.instancesTabControl.Controls.Add(this.tabPage1);
-            this.instancesTabControl.Controls.Add(this.tabPage2);
             this.instancesTabControl.Depth = 0;
             this.instancesTabControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.instancesTabControl.Location = new System.Drawing.Point(0, 39);
@@ -110,17 +105,15 @@ namespace Kubernetes_GUI.Forms
             this.memoryColumn,
             this.memoryLimColumn,
             this.podsColumn,
-            this.createdColumn,
-            this.editColumn,
-            this.deleteColumn});
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.nodesGridView.DefaultCellStyle = dataGridViewCellStyle1;
+            this.createdColumn});
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.nodesGridView.DefaultCellStyle = dataGridViewCellStyle2;
             this.nodesGridView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.nodesGridView.GridColor = System.Drawing.Color.White;
             this.nodesGridView.Location = new System.Drawing.Point(3, 3);
@@ -130,16 +123,6 @@ namespace Kubernetes_GUI.Forms
             this.nodesGridView.RowTemplate.Height = 60;
             this.nodesGridView.Size = new System.Drawing.Size(1125, 511);
             this.nodesGridView.TabIndex = 0;
-            // 
-            // tabPage2
-            // 
-            this.tabPage2.Location = new System.Drawing.Point(4, 22);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(1131, 517);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "Cretate Nodes";
-            this.tabPage2.UseVisualStyleBackColor = true;
             // 
             // nodeNameColumn
             // 
@@ -217,28 +200,6 @@ namespace Kubernetes_GUI.Forms
             this.createdColumn.Name = "createdColumn";
             this.createdColumn.ReadOnly = true;
             // 
-            // editColumn
-            // 
-            this.editColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.editColumn.HeaderText = "Edit";
-            this.editColumn.Image = ((System.Drawing.Image)(resources.GetObject("editColumn.Image")));
-            this.editColumn.MinimumWidth = 6;
-            this.editColumn.Name = "editColumn";
-            this.editColumn.ReadOnly = true;
-            this.editColumn.Width = 50;
-            // 
-            // deleteColumn
-            // 
-            this.deleteColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.deleteColumn.HeaderText = "Delete";
-            this.deleteColumn.Image = ((System.Drawing.Image)(resources.GetObject("deleteColumn.Image")));
-            this.deleteColumn.MinimumWidth = 6;
-            this.deleteColumn.Name = "deleteColumn";
-            this.deleteColumn.ReadOnly = true;
-            this.deleteColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.deleteColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.deleteColumn.Width = 50;
-            // 
             // NodesForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -269,7 +230,6 @@ namespace Kubernetes_GUI.Forms
         private MaterialSkin.Controls.MaterialTabSelector instancesTabSelector;
         private MaterialSkin.Controls.MaterialTabControl instancesTabControl;
         private System.Windows.Forms.TabPage tabPage1;
-        private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.DataGridView nodesGridView;
         private System.Windows.Forms.DataGridViewTextBoxColumn nodeNameColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn LabelColumn;
@@ -280,7 +240,5 @@ namespace Kubernetes_GUI.Forms
         private System.Windows.Forms.DataGridViewTextBoxColumn memoryLimColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn podsColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn createdColumn;
-        private System.Windows.Forms.DataGridViewImageColumn editColumn;
-        private System.Windows.Forms.DataGridViewImageColumn deleteColumn;
     }
 }

@@ -15,9 +15,9 @@ using System.Windows.Forms;
 
 namespace Kubernetes_GUI.Forms
 {
-    public partial class KeyPairForm : Form
+    public partial class ServiceForm : Form
     {
-        public KeyPairForm()
+        public ServiceForm()
         {
             InitializeComponent();
 
@@ -26,41 +26,76 @@ namespace Kubernetes_GUI.Forms
 
         private void refresh()
         {
-            keysGridView1.Rows.Clear();
-            keysGridView1.Refresh();
+            servicesGridView1.Rows.Clear();
+            servicesGridView1.Refresh();
 
-            getKeiPairs();
+            getServices();
         }
 
-        private void getKeiPairs()
+        private void getServices()
         {
-            string url = GlobalSessionDetails.Protocol + "://" + GlobalSessionDetails.Domain + ":" + GlobalSessionDetails.Port + "/compute/v2.1/os-keypairs";
+            string url = GlobalSessionDetails.Protocol + "://" + GlobalSessionDetails.Domain + ":" + GlobalSessionDetails.Port + "/api/v1/services";
 
             var request = new HttpRequestMessage(HttpMethod.Get, url);
             var client = GlobalSessionDetails._clientFactory.CreateClient();
-
-            client.DefaultRequestHeaders.Add("X-Auth-Token", GlobalSessionDetails.ScopedToken);
-
-            client.DefaultRequestHeaders.ExpectContinue = false;
 
             var response = client.SendAsync(request).Result;
             var json = response.Content.ReadAsStringAsync().Result;
 
             if (!response.IsSuccessStatusCode)
             {
-                MessageBox.Show(response.ReasonPhrase, "Could not get the Key Pairs", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(response.ReasonPhrase, "Could not get the Services", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
             JObject responseJsonObject = JObject.Parse(json);
-            JArray keyPairs = (JArray)responseJsonObject["keypairs"];
+            JArray services = (JArray)responseJsonObject["items"];
 
-            foreach (JToken keyPair in keyPairs)
+            for (int i = 0; i < services.Count; i++)
             {
-                var name = keyPair["keypair"]["name"].ToString();
-                var fingerprint = keyPair["keypair"]["fingerprint"].ToString();
+                var currentService = services[i];
 
-                keysGridView1.Rows.Add(name, fingerprint);
+                var name = currentService["metadata"]["name"];
+                
+                var namespac = currentService["metadata"]["namespace"];
+
+                string labels = null;
+                foreach (var item in currentService["metadata"]["labels"])
+                {
+                    labels = labels + item.ToString() + currentService["component"] + "\n";
+                    labels = labels + item.ToString() + currentService["provider"] + "\n";
+                }
+                if (labels != null)
+                {
+                    labels = labels.Replace("\"", string.Empty);
+                }
+
+                var type = currentService["spec"]["type"];
+
+                var cluster = currentService["spec"]["clusterIP"];
+
+                string created = null;
+                var creationTimestamp = currentService["metadata"]["creationTimestamp"];
+                if (creationTimestamp != null)
+                {
+                    DateTime prevDate = Convert.ToDateTime(creationTimestamp).ToUniversalTime(); ;
+                    DateTime today = DateTime.Now.ToUniversalTime();
+
+                    var diffOfDate = (today - prevDate);
+                    created = diffOfDate.Days + " days " + diffOfDate.Hours + " hours and " + diffOfDate.Minutes + " min. ago";
+                }
+
+                servicesGridView1.Rows.Add(
+                    name is null ? "" : name.ToString(),
+                    namespac is null ? "" : name.ToString(),
+                    labels is null ? "" : labels.ToString(),
+                    type is null ? "" : type.ToString(),
+                    cluster is null ? "" : cluster.ToString(),
+                    "value",
+                    "value",
+                    created is null ? "" : created.ToString()
+                    );
+
             }
         }
 
@@ -101,7 +136,7 @@ namespace Kubernetes_GUI.Forms
 
                 MessageBox.Show("Key Pair created sucessesfully", "Sucess!", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                materialTabControl1.SelectedTab = tabPageKeyPair;
+                materialTabControl1.SelectedTab = tabPageServices;
 
                 refresh();
             }
@@ -109,10 +144,10 @@ namespace Kubernetes_GUI.Forms
 
         private void cellclick_delete(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.ColumnIndex == keysGridView1.Columns["deleteColumn"].Index)
+            if (e.ColumnIndex == servicesGridView1.Columns["deleteColumn"].Index)
             {
 
-                deleteKey(keysGridView1[0, e.RowIndex].Value.ToString());
+                deleteKey(servicesGridView1[0, e.RowIndex].Value.ToString());
                 refresh();
             }
         }
