@@ -100,7 +100,13 @@ namespace Kubernetes_GUI.Forms
 
         private void fillDeploymentsTab()
         {
-            MessageBox.Show("Implementar deploys", "Implementar deploys", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            deploymentsPanel.Controls.Clear();
+            DeploymentsForm deploymentsForm = new DeploymentsForm();
+            deploymentsForm.TopLevel = false;
+            deploymentsForm.AutoScroll = true;
+            deploymentsPanel.Controls.Add(deploymentsForm);
+            deploymentsForm.Show();
+            deploymentsForm.Dock = DockStyle.Fill;
 
         }
 
