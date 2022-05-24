@@ -48,7 +48,6 @@ namespace Kubernetes_GUI.Forms
             this.endpointColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.externalColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.createdColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.editColumn = new System.Windows.Forms.DataGridViewImageColumn();
             this.deleteColumn = new System.Windows.Forms.DataGridViewImageColumn();
             this.materialTabControl1.SuspendLayout();
             this.tabPageServices.SuspendLayout();
@@ -113,7 +112,6 @@ namespace Kubernetes_GUI.Forms
             this.endpointColumn1,
             this.externalColumn,
             this.createdColumn,
-            this.editColumn,
             this.deleteColumn});
             this.servicesGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.servicesGridView1.Location = new System.Drawing.Point(3, 3);
@@ -122,6 +120,7 @@ namespace Kubernetes_GUI.Forms
             this.servicesGridView1.Size = new System.Drawing.Size(1125, 472);
             this.servicesGridView1.TabIndex = 0;
             this.servicesGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.cellclick_delete);
+            this.servicesGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.servicesGridView1_CellContentClick);
             // 
             // tabPageCreateService
             // 
@@ -278,12 +277,6 @@ namespace Kubernetes_GUI.Forms
             this.createdColumn.HeaderText = "Created";
             this.createdColumn.Name = "createdColumn";
             // 
-            // editColumn
-            // 
-            this.editColumn.HeaderText = "Edit";
-            this.editColumn.Image = global::Kubernetes_GUI.Properties.Resources.edit_button;
-            this.editColumn.Name = "editColumn";
-            // 
             // deleteColumn
             // 
             this.deleteColumn.HeaderText = "Delete";
@@ -337,7 +330,6 @@ namespace Kubernetes_GUI.Forms
         private System.Windows.Forms.DataGridViewTextBoxColumn endpointColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn externalColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn createdColumn;
-        private System.Windows.Forms.DataGridViewImageColumn editColumn;
         private System.Windows.Forms.DataGridViewImageColumn deleteColumn;
     }
 }

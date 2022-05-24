@@ -58,7 +58,6 @@ namespace Kubernetes_GUI.Forms
                 var name = currentService["metadata"]["name"];
                 
                 var namespac = currentService["metadata"]["namespace"];
-                Console.WriteLine(namespac);
 
                 string labels = null;
                 foreach (var item in currentService["metadata"]["labels"])
@@ -187,6 +186,11 @@ namespace Kubernetes_GUI.Forms
 
             }
             refresh();
+        }
+
+        private void servicesGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }
