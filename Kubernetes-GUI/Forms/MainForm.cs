@@ -112,8 +112,13 @@ namespace Kubernetes_GUI.Forms
 
         private void fillServicesTab()
         {
-            MessageBox.Show("Implementar services", "Implementar services", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
+            servicesPanel.Controls.Clear();
+            ServiceForm servicesForm = new ServiceForm();
+            servicesForm.TopLevel = false;
+            servicesForm.AutoScroll = true;
+            servicesPanel.Controls.Add(servicesForm);
+            servicesForm.Show();
+            servicesForm.Dock = DockStyle.Fill;
         }
 
 

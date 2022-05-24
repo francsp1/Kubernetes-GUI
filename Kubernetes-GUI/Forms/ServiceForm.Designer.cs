@@ -33,8 +33,15 @@ namespace Kubernetes_GUI.Forms
             this.materialTabControl1 = new MaterialSkin.Controls.MaterialTabControl();
             this.tabPageServices = new System.Windows.Forms.TabPage();
             this.servicesGridView1 = new System.Windows.Forms.DataGridView();
-            this.nameColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.namespaceColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tabPageCreateService = new System.Windows.Forms.TabPage();
+            this.CreateKeyButton = new MaterialSkin.Controls.MaterialButton();
+            this.typekeyLabel = new MaterialSkin.Controls.MaterialLabel();
+            this.typeComboBox = new MaterialSkin.Controls.MaterialComboBox();
+            this.txtkeyName = new MaterialSkin.Controls.MaterialTextBox();
+            this.keyName = new MaterialSkin.Controls.MaterialLabel();
+            this.Servicepanel = new System.Windows.Forms.Panel();
+            this.NameColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nameSpaceColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.labelsColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.typeColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ipColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -43,12 +50,6 @@ namespace Kubernetes_GUI.Forms
             this.createdColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.editColumn = new System.Windows.Forms.DataGridViewImageColumn();
             this.deleteColumn = new System.Windows.Forms.DataGridViewImageColumn();
-            this.tabPageCreateService = new System.Windows.Forms.TabPage();
-            this.CreateKeyButton = new MaterialSkin.Controls.MaterialButton();
-            this.typekeyLabel = new MaterialSkin.Controls.MaterialLabel();
-            this.typeComboBox = new MaterialSkin.Controls.MaterialComboBox();
-            this.txtkeyName = new MaterialSkin.Controls.MaterialTextBox();
-            this.keyName = new MaterialSkin.Controls.MaterialLabel();
             this.materialTabControl1.SuspendLayout();
             this.tabPageServices.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.servicesGridView1)).BeginInit();
@@ -88,6 +89,7 @@ namespace Kubernetes_GUI.Forms
             // 
             this.tabPageServices.BackColor = System.Drawing.Color.White;
             this.tabPageServices.Controls.Add(this.servicesGridView1);
+            this.tabPageServices.Controls.Add(this.Servicepanel);
             this.tabPageServices.Location = new System.Drawing.Point(4, 22);
             this.tabPageServices.Name = "tabPageServices";
             this.tabPageServices.Padding = new System.Windows.Forms.Padding(3);
@@ -103,8 +105,8 @@ namespace Kubernetes_GUI.Forms
             this.servicesGridView1.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.servicesGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.servicesGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.nameColumn,
-            this.namespaceColumn,
+            this.NameColumn,
+            this.nameSpaceColumn,
             this.labelsColumn,
             this.typeColumn,
             this.ipColumn,
@@ -120,62 +122,6 @@ namespace Kubernetes_GUI.Forms
             this.servicesGridView1.Size = new System.Drawing.Size(1125, 472);
             this.servicesGridView1.TabIndex = 0;
             this.servicesGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.cellclick_delete);
-            // 
-            // nameColumn
-            // 
-            this.nameColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.nameColumn.HeaderText = "Name";
-            this.nameColumn.MinimumWidth = 6;
-            this.nameColumn.Name = "nameColumn";
-            // 
-            // namespaceColumn
-            // 
-            this.namespaceColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.namespaceColumn.HeaderText = "Namespace";
-            this.namespaceColumn.MinimumWidth = 6;
-            this.namespaceColumn.Name = "namespaceColumn";
-            // 
-            // labelsColumn
-            // 
-            this.labelsColumn.HeaderText = "Labels";
-            this.labelsColumn.Name = "labelsColumn";
-            // 
-            // typeColumn
-            // 
-            this.typeColumn.HeaderText = "Type";
-            this.typeColumn.Name = "typeColumn";
-            // 
-            // ipColumn
-            // 
-            this.ipColumn.HeaderText = "Cluster IP";
-            this.ipColumn.Name = "ipColumn";
-            // 
-            // endpointColumn1
-            // 
-            this.endpointColumn1.HeaderText = "Internal Endpoints";
-            this.endpointColumn1.Name = "endpointColumn1";
-            // 
-            // externalColumn
-            // 
-            this.externalColumn.HeaderText = "External Endpoints";
-            this.externalColumn.Name = "externalColumn";
-            // 
-            // createdColumn
-            // 
-            this.createdColumn.HeaderText = "Created";
-            this.createdColumn.Name = "createdColumn";
-            // 
-            // editColumn
-            // 
-            this.editColumn.HeaderText = "Edit";
-            this.editColumn.Image = global::Kubernetes_GUI.Properties.Resources.edit_button;
-            this.editColumn.Name = "editColumn";
-            // 
-            // deleteColumn
-            // 
-            this.deleteColumn.HeaderText = "Delete";
-            this.deleteColumn.Image = global::Kubernetes_GUI.Properties.Resources.remove__1_;
-            this.deleteColumn.Name = "deleteColumn";
             // 
             // tabPageCreateService
             // 
@@ -281,6 +227,69 @@ namespace Kubernetes_GUI.Forms
             this.keyName.TabIndex = 3;
             this.keyName.Text = "Key Pair Name";
             // 
+            // Servicepanel
+            // 
+            this.Servicepanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.Servicepanel.Location = new System.Drawing.Point(3, 3);
+            this.Servicepanel.Name = "Servicepanel";
+            this.Servicepanel.Size = new System.Drawing.Size(1125, 472);
+            this.Servicepanel.TabIndex = 1;
+            // 
+            // NameColumn
+            // 
+            this.NameColumn.HeaderText = "Name";
+            this.NameColumn.Name = "NameColumn";
+            // 
+            // nameSpaceColumn
+            // 
+            this.nameSpaceColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.nameSpaceColumn.HeaderText = "Namespace";
+            this.nameSpaceColumn.Name = "nameSpaceColumn";
+            this.nameSpaceColumn.Width = 89;
+            // 
+            // labelsColumn
+            // 
+            this.labelsColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.labelsColumn.HeaderText = "Labels";
+            this.labelsColumn.Name = "labelsColumn";
+            // 
+            // typeColumn
+            // 
+            this.typeColumn.HeaderText = "Type";
+            this.typeColumn.Name = "typeColumn";
+            // 
+            // ipColumn
+            // 
+            this.ipColumn.HeaderText = "Cluster IP";
+            this.ipColumn.Name = "ipColumn";
+            // 
+            // endpointColumn1
+            // 
+            this.endpointColumn1.HeaderText = "Internal Endpoints";
+            this.endpointColumn1.Name = "endpointColumn1";
+            // 
+            // externalColumn
+            // 
+            this.externalColumn.HeaderText = "External Endpoints";
+            this.externalColumn.Name = "externalColumn";
+            // 
+            // createdColumn
+            // 
+            this.createdColumn.HeaderText = "Created";
+            this.createdColumn.Name = "createdColumn";
+            // 
+            // editColumn
+            // 
+            this.editColumn.HeaderText = "Edit";
+            this.editColumn.Image = global::Kubernetes_GUI.Properties.Resources.edit_button;
+            this.editColumn.Name = "editColumn";
+            // 
+            // deleteColumn
+            // 
+            this.deleteColumn.HeaderText = "Delete";
+            this.deleteColumn.Image = global::Kubernetes_GUI.Properties.Resources.remove__1_;
+            this.deleteColumn.Name = "deleteColumn";
+            // 
             // ServiceForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -319,8 +328,9 @@ namespace Kubernetes_GUI.Forms
         private MaterialSkin.Controls.MaterialLabel typekeyLabel;
         private MaterialSkin.Controls.MaterialComboBox typeComboBox;
         private MaterialSkin.Controls.MaterialButton CreateKeyButton;
-        private System.Windows.Forms.DataGridViewTextBoxColumn nameColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn namespaceColumn;
+        private System.Windows.Forms.Panel Servicepanel;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NameColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nameSpaceColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn labelsColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn typeColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn ipColumn;

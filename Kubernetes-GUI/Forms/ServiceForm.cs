@@ -58,12 +58,12 @@ namespace Kubernetes_GUI.Forms
                 var name = currentService["metadata"]["name"];
                 
                 var namespac = currentService["metadata"]["namespace"];
+                Console.WriteLine(namespac);
 
                 string labels = null;
                 foreach (var item in currentService["metadata"]["labels"])
                 {
-                    labels = labels + item.ToString() + currentService["component"] + "\n";
-                    labels = labels + item.ToString() + currentService["provider"] + "\n";
+                    labels = labels + item.ToString() + currentService["component"] + currentService["provider"] + " \n ";
                 }
                 if (labels != null)
                 {
@@ -73,6 +73,20 @@ namespace Kubernetes_GUI.Forms
                 var type = currentService["spec"]["type"];
 
                 var cluster = currentService["spec"]["clusterIP"];
+
+                //var interna = currentService["spec"]["ports"];
+
+                string interna = null;
+                foreach (var item in currentService["spec"]["ports"])
+                {
+                    interna = interna + item.ToString() + currentService["protocol"]  +  " \n ";
+                }
+
+                string external = null;
+                if (external != null)
+                {
+                    external = external.Replace("\"", string.Empty);
+                }
 
                 string created = null;
                 var creationTimestamp = currentService["metadata"]["creationTimestamp"];
@@ -87,12 +101,12 @@ namespace Kubernetes_GUI.Forms
 
                 servicesGridView1.Rows.Add(
                     name is null ? "" : name.ToString(),
-                    namespac is null ? "" : name.ToString(),
+                    namespac is null ? "" : namespac.ToString(),
                     labels is null ? "" : labels.ToString(),
                     type is null ? "" : type.ToString(),
                     cluster is null ? "" : cluster.ToString(),
-                    "value",
-                    "value",
+                    interna is null ? "" : interna.ToString(),
+                    external is null ? " - " : external.ToString(),
                     created is null ? "" : created.ToString()
                     );
 
