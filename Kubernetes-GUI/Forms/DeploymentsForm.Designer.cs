@@ -29,63 +29,64 @@ namespace Kubernetes_GUI.Forms
         /// </summary>
         private void InitializeComponent()
         {
-            this.containersTabSelector = new MaterialSkin.Controls.MaterialTabSelector();
-            this.containersTabControl = new MaterialSkin.Controls.MaterialTabControl();
-            this.containersTabPage = new System.Windows.Forms.TabPage();
+            this.deploymentsTabSelector = new MaterialSkin.Controls.MaterialTabSelector();
+            this.deploymentsTabControl = new MaterialSkin.Controls.MaterialTabControl();
+            this.deploymentsTab = new System.Windows.Forms.TabPage();
             this.deploymentsDataGridView = new System.Windows.Forms.DataGridView();
-            this.nameCollumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.idCollumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.imageCollumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.statusCollumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.taskStateCollumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.createDeploymentTab = new System.Windows.Forms.TabPage();
+            this.columnDeploymentName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.columnDeploymentNamespace = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.columnDeploymentImages = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.columnDeploymentLabels = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.columnDeploymentPods = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.columnDeploymentCreated = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.editCollumn = new System.Windows.Forms.DataGridViewImageColumn();
             this.deleteCollumn = new System.Windows.Forms.DataGridViewImageColumn();
-            this.createContainerTabPage = new System.Windows.Forms.TabPage();
-            this.containersTabControl.SuspendLayout();
-            this.containersTabPage.SuspendLayout();
+            this.deploymentsTabControl.SuspendLayout();
+            this.deploymentsTab.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.deploymentsDataGridView)).BeginInit();
             this.SuspendLayout();
             // 
-            // containersTabSelector
+            // deploymentsTabSelector
             // 
-            this.containersTabSelector.BaseTabControl = this.containersTabControl;
-            this.containersTabSelector.CharacterCasing = MaterialSkin.Controls.MaterialTabSelector.CustomCharacterCasing.Normal;
-            this.containersTabSelector.Depth = 0;
-            this.containersTabSelector.Dock = System.Windows.Forms.DockStyle.Top;
-            this.containersTabSelector.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.containersTabSelector.Location = new System.Drawing.Point(0, 0);
-            this.containersTabSelector.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.containersTabSelector.MouseState = MaterialSkin.MouseState.HOVER;
-            this.containersTabSelector.Name = "containersTabSelector";
-            this.containersTabSelector.Size = new System.Drawing.Size(1519, 48);
-            this.containersTabSelector.TabIndex = 0;
+            this.deploymentsTabSelector.BaseTabControl = this.deploymentsTabControl;
+            this.deploymentsTabSelector.CharacterCasing = MaterialSkin.Controls.MaterialTabSelector.CustomCharacterCasing.Normal;
+            this.deploymentsTabSelector.Depth = 0;
+            this.deploymentsTabSelector.Dock = System.Windows.Forms.DockStyle.Top;
+            this.deploymentsTabSelector.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.deploymentsTabSelector.Location = new System.Drawing.Point(0, 0);
+            this.deploymentsTabSelector.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.deploymentsTabSelector.MouseState = MaterialSkin.MouseState.HOVER;
+            this.deploymentsTabSelector.Name = "deploymentsTabSelector";
+            this.deploymentsTabSelector.Size = new System.Drawing.Size(1519, 48);
+            this.deploymentsTabSelector.TabIndex = 0;
             // 
-            // containersTabControl
+            // deploymentsTabControl
             // 
-            this.containersTabControl.Controls.Add(this.containersTabPage);
-            this.containersTabControl.Controls.Add(this.createContainerTabPage);
-            this.containersTabControl.Depth = 0;
-            this.containersTabControl.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.containersTabControl.Location = new System.Drawing.Point(0, 48);
-            this.containersTabControl.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.containersTabControl.MouseState = MaterialSkin.MouseState.HOVER;
-            this.containersTabControl.Multiline = true;
-            this.containersTabControl.Name = "containersTabControl";
-            this.containersTabControl.SelectedIndex = 0;
-            this.containersTabControl.Size = new System.Drawing.Size(1519, 668);
-            this.containersTabControl.TabIndex = 1;
+            this.deploymentsTabControl.Controls.Add(this.deploymentsTab);
+            this.deploymentsTabControl.Controls.Add(this.createDeploymentTab);
+            this.deploymentsTabControl.Depth = 0;
+            this.deploymentsTabControl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.deploymentsTabControl.Location = new System.Drawing.Point(0, 48);
+            this.deploymentsTabControl.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.deploymentsTabControl.MouseState = MaterialSkin.MouseState.HOVER;
+            this.deploymentsTabControl.Multiline = true;
+            this.deploymentsTabControl.Name = "deploymentsTabControl";
+            this.deploymentsTabControl.SelectedIndex = 0;
+            this.deploymentsTabControl.Size = new System.Drawing.Size(1519, 668);
+            this.deploymentsTabControl.TabIndex = 1;
             // 
-            // containersTabPage
+            // deploymentsTab
             // 
-            this.containersTabPage.BackColor = System.Drawing.Color.White;
-            this.containersTabPage.Controls.Add(this.deploymentsDataGridView);
-            this.containersTabPage.Location = new System.Drawing.Point(4, 25);
-            this.containersTabPage.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.containersTabPage.Name = "containersTabPage";
-            this.containersTabPage.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.containersTabPage.Size = new System.Drawing.Size(1511, 639);
-            this.containersTabPage.TabIndex = 0;
-            this.containersTabPage.Text = "Containers";
+            this.deploymentsTab.BackColor = System.Drawing.Color.White;
+            this.deploymentsTab.Controls.Add(this.deploymentsDataGridView);
+            this.deploymentsTab.Location = new System.Drawing.Point(4, 25);
+            this.deploymentsTab.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.deploymentsTab.Name = "deploymentsTab";
+            this.deploymentsTab.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.deploymentsTab.Size = new System.Drawing.Size(1511, 639);
+            this.deploymentsTab.TabIndex = 0;
+            this.deploymentsTab.Text = "Deployments";
             // 
             // deploymentsDataGridView
             // 
@@ -96,11 +97,12 @@ namespace Kubernetes_GUI.Forms
             this.deploymentsDataGridView.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.deploymentsDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.deploymentsDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.nameCollumn,
-            this.idCollumn,
-            this.imageCollumn,
-            this.statusCollumn,
-            this.taskStateCollumn,
+            this.columnDeploymentName,
+            this.columnDeploymentNamespace,
+            this.columnDeploymentImages,
+            this.columnDeploymentLabels,
+            this.columnDeploymentPods,
+            this.columnDeploymentCreated,
             this.editCollumn,
             this.deleteCollumn});
             this.deploymentsDataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -115,44 +117,58 @@ namespace Kubernetes_GUI.Forms
             this.deploymentsDataGridView.TabIndex = 0;
             this.deploymentsDataGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.containersGridView_CellClick);
             // 
-            // nameCollumn
+            // createDeploymentTab
             // 
-            this.nameCollumn.HeaderText = "Name";
-            this.nameCollumn.MinimumWidth = 6;
-            this.nameCollumn.Name = "nameCollumn";
-            this.nameCollumn.ReadOnly = true;
+            this.createDeploymentTab.BackColor = System.Drawing.Color.White;
+            this.createDeploymentTab.Location = new System.Drawing.Point(4, 25);
+            this.createDeploymentTab.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.createDeploymentTab.Name = "createDeploymentTab";
+            this.createDeploymentTab.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.createDeploymentTab.Size = new System.Drawing.Size(1511, 639);
+            this.createDeploymentTab.TabIndex = 1;
+            this.createDeploymentTab.Text = "Create deployments";
             // 
-            // idCollumn
+            // columnDeploymentName
             // 
-            this.idCollumn.HeaderText = "ID";
-            this.idCollumn.MinimumWidth = 6;
-            this.idCollumn.Name = "idCollumn";
-            this.idCollumn.ReadOnly = true;
+            this.columnDeploymentName.HeaderText = "Name";
+            this.columnDeploymentName.MinimumWidth = 6;
+            this.columnDeploymentName.Name = "columnDeploymentName";
+            this.columnDeploymentName.ReadOnly = true;
             // 
-            // imageCollumn
+            // columnDeploymentNamespace
             // 
-            this.imageCollumn.HeaderText = "Image";
-            this.imageCollumn.MinimumWidth = 6;
-            this.imageCollumn.Name = "imageCollumn";
-            this.imageCollumn.ReadOnly = true;
+            this.columnDeploymentNamespace.HeaderText = "Namespace";
+            this.columnDeploymentNamespace.MinimumWidth = 6;
+            this.columnDeploymentNamespace.Name = "columnDeploymentNamespace";
+            this.columnDeploymentNamespace.ReadOnly = true;
             // 
-            // statusCollumn
+            // columnDeploymentImages
             // 
-            this.statusCollumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.statusCollumn.HeaderText = "status";
-            this.statusCollumn.MinimumWidth = 6;
-            this.statusCollumn.Name = "statusCollumn";
-            this.statusCollumn.ReadOnly = true;
-            this.statusCollumn.Width = 125;
+            this.columnDeploymentImages.HeaderText = "Images";
+            this.columnDeploymentImages.MinimumWidth = 6;
+            this.columnDeploymentImages.Name = "columnDeploymentImages";
+            this.columnDeploymentImages.ReadOnly = true;
             // 
-            // taskStateCollumn
+            // columnDeploymentLabels
             // 
-            this.taskStateCollumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.taskStateCollumn.HeaderText = "Task State";
-            this.taskStateCollumn.MinimumWidth = 6;
-            this.taskStateCollumn.Name = "taskStateCollumn";
-            this.taskStateCollumn.ReadOnly = true;
-            this.taskStateCollumn.Width = 125;
+            this.columnDeploymentLabels.HeaderText = "Labls";
+            this.columnDeploymentLabels.MinimumWidth = 6;
+            this.columnDeploymentLabels.Name = "columnDeploymentLabels";
+            this.columnDeploymentLabels.ReadOnly = true;
+            // 
+            // columnDeploymentPods
+            // 
+            this.columnDeploymentPods.HeaderText = "Pods";
+            this.columnDeploymentPods.MinimumWidth = 6;
+            this.columnDeploymentPods.Name = "columnDeploymentPods";
+            this.columnDeploymentPods.ReadOnly = true;
+            // 
+            // columnDeploymentCreated
+            // 
+            this.columnDeploymentCreated.HeaderText = "Created";
+            this.columnDeploymentCreated.MinimumWidth = 6;
+            this.columnDeploymentCreated.Name = "columnDeploymentCreated";
+            this.columnDeploymentCreated.ReadOnly = true;
             // 
             // editCollumn
             // 
@@ -164,6 +180,7 @@ namespace Kubernetes_GUI.Forms
             this.editCollumn.ReadOnly = true;
             this.editCollumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.editCollumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.editCollumn.Visible = false;
             this.editCollumn.Width = 50;
             // 
             // deleteCollumn
@@ -178,17 +195,6 @@ namespace Kubernetes_GUI.Forms
             this.deleteCollumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             this.deleteCollumn.Width = 50;
             // 
-            // createContainerTabPage
-            // 
-            this.createContainerTabPage.BackColor = System.Drawing.Color.White;
-            this.createContainerTabPage.Location = new System.Drawing.Point(4, 25);
-            this.createContainerTabPage.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.createContainerTabPage.Name = "createContainerTabPage";
-            this.createContainerTabPage.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.createContainerTabPage.Size = new System.Drawing.Size(1511, 639);
-            this.createContainerTabPage.TabIndex = 1;
-            this.createContainerTabPage.Text = "Create Container";
-            // 
             // DeploymentsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -196,8 +202,8 @@ namespace Kubernetes_GUI.Forms
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1519, 716);
             this.ControlBox = false;
-            this.Controls.Add(this.containersTabControl);
-            this.Controls.Add(this.containersTabSelector);
+            this.Controls.Add(this.deploymentsTabControl);
+            this.Controls.Add(this.deploymentsTabSelector);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.MaximizeBox = false;
@@ -206,8 +212,8 @@ namespace Kubernetes_GUI.Forms
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
             this.TransparencyKey = System.Drawing.Color.White;
-            this.containersTabControl.ResumeLayout(false);
-            this.containersTabPage.ResumeLayout(false);
+            this.deploymentsTabControl.ResumeLayout(false);
+            this.deploymentsTab.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.deploymentsDataGridView)).EndInit();
             this.ResumeLayout(false);
 
@@ -215,16 +221,17 @@ namespace Kubernetes_GUI.Forms
 
         #endregion
 
-        private MaterialSkin.Controls.MaterialTabSelector containersTabSelector;
-        private MaterialSkin.Controls.MaterialTabControl containersTabControl;
-        private System.Windows.Forms.TabPage containersTabPage;
-        private System.Windows.Forms.TabPage createContainerTabPage;
+        private MaterialSkin.Controls.MaterialTabSelector deploymentsTabSelector;
+        private MaterialSkin.Controls.MaterialTabControl deploymentsTabControl;
+        private System.Windows.Forms.TabPage deploymentsTab;
+        private System.Windows.Forms.TabPage createDeploymentTab;
         private System.Windows.Forms.DataGridView deploymentsDataGridView;
-        private System.Windows.Forms.DataGridViewTextBoxColumn nameCollumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn idCollumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn imageCollumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn statusCollumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn taskStateCollumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn columnDeploymentName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn columnDeploymentNamespace;
+        private System.Windows.Forms.DataGridViewTextBoxColumn columnDeploymentImages;
+        private System.Windows.Forms.DataGridViewTextBoxColumn columnDeploymentLabels;
+        private System.Windows.Forms.DataGridViewTextBoxColumn columnDeploymentPods;
+        private System.Windows.Forms.DataGridViewTextBoxColumn columnDeploymentCreated;
         private System.Windows.Forms.DataGridViewImageColumn editCollumn;
         private System.Windows.Forms.DataGridViewImageColumn deleteCollumn;
     }
