@@ -228,27 +228,21 @@ namespace Kubernetes_GUI.Forms
             txtstContainerImages = new MaterialTextBox[size];
             txtsContainerPorts = new MaterialTextBox[size];
 
-            for (int i = 0; i < size; i++)
-            {
-                txtsContainerNames[i] = new MaterialTextBox();
-
-                txtstContainerImages[i] = new MaterialTextBox();
-
-                txtsContainerPorts[i] = new MaterialTextBox();
-                txtsContainerPorts[i].KeyPress += onlyNumbers_KeyPress;
-
-            }
             int y = 343;
             for (int i = 0; i < size; i++)
             {
+                txtsContainerNames[i] = new MaterialTextBox();
                 txtsContainerNames[i].Size = new System.Drawing.Size(299, 50);
                 txtsContainerNames[i].Location = new Point(26, y);
                 createDeploymentTab.Controls.Add(txtsContainerNames[i]);
 
+                txtstContainerImages[i] = new MaterialTextBox();
                 txtstContainerImages[i].Size = new System.Drawing.Size(299, 50);
                 txtstContainerImages[i].Location = new Point(359, y);
                 createDeploymentTab.Controls.Add(txtstContainerImages[i]);
 
+                txtsContainerPorts[i] = new MaterialTextBox();
+                txtsContainerPorts[i].KeyPress += onlyNumbers_KeyPress;
                 txtsContainerPorts[i].Size = new System.Drawing.Size(116, 50);
                 txtsContainerPorts[i].Location = new Point(688, y);
                 createDeploymentTab.Controls.Add(txtsContainerPorts[i]);
