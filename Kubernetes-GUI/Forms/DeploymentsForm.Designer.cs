@@ -42,9 +42,25 @@ namespace Kubernetes_GUI.Forms
             this.editCollumn = new System.Windows.Forms.DataGridViewImageColumn();
             this.deleteCollumn = new System.Windows.Forms.DataGridViewImageColumn();
             this.createDeploymentTab = new System.Windows.Forms.TabPage();
+            this.txtDeploymentNumberContainers = new MaterialSkin.Controls.MaterialTextBox();
+            this.txtDeploymentContainerPort = new MaterialSkin.Controls.MaterialTextBox();
+            this.txtDeploymentContainerImage = new MaterialSkin.Controls.MaterialTextBox();
+            this.txtDeploymentContainerName = new MaterialSkin.Controls.MaterialTextBox();
+            this.lblDeploymentContainerPort = new MaterialSkin.Controls.MaterialLabel();
+            this.lblDeploymentContainerImage = new MaterialSkin.Controls.MaterialLabel();
+            this.lblDeploymentContainerName = new MaterialSkin.Controls.MaterialLabel();
+            this.lblDeploymentNumberContainers = new MaterialSkin.Controls.MaterialLabel();
+            this.txtDeploymentReplicas = new MaterialSkin.Controls.MaterialTextBox();
+            this.lblDeploymentReplicas = new MaterialSkin.Controls.MaterialLabel();
+            this.btnCreateDeployment = new MaterialSkin.Controls.MaterialButton();
+            this.cmbBoxDeploymentNamespace = new MaterialSkin.Controls.MaterialComboBox();
+            this.lblDeploymentNamespace = new MaterialSkin.Controls.MaterialLabel();
+            this.txtPodName = new MaterialSkin.Controls.MaterialTextBox();
+            this.lblDeploymentName = new MaterialSkin.Controls.MaterialLabel();
             this.deploymentsTabControl.SuspendLayout();
             this.deploymentsTab.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.deploymentsDataGridView)).BeginInit();
+            this.createDeploymentTab.SuspendLayout();
             this.SuspendLayout();
             // 
             // deploymentsTabSelector
@@ -186,7 +202,23 @@ namespace Kubernetes_GUI.Forms
             // 
             // createDeploymentTab
             // 
+            this.createDeploymentTab.AutoScroll = true;
             this.createDeploymentTab.BackColor = System.Drawing.Color.White;
+            this.createDeploymentTab.Controls.Add(this.txtDeploymentNumberContainers);
+            this.createDeploymentTab.Controls.Add(this.txtDeploymentContainerPort);
+            this.createDeploymentTab.Controls.Add(this.txtDeploymentContainerImage);
+            this.createDeploymentTab.Controls.Add(this.txtDeploymentContainerName);
+            this.createDeploymentTab.Controls.Add(this.lblDeploymentContainerPort);
+            this.createDeploymentTab.Controls.Add(this.lblDeploymentContainerImage);
+            this.createDeploymentTab.Controls.Add(this.lblDeploymentContainerName);
+            this.createDeploymentTab.Controls.Add(this.lblDeploymentNumberContainers);
+            this.createDeploymentTab.Controls.Add(this.txtDeploymentReplicas);
+            this.createDeploymentTab.Controls.Add(this.lblDeploymentReplicas);
+            this.createDeploymentTab.Controls.Add(this.btnCreateDeployment);
+            this.createDeploymentTab.Controls.Add(this.cmbBoxDeploymentNamespace);
+            this.createDeploymentTab.Controls.Add(this.lblDeploymentNamespace);
+            this.createDeploymentTab.Controls.Add(this.txtPodName);
+            this.createDeploymentTab.Controls.Add(this.lblDeploymentName);
             this.createDeploymentTab.Location = new System.Drawing.Point(4, 25);
             this.createDeploymentTab.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.createDeploymentTab.Name = "createDeploymentTab";
@@ -194,6 +226,238 @@ namespace Kubernetes_GUI.Forms
             this.createDeploymentTab.Size = new System.Drawing.Size(1511, 639);
             this.createDeploymentTab.TabIndex = 1;
             this.createDeploymentTab.Text = "Create deployments";
+            // 
+            // txtDeploymentNumberContainers
+            // 
+            this.txtDeploymentNumberContainers.AnimateReadOnly = false;
+            this.txtDeploymentNumberContainers.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtDeploymentNumberContainers.Depth = 0;
+            this.txtDeploymentNumberContainers.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.6F);
+            this.txtDeploymentNumberContainers.LeadingIcon = null;
+            this.txtDeploymentNumberContainers.Location = new System.Drawing.Point(35, 328);
+            this.txtDeploymentNumberContainers.MaxLength = 50;
+            this.txtDeploymentNumberContainers.MouseState = MaterialSkin.MouseState.OUT;
+            this.txtDeploymentNumberContainers.Multiline = false;
+            this.txtDeploymentNumberContainers.Name = "txtDeploymentNumberContainers";
+            this.txtDeploymentNumberContainers.Size = new System.Drawing.Size(127, 50);
+            this.txtDeploymentNumberContainers.TabIndex = 27;
+            this.txtDeploymentNumberContainers.Text = "1";
+            this.txtDeploymentNumberContainers.TrailingIcon = null;
+            this.txtDeploymentNumberContainers.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.onlyNumbers_KeyPress);
+            this.txtDeploymentNumberContainers.Leave += new System.EventHandler(this.txtDeploymentNumberContainers_Leave_1);
+            // 
+            // txtDeploymentContainerPort
+            // 
+            this.txtDeploymentContainerPort.AnimateReadOnly = false;
+            this.txtDeploymentContainerPort.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtDeploymentContainerPort.Depth = 0;
+            this.txtDeploymentContainerPort.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.txtDeploymentContainerPort.LeadingIcon = null;
+            this.txtDeploymentContainerPort.Location = new System.Drawing.Point(917, 422);
+            this.txtDeploymentContainerPort.MaxLength = 50;
+            this.txtDeploymentContainerPort.MouseState = MaterialSkin.MouseState.OUT;
+            this.txtDeploymentContainerPort.Multiline = false;
+            this.txtDeploymentContainerPort.Name = "txtDeploymentContainerPort";
+            this.txtDeploymentContainerPort.Size = new System.Drawing.Size(154, 50);
+            this.txtDeploymentContainerPort.TabIndex = 26;
+            this.txtDeploymentContainerPort.Text = "";
+            this.txtDeploymentContainerPort.TrailingIcon = null;
+            this.txtDeploymentContainerPort.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.onlyNumbers_KeyPress);
+            // 
+            // txtDeploymentContainerImage
+            // 
+            this.txtDeploymentContainerImage.AnimateReadOnly = false;
+            this.txtDeploymentContainerImage.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtDeploymentContainerImage.Depth = 0;
+            this.txtDeploymentContainerImage.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.txtDeploymentContainerImage.LeadingIcon = null;
+            this.txtDeploymentContainerImage.Location = new System.Drawing.Point(479, 422);
+            this.txtDeploymentContainerImage.MaxLength = 50;
+            this.txtDeploymentContainerImage.MouseState = MaterialSkin.MouseState.OUT;
+            this.txtDeploymentContainerImage.Multiline = false;
+            this.txtDeploymentContainerImage.Name = "txtDeploymentContainerImage";
+            this.txtDeploymentContainerImage.Size = new System.Drawing.Size(399, 50);
+            this.txtDeploymentContainerImage.TabIndex = 25;
+            this.txtDeploymentContainerImage.Text = "";
+            this.txtDeploymentContainerImage.TrailingIcon = null;
+            // 
+            // txtDeploymentContainerName
+            // 
+            this.txtDeploymentContainerName.AnimateReadOnly = false;
+            this.txtDeploymentContainerName.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtDeploymentContainerName.Depth = 0;
+            this.txtDeploymentContainerName.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.txtDeploymentContainerName.LeadingIcon = null;
+            this.txtDeploymentContainerName.Location = new System.Drawing.Point(35, 422);
+            this.txtDeploymentContainerName.MaxLength = 50;
+            this.txtDeploymentContainerName.MouseState = MaterialSkin.MouseState.OUT;
+            this.txtDeploymentContainerName.Multiline = false;
+            this.txtDeploymentContainerName.Name = "txtDeploymentContainerName";
+            this.txtDeploymentContainerName.Size = new System.Drawing.Size(399, 50);
+            this.txtDeploymentContainerName.TabIndex = 24;
+            this.txtDeploymentContainerName.Text = "";
+            this.txtDeploymentContainerName.TrailingIcon = null;
+            // 
+            // lblDeploymentContainerPort
+            // 
+            this.lblDeploymentContainerPort.AutoSize = true;
+            this.lblDeploymentContainerPort.Depth = 0;
+            this.lblDeploymentContainerPort.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.lblDeploymentContainerPort.Location = new System.Drawing.Point(914, 400);
+            this.lblDeploymentContainerPort.MouseState = MaterialSkin.MouseState.HOVER;
+            this.lblDeploymentContainerPort.Name = "lblDeploymentContainerPort";
+            this.lblDeploymentContainerPort.Size = new System.Drawing.Size(102, 19);
+            this.lblDeploymentContainerPort.TabIndex = 23;
+            this.lblDeploymentContainerPort.Text = "Container Port";
+            // 
+            // lblDeploymentContainerImage
+            // 
+            this.lblDeploymentContainerImage.AutoSize = true;
+            this.lblDeploymentContainerImage.Depth = 0;
+            this.lblDeploymentContainerImage.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.lblDeploymentContainerImage.Location = new System.Drawing.Point(476, 400);
+            this.lblDeploymentContainerImage.MouseState = MaterialSkin.MouseState.HOVER;
+            this.lblDeploymentContainerImage.Name = "lblDeploymentContainerImage";
+            this.lblDeploymentContainerImage.Size = new System.Drawing.Size(117, 19);
+            this.lblDeploymentContainerImage.TabIndex = 22;
+            this.lblDeploymentContainerImage.Text = "Container Image";
+            // 
+            // lblDeploymentContainerName
+            // 
+            this.lblDeploymentContainerName.AutoSize = true;
+            this.lblDeploymentContainerName.Depth = 0;
+            this.lblDeploymentContainerName.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.lblDeploymentContainerName.Location = new System.Drawing.Point(32, 400);
+            this.lblDeploymentContainerName.MouseState = MaterialSkin.MouseState.HOVER;
+            this.lblDeploymentContainerName.Name = "lblDeploymentContainerName";
+            this.lblDeploymentContainerName.Size = new System.Drawing.Size(115, 19);
+            this.lblDeploymentContainerName.TabIndex = 21;
+            this.lblDeploymentContainerName.Text = "Container Name";
+            // 
+            // lblDeploymentNumberContainers
+            // 
+            this.lblDeploymentNumberContainers.AutoSize = true;
+            this.lblDeploymentNumberContainers.Depth = 0;
+            this.lblDeploymentNumberContainers.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.lblDeploymentNumberContainers.Location = new System.Drawing.Point(32, 306);
+            this.lblDeploymentNumberContainers.MouseState = MaterialSkin.MouseState.HOVER;
+            this.lblDeploymentNumberContainers.Name = "lblDeploymentNumberContainers";
+            this.lblDeploymentNumberContainers.Size = new System.Drawing.Size(156, 19);
+            this.lblDeploymentNumberContainers.TabIndex = 19;
+            this.lblDeploymentNumberContainers.Text = "Number of Containers";
+            // 
+            // txtDeploymentReplicas
+            // 
+            this.txtDeploymentReplicas.AnimateReadOnly = false;
+            this.txtDeploymentReplicas.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtDeploymentReplicas.Depth = 0;
+            this.txtDeploymentReplicas.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.txtDeploymentReplicas.LeadingIcon = null;
+            this.txtDeploymentReplicas.Location = new System.Drawing.Point(35, 234);
+            this.txtDeploymentReplicas.MaxLength = 50;
+            this.txtDeploymentReplicas.MouseState = MaterialSkin.MouseState.OUT;
+            this.txtDeploymentReplicas.Multiline = false;
+            this.txtDeploymentReplicas.Name = "txtDeploymentReplicas";
+            this.txtDeploymentReplicas.Size = new System.Drawing.Size(127, 50);
+            this.txtDeploymentReplicas.TabIndex = 17;
+            this.txtDeploymentReplicas.Text = "";
+            this.txtDeploymentReplicas.TrailingIcon = null;
+            this.txtDeploymentReplicas.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.onlyNumbers_KeyPress);
+            // 
+            // lblDeploymentReplicas
+            // 
+            this.lblDeploymentReplicas.AutoSize = true;
+            this.lblDeploymentReplicas.Depth = 0;
+            this.lblDeploymentReplicas.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.lblDeploymentReplicas.Location = new System.Drawing.Point(32, 212);
+            this.lblDeploymentReplicas.MouseState = MaterialSkin.MouseState.HOVER;
+            this.lblDeploymentReplicas.Name = "lblDeploymentReplicas";
+            this.lblDeploymentReplicas.Size = new System.Drawing.Size(61, 19);
+            this.lblDeploymentReplicas.TabIndex = 16;
+            this.lblDeploymentReplicas.Text = "Replicas";
+            // 
+            // btnCreateDeployment
+            // 
+            this.btnCreateDeployment.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btnCreateDeployment.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            this.btnCreateDeployment.Depth = 0;
+            this.btnCreateDeployment.HighEmphasis = true;
+            this.btnCreateDeployment.Icon = null;
+            this.btnCreateDeployment.Location = new System.Drawing.Point(917, 75);
+            this.btnCreateDeployment.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.btnCreateDeployment.MouseState = MaterialSkin.MouseState.HOVER;
+            this.btnCreateDeployment.Name = "btnCreateDeployment";
+            this.btnCreateDeployment.NoAccentTextColor = System.Drawing.Color.Empty;
+            this.btnCreateDeployment.Size = new System.Drawing.Size(76, 36);
+            this.btnCreateDeployment.TabIndex = 14;
+            this.btnCreateDeployment.Text = "Create";
+            this.btnCreateDeployment.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            this.btnCreateDeployment.UseAccentColor = false;
+            this.btnCreateDeployment.UseVisualStyleBackColor = true;
+            this.btnCreateDeployment.Click += new System.EventHandler(this.btnCreateDeployment_Click);
+            // 
+            // cmbBoxDeploymentNamespace
+            // 
+            this.cmbBoxDeploymentNamespace.AutoResize = false;
+            this.cmbBoxDeploymentNamespace.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.cmbBoxDeploymentNamespace.Depth = 0;
+            this.cmbBoxDeploymentNamespace.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
+            this.cmbBoxDeploymentNamespace.DropDownHeight = 174;
+            this.cmbBoxDeploymentNamespace.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbBoxDeploymentNamespace.DropDownWidth = 121;
+            this.cmbBoxDeploymentNamespace.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
+            this.cmbBoxDeploymentNamespace.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.cmbBoxDeploymentNamespace.FormattingEnabled = true;
+            this.cmbBoxDeploymentNamespace.IntegralHeight = false;
+            this.cmbBoxDeploymentNamespace.ItemHeight = 43;
+            this.cmbBoxDeploymentNamespace.Location = new System.Drawing.Point(35, 141);
+            this.cmbBoxDeploymentNamespace.MaxDropDownItems = 4;
+            this.cmbBoxDeploymentNamespace.MouseState = MaterialSkin.MouseState.OUT;
+            this.cmbBoxDeploymentNamespace.Name = "cmbBoxDeploymentNamespace";
+            this.cmbBoxDeploymentNamespace.Size = new System.Drawing.Size(399, 49);
+            this.cmbBoxDeploymentNamespace.StartIndex = 0;
+            this.cmbBoxDeploymentNamespace.TabIndex = 11;
+            // 
+            // lblDeploymentNamespace
+            // 
+            this.lblDeploymentNamespace.AutoSize = true;
+            this.lblDeploymentNamespace.Depth = 0;
+            this.lblDeploymentNamespace.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.lblDeploymentNamespace.Location = new System.Drawing.Point(32, 119);
+            this.lblDeploymentNamespace.MouseState = MaterialSkin.MouseState.HOVER;
+            this.lblDeploymentNamespace.Name = "lblDeploymentNamespace";
+            this.lblDeploymentNamespace.Size = new System.Drawing.Size(85, 19);
+            this.lblDeploymentNamespace.TabIndex = 10;
+            this.lblDeploymentNamespace.Text = "Namespace";
+            // 
+            // txtPodName
+            // 
+            this.txtPodName.AnimateReadOnly = false;
+            this.txtPodName.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtPodName.Depth = 0;
+            this.txtPodName.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.txtPodName.LeadingIcon = null;
+            this.txtPodName.Location = new System.Drawing.Point(35, 47);
+            this.txtPodName.MaxLength = 50;
+            this.txtPodName.MouseState = MaterialSkin.MouseState.OUT;
+            this.txtPodName.Multiline = false;
+            this.txtPodName.Name = "txtPodName";
+            this.txtPodName.Size = new System.Drawing.Size(399, 50);
+            this.txtPodName.TabIndex = 9;
+            this.txtPodName.Text = "";
+            this.txtPodName.TrailingIcon = null;
+            // 
+            // lblDeploymentName
+            // 
+            this.lblDeploymentName.AutoSize = true;
+            this.lblDeploymentName.Depth = 0;
+            this.lblDeploymentName.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.lblDeploymentName.Location = new System.Drawing.Point(32, 25);
+            this.lblDeploymentName.MouseState = MaterialSkin.MouseState.HOVER;
+            this.lblDeploymentName.Name = "lblDeploymentName";
+            this.lblDeploymentName.Size = new System.Drawing.Size(130, 19);
+            this.lblDeploymentName.TabIndex = 8;
+            this.lblDeploymentName.Text = "Deployment name";
             // 
             // DeploymentsForm
             // 
@@ -215,6 +479,8 @@ namespace Kubernetes_GUI.Forms
             this.deploymentsTabControl.ResumeLayout(false);
             this.deploymentsTab.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.deploymentsDataGridView)).EndInit();
+            this.createDeploymentTab.ResumeLayout(false);
+            this.createDeploymentTab.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -234,5 +500,20 @@ namespace Kubernetes_GUI.Forms
         private System.Windows.Forms.DataGridViewTextBoxColumn columnDeploymentCreated;
         private System.Windows.Forms.DataGridViewImageColumn editCollumn;
         private System.Windows.Forms.DataGridViewImageColumn deleteCollumn;
+        private MaterialSkin.Controls.MaterialButton btnCreateDeployment;
+        private MaterialSkin.Controls.MaterialComboBox cmbBoxDeploymentNamespace;
+        private MaterialSkin.Controls.MaterialLabel lblDeploymentNamespace;
+        private MaterialSkin.Controls.MaterialTextBox txtPodName;
+        private MaterialSkin.Controls.MaterialLabel lblDeploymentName;
+        private MaterialSkin.Controls.MaterialTextBox txtDeploymentReplicas;
+        private MaterialSkin.Controls.MaterialLabel lblDeploymentReplicas;
+        private MaterialSkin.Controls.MaterialTextBox txtDeploymentContainerPort;
+        private MaterialSkin.Controls.MaterialTextBox txtDeploymentContainerImage;
+        private MaterialSkin.Controls.MaterialTextBox txtDeploymentContainerName;
+        private MaterialSkin.Controls.MaterialLabel lblDeploymentContainerPort;
+        private MaterialSkin.Controls.MaterialLabel lblDeploymentContainerImage;
+        private MaterialSkin.Controls.MaterialLabel lblDeploymentContainerName;
+        private MaterialSkin.Controls.MaterialLabel lblDeploymentNumberContainers;
+        private MaterialSkin.Controls.MaterialTextBox txtDeploymentNumberContainers;
     }
 }

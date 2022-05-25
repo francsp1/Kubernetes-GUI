@@ -10,11 +10,16 @@ using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using MaterialSkin.Controls;
 
 namespace Kubernetes_GUI.Forms
 {
     public partial class DeploymentsForm : Form
     {
+
+        private MaterialTextBox[] txtsContainerNames;
+        private MaterialTextBox[] txtstContainerImages;
+        private MaterialTextBox[] txtsContainerPorts;
         public DeploymentsForm()
         {
             InitializeComponent();
@@ -25,6 +30,8 @@ namespace Kubernetes_GUI.Forms
             deploymentsDataGridView.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
 
             fillDeploymentsDataGridView();
+
+            
 
         }
 
@@ -131,6 +138,124 @@ namespace Kubernetes_GUI.Forms
             
         }
 
-        
+        private void btnCreateDeployment_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void onlyNumbers_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char ch = e.KeyChar;
+            if (!char.IsDigit(ch) &&
+                ch != Convert.ToChar(Keys.Back) &&
+                    ch != Convert.ToChar(Keys.Delete))
+                e.Handled = true;
+        }
+
+        private void txtDeploymentNumberContainers_Leave(object sender, EventArgs e)
+        {
+
+
+            if(txtDeploymentNumberContainers.Text == "" || txtDeploymentNumberContainers.Text == "0")
+            {
+                txtDeploymentNumberContainers.Text = "1";
+                return;
+            }
+
+            for (int i = 0; i < (txtsContainerNames == null ? 0: txtsContainerNames.Length); i++)
+            {
+                createDeploymentTab.Controls.Remove(txtsContainerNames[i]);
+                createDeploymentTab.Controls.Remove(txtstContainerImages[i]);
+                createDeploymentTab.Controls.Remove(txtsContainerPorts[i]);
+
+            }
+
+            int size = Convert.ToInt16(txtDeploymentNumberContainers.Text);
+
+            txtsContainerNames = new MaterialTextBox[size];
+            txtstContainerImages = new MaterialTextBox[size];
+            txtsContainerPorts = new MaterialTextBox[size];
+
+            for (int i = 0; i < size; i++)
+            {
+                txtsContainerNames[i] = new MaterialTextBox();
+
+                txtstContainerImages[i] = new MaterialTextBox();
+
+                txtsContainerPorts[i] = new MaterialTextBox();
+                txtsContainerPorts[i].KeyPress += onlyNumbers_KeyPress;
+
+            }
+            int y = 343;
+            for (int i=0; i < size; i++)
+            {
+                txtsContainerNames[i].Size = new System.Drawing.Size(299, 50);
+                txtsContainerNames[i].Location = new Point(26, y);
+                createDeploymentTab.Controls.Add(txtsContainerNames[i]);
+
+                txtstContainerImages[i].Size = new System.Drawing.Size(299, 50);
+                txtstContainerImages[i].Location = new Point(359, y);
+                createDeploymentTab.Controls.Add(txtstContainerImages[i]);
+
+                txtsContainerPorts[i].Size = new System.Drawing.Size(116, 50);
+                txtsContainerPorts[i].Location = new Point(688, y);
+                createDeploymentTab.Controls.Add(txtsContainerPorts[i]);
+
+                y += 61;
+            }
+
+        }
+
+        private void txtDeploymentNumberContainers_Leave_1(object sender, EventArgs e)
+        {
+            for (int i = 0; i < (txtsContainerNames == null ? 0 : txtsContainerNames.Length); i++)
+            {
+                createDeploymentTab.Controls.Remove(txtsContainerNames[i]);
+                createDeploymentTab.Controls.Remove(txtstContainerImages[i]);
+                createDeploymentTab.Controls.Remove(txtsContainerPorts[i]);
+
+            }
+
+            if (txtDeploymentNumberContainers.Text == "" || txtDeploymentNumberContainers.Text == "0")
+            {
+                txtDeploymentNumberContainers.Text = "1";
+                return;
+            }
+
+            int size = Convert.ToInt16(txtDeploymentNumberContainers.Text);
+
+            txtsContainerNames = new MaterialTextBox[size];
+            txtstContainerImages = new MaterialTextBox[size];
+            txtsContainerPorts = new MaterialTextBox[size];
+
+            for (int i = 0; i < size; i++)
+            {
+                txtsContainerNames[i] = new MaterialTextBox();
+
+                txtstContainerImages[i] = new MaterialTextBox();
+
+                txtsContainerPorts[i] = new MaterialTextBox();
+                txtsContainerPorts[i].KeyPress += onlyNumbers_KeyPress;
+
+            }
+            int y = 343;
+            for (int i = 0; i < size; i++)
+            {
+                txtsContainerNames[i].Size = new System.Drawing.Size(299, 50);
+                txtsContainerNames[i].Location = new Point(26, y);
+                createDeploymentTab.Controls.Add(txtsContainerNames[i]);
+
+                txtstContainerImages[i].Size = new System.Drawing.Size(299, 50);
+                txtstContainerImages[i].Location = new Point(359, y);
+                createDeploymentTab.Controls.Add(txtstContainerImages[i]);
+
+                txtsContainerPorts[i].Size = new System.Drawing.Size(116, 50);
+                txtsContainerPorts[i].Location = new Point(688, y);
+                createDeploymentTab.Controls.Add(txtsContainerPorts[i]);
+
+                y += 61;
+            }
+
+        }
     }
 }
