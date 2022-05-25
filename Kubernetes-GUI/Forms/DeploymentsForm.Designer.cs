@@ -33,7 +33,6 @@ namespace Kubernetes_GUI.Forms
             this.deploymentsTabControl = new MaterialSkin.Controls.MaterialTabControl();
             this.deploymentsTab = new System.Windows.Forms.TabPage();
             this.deploymentsDataGridView = new System.Windows.Forms.DataGridView();
-            this.createDeploymentTab = new System.Windows.Forms.TabPage();
             this.columnDeploymentName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.columnDeploymentNamespace = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.columnDeploymentImages = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -42,6 +41,7 @@ namespace Kubernetes_GUI.Forms
             this.columnDeploymentCreated = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.editCollumn = new System.Windows.Forms.DataGridViewImageColumn();
             this.deleteCollumn = new System.Windows.Forms.DataGridViewImageColumn();
+            this.createDeploymentTab = new System.Windows.Forms.TabPage();
             this.deploymentsTabControl.SuspendLayout();
             this.deploymentsTab.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.deploymentsDataGridView)).BeginInit();
@@ -106,7 +106,7 @@ namespace Kubernetes_GUI.Forms
             this.editCollumn,
             this.deleteCollumn});
             this.deploymentsDataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.deploymentsDataGridView.GridColor = System.Drawing.Color.White;
+            this.deploymentsDataGridView.GridColor = System.Drawing.Color.DarkGray;
             this.deploymentsDataGridView.Location = new System.Drawing.Point(3, 2);
             this.deploymentsDataGridView.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.deploymentsDataGridView.Name = "deploymentsDataGridView";
@@ -116,17 +116,6 @@ namespace Kubernetes_GUI.Forms
             this.deploymentsDataGridView.Size = new System.Drawing.Size(1505, 635);
             this.deploymentsDataGridView.TabIndex = 0;
             this.deploymentsDataGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.containersGridView_CellClick);
-            // 
-            // createDeploymentTab
-            // 
-            this.createDeploymentTab.BackColor = System.Drawing.Color.White;
-            this.createDeploymentTab.Location = new System.Drawing.Point(4, 25);
-            this.createDeploymentTab.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.createDeploymentTab.Name = "createDeploymentTab";
-            this.createDeploymentTab.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.createDeploymentTab.Size = new System.Drawing.Size(1511, 639);
-            this.createDeploymentTab.TabIndex = 1;
-            this.createDeploymentTab.Text = "Create deployments";
             // 
             // columnDeploymentName
             // 
@@ -194,6 +183,17 @@ namespace Kubernetes_GUI.Forms
             this.deleteCollumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.deleteCollumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             this.deleteCollumn.Width = 50;
+            // 
+            // createDeploymentTab
+            // 
+            this.createDeploymentTab.BackColor = System.Drawing.Color.White;
+            this.createDeploymentTab.Location = new System.Drawing.Point(4, 25);
+            this.createDeploymentTab.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.createDeploymentTab.Name = "createDeploymentTab";
+            this.createDeploymentTab.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.createDeploymentTab.Size = new System.Drawing.Size(1511, 639);
+            this.createDeploymentTab.TabIndex = 1;
+            this.createDeploymentTab.Text = "Create deployments";
             // 
             // DeploymentsForm
             // 

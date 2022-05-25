@@ -26,6 +26,10 @@ namespace Kubernetes_GUI.Forms
 
             podsTabControl.TabPages.Remove(editPodTab);
 
+            podsDataGridView.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
+            podsDataGridView.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+            //podsDataGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+
             fillPodsDataGridView();
 
             getNamespaces();

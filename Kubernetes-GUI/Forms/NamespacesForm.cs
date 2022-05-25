@@ -23,6 +23,9 @@ namespace Kubernetes_GUI.Forms
 
             namespacesTabControl.TabPages.Remove(editNamespacesTab);
 
+            namespacesDataGridView.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
+            namespacesDataGridView.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+
             fillNamespacesDataGrdiView();
         }
 

@@ -21,6 +21,9 @@ namespace Kubernetes_GUI.Forms
 
             //containersTabControl.TabPages.Remove(editContainerTab);
 
+            deploymentsDataGridView.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
+            deploymentsDataGridView.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+
             fillDeploymentsDataGridView();
 
         }

@@ -33,6 +33,18 @@ namespace Kubernetes_GUI.Forms
             this.podsTabControl = new MaterialSkin.Controls.MaterialTabControl();
             this.podsTab = new System.Windows.Forms.TabPage();
             this.podsDataGridView = new System.Windows.Forms.DataGridView();
+            this.ColumnName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnNamespace = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnImages = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnLabels = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnNode = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnRestarts = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnCpuUsage = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnMemoryUsage = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnCreated = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.collumnEditPod = new System.Windows.Forms.DataGridViewImageColumn();
+            this.columnDeletePod = new System.Windows.Forms.DataGridViewImageColumn();
             this.createPodTab = new System.Windows.Forms.TabPage();
             this.btnCreatePod = new MaterialSkin.Controls.MaterialButton();
             this.txtPodImage = new MaterialSkin.Controls.MaterialTextBox();
@@ -48,18 +60,6 @@ namespace Kubernetes_GUI.Forms
             this.materialCheckbox4 = new MaterialSkin.Controls.MaterialCheckbox();
             this.materialCheckbox5 = new MaterialSkin.Controls.MaterialCheckbox();
             this.materialCheckbox6 = new MaterialSkin.Controls.MaterialCheckbox();
-            this.ColumnName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnNamespace = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnImages = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnLabels = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnNode = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnRestarts = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnCpuUsage = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnMemoryUsage = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnCreated = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.collumnEditPod = new System.Windows.Forms.DataGridViewImageColumn();
-            this.columnDeletePod = new System.Windows.Forms.DataGridViewImageColumn();
             this.podsTabControl.SuspendLayout();
             this.podsTab.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.podsDataGridView)).BeginInit();
@@ -130,7 +130,7 @@ namespace Kubernetes_GUI.Forms
             this.collumnEditPod,
             this.columnDeletePod});
             this.podsDataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.podsDataGridView.GridColor = System.Drawing.Color.White;
+            this.podsDataGridView.GridColor = System.Drawing.Color.DarkGray;
             this.podsDataGridView.Location = new System.Drawing.Point(3, 2);
             this.podsDataGridView.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.podsDataGridView.Name = "podsDataGridView";
@@ -140,6 +140,100 @@ namespace Kubernetes_GUI.Forms
             this.podsDataGridView.Size = new System.Drawing.Size(1505, 635);
             this.podsDataGridView.TabIndex = 1;
             this.podsDataGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.podsDataGridView_CellContentClick);
+            // 
+            // ColumnName
+            // 
+            this.ColumnName.HeaderText = "Name";
+            this.ColumnName.MinimumWidth = 6;
+            this.ColumnName.Name = "ColumnName";
+            this.ColumnName.ReadOnly = true;
+            // 
+            // ColumnNamespace
+            // 
+            this.ColumnNamespace.HeaderText = "Namespace";
+            this.ColumnNamespace.MinimumWidth = 6;
+            this.ColumnNamespace.Name = "ColumnNamespace";
+            this.ColumnNamespace.ReadOnly = true;
+            // 
+            // ColumnImages
+            // 
+            this.ColumnImages.HeaderText = "Images";
+            this.ColumnImages.MinimumWidth = 6;
+            this.ColumnImages.Name = "ColumnImages";
+            this.ColumnImages.ReadOnly = true;
+            // 
+            // ColumnLabels
+            // 
+            this.ColumnLabels.HeaderText = "Labels";
+            this.ColumnLabels.MinimumWidth = 6;
+            this.ColumnLabels.Name = "ColumnLabels";
+            this.ColumnLabels.ReadOnly = true;
+            // 
+            // ColumnNode
+            // 
+            this.ColumnNode.HeaderText = "Node";
+            this.ColumnNode.MinimumWidth = 6;
+            this.ColumnNode.Name = "ColumnNode";
+            this.ColumnNode.ReadOnly = true;
+            // 
+            // ColumnStatus
+            // 
+            this.ColumnStatus.HeaderText = "Status";
+            this.ColumnStatus.MinimumWidth = 6;
+            this.ColumnStatus.Name = "ColumnStatus";
+            this.ColumnStatus.ReadOnly = true;
+            // 
+            // ColumnRestarts
+            // 
+            this.ColumnRestarts.HeaderText = "Restarts";
+            this.ColumnRestarts.MinimumWidth = 6;
+            this.ColumnRestarts.Name = "ColumnRestarts";
+            this.ColumnRestarts.ReadOnly = true;
+            // 
+            // ColumnCpuUsage
+            // 
+            this.ColumnCpuUsage.HeaderText = "CPU Usage (cores)";
+            this.ColumnCpuUsage.MinimumWidth = 6;
+            this.ColumnCpuUsage.Name = "ColumnCpuUsage";
+            this.ColumnCpuUsage.ReadOnly = true;
+            // 
+            // ColumnMemoryUsage
+            // 
+            this.ColumnMemoryUsage.HeaderText = "Memory Usage (bytes)";
+            this.ColumnMemoryUsage.MinimumWidth = 6;
+            this.ColumnMemoryUsage.Name = "ColumnMemoryUsage";
+            this.ColumnMemoryUsage.ReadOnly = true;
+            // 
+            // ColumnCreated
+            // 
+            this.ColumnCreated.HeaderText = "Created";
+            this.ColumnCreated.MinimumWidth = 6;
+            this.ColumnCreated.Name = "ColumnCreated";
+            this.ColumnCreated.ReadOnly = true;
+            // 
+            // collumnEditPod
+            // 
+            this.collumnEditPod.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.collumnEditPod.HeaderText = "Edit";
+            this.collumnEditPod.Image = global::Kubernetes_GUI.Properties.Resources.edit_button;
+            this.collumnEditPod.MinimumWidth = 6;
+            this.collumnEditPod.Name = "collumnEditPod";
+            this.collumnEditPod.ReadOnly = true;
+            this.collumnEditPod.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.collumnEditPod.Visible = false;
+            this.collumnEditPod.Width = 50;
+            // 
+            // columnDeletePod
+            // 
+            this.columnDeletePod.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.columnDeletePod.FillWeight = 28.877F;
+            this.columnDeletePod.HeaderText = "Delete";
+            this.columnDeletePod.Image = global::Kubernetes_GUI.Properties.Resources.remove__1_;
+            this.columnDeletePod.MinimumWidth = 6;
+            this.columnDeletePod.Name = "columnDeletePod";
+            this.columnDeletePod.ReadOnly = true;
+            this.columnDeletePod.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.columnDeletePod.Width = 50;
             // 
             // createPodTab
             // 
@@ -371,100 +465,6 @@ namespace Kubernetes_GUI.Forms
             this.materialCheckbox6.TabIndex = 0;
             this.materialCheckbox6.Text = "materialCheckbox6";
             this.materialCheckbox6.UseVisualStyleBackColor = true;
-            // 
-            // ColumnName
-            // 
-            this.ColumnName.HeaderText = "Name";
-            this.ColumnName.MinimumWidth = 6;
-            this.ColumnName.Name = "ColumnName";
-            this.ColumnName.ReadOnly = true;
-            // 
-            // ColumnNamespace
-            // 
-            this.ColumnNamespace.HeaderText = "Namespace";
-            this.ColumnNamespace.MinimumWidth = 6;
-            this.ColumnNamespace.Name = "ColumnNamespace";
-            this.ColumnNamespace.ReadOnly = true;
-            // 
-            // ColumnImages
-            // 
-            this.ColumnImages.HeaderText = "Images";
-            this.ColumnImages.MinimumWidth = 6;
-            this.ColumnImages.Name = "ColumnImages";
-            this.ColumnImages.ReadOnly = true;
-            // 
-            // ColumnLabels
-            // 
-            this.ColumnLabels.HeaderText = "Labels";
-            this.ColumnLabels.MinimumWidth = 6;
-            this.ColumnLabels.Name = "ColumnLabels";
-            this.ColumnLabels.ReadOnly = true;
-            // 
-            // ColumnNode
-            // 
-            this.ColumnNode.HeaderText = "Node";
-            this.ColumnNode.MinimumWidth = 6;
-            this.ColumnNode.Name = "ColumnNode";
-            this.ColumnNode.ReadOnly = true;
-            // 
-            // ColumnStatus
-            // 
-            this.ColumnStatus.HeaderText = "Status";
-            this.ColumnStatus.MinimumWidth = 6;
-            this.ColumnStatus.Name = "ColumnStatus";
-            this.ColumnStatus.ReadOnly = true;
-            // 
-            // ColumnRestarts
-            // 
-            this.ColumnRestarts.HeaderText = "Restarts";
-            this.ColumnRestarts.MinimumWidth = 6;
-            this.ColumnRestarts.Name = "ColumnRestarts";
-            this.ColumnRestarts.ReadOnly = true;
-            // 
-            // ColumnCpuUsage
-            // 
-            this.ColumnCpuUsage.HeaderText = "CPU Usage (cores)";
-            this.ColumnCpuUsage.MinimumWidth = 6;
-            this.ColumnCpuUsage.Name = "ColumnCpuUsage";
-            this.ColumnCpuUsage.ReadOnly = true;
-            // 
-            // ColumnMemoryUsage
-            // 
-            this.ColumnMemoryUsage.HeaderText = "Memory Usage (bytes)";
-            this.ColumnMemoryUsage.MinimumWidth = 6;
-            this.ColumnMemoryUsage.Name = "ColumnMemoryUsage";
-            this.ColumnMemoryUsage.ReadOnly = true;
-            // 
-            // ColumnCreated
-            // 
-            this.ColumnCreated.HeaderText = "Created";
-            this.ColumnCreated.MinimumWidth = 6;
-            this.ColumnCreated.Name = "ColumnCreated";
-            this.ColumnCreated.ReadOnly = true;
-            // 
-            // collumnEditPod
-            // 
-            this.collumnEditPod.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.collumnEditPod.HeaderText = "Edit";
-            this.collumnEditPod.Image = global::Kubernetes_GUI.Properties.Resources.edit_button;
-            this.collumnEditPod.MinimumWidth = 6;
-            this.collumnEditPod.Name = "collumnEditPod";
-            this.collumnEditPod.ReadOnly = true;
-            this.collumnEditPod.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.collumnEditPod.Visible = false;
-            this.collumnEditPod.Width = 50;
-            // 
-            // columnDeletePod
-            // 
-            this.columnDeletePod.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.columnDeletePod.FillWeight = 28.877F;
-            this.columnDeletePod.HeaderText = "Delete";
-            this.columnDeletePod.Image = global::Kubernetes_GUI.Properties.Resources.remove__1_;
-            this.columnDeletePod.MinimumWidth = 6;
-            this.columnDeletePod.Name = "columnDeletePod";
-            this.columnDeletePod.ReadOnly = true;
-            this.columnDeletePod.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.columnDeletePod.Width = 50;
             // 
             // PodsForm
             // 
