@@ -42,6 +42,7 @@ namespace Kubernetes_GUI.Forms
             this.editCollumn = new System.Windows.Forms.DataGridViewImageColumn();
             this.deleteCollumn = new System.Windows.Forms.DataGridViewImageColumn();
             this.createDeploymentTab = new System.Windows.Forms.TabPage();
+            this.btnDeploymentApply = new MaterialSkin.Controls.MaterialButton();
             this.txtDeploymentNumberContainers = new MaterialSkin.Controls.MaterialTextBox();
             this.lblDeploymentContainerPort = new MaterialSkin.Controls.MaterialLabel();
             this.lblDeploymentContainerImage = new MaterialSkin.Controls.MaterialLabel();
@@ -201,6 +202,7 @@ namespace Kubernetes_GUI.Forms
             // 
             this.createDeploymentTab.AutoScroll = true;
             this.createDeploymentTab.BackColor = System.Drawing.Color.White;
+            this.createDeploymentTab.Controls.Add(this.btnDeploymentApply);
             this.createDeploymentTab.Controls.Add(this.txtDeploymentNumberContainers);
             this.createDeploymentTab.Controls.Add(this.lblDeploymentContainerPort);
             this.createDeploymentTab.Controls.Add(this.lblDeploymentContainerImage);
@@ -221,6 +223,26 @@ namespace Kubernetes_GUI.Forms
             this.createDeploymentTab.TabIndex = 1;
             this.createDeploymentTab.Text = "Create deployments";
             // 
+            // btnDeploymentApply
+            // 
+            this.btnDeploymentApply.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btnDeploymentApply.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            this.btnDeploymentApply.Depth = 0;
+            this.btnDeploymentApply.HighEmphasis = true;
+            this.btnDeploymentApply.Icon = null;
+            this.btnDeploymentApply.Location = new System.Drawing.Point(169, 338);
+            this.btnDeploymentApply.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.btnDeploymentApply.MouseState = MaterialSkin.MouseState.HOVER;
+            this.btnDeploymentApply.Name = "btnDeploymentApply";
+            this.btnDeploymentApply.NoAccentTextColor = System.Drawing.Color.Empty;
+            this.btnDeploymentApply.Size = new System.Drawing.Size(67, 36);
+            this.btnDeploymentApply.TabIndex = 28;
+            this.btnDeploymentApply.Text = "Apply";
+            this.btnDeploymentApply.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            this.btnDeploymentApply.UseAccentColor = false;
+            this.btnDeploymentApply.UseVisualStyleBackColor = true;
+            this.btnDeploymentApply.Click += new System.EventHandler(this.btnDeploymentApply_Click);
+            // 
             // txtDeploymentNumberContainers
             // 
             this.txtDeploymentNumberContainers.AnimateReadOnly = false;
@@ -238,7 +260,6 @@ namespace Kubernetes_GUI.Forms
             this.txtDeploymentNumberContainers.Text = "1";
             this.txtDeploymentNumberContainers.TrailingIcon = null;
             this.txtDeploymentNumberContainers.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.onlyNumbers_KeyPress);
-            this.txtDeploymentNumberContainers.Leave += new System.EventHandler(this.txtDeploymentNumberContainers_Leave_1);
             // 
             // lblDeploymentContainerPort
             // 
@@ -456,5 +477,6 @@ namespace Kubernetes_GUI.Forms
         private MaterialSkin.Controls.MaterialLabel lblDeploymentContainerName;
         private MaterialSkin.Controls.MaterialLabel lblDeploymentNumberContainers;
         private MaterialSkin.Controls.MaterialTextBox txtDeploymentNumberContainers;
+        private MaterialSkin.Controls.MaterialButton btnDeploymentApply;
     }
 }

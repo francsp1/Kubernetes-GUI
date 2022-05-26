@@ -11,6 +11,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using MaterialSkin.Controls;
+using Newtonsoft.Json;
 
 namespace Kubernetes_GUI.Forms
 {
@@ -199,9 +200,9 @@ namespace Kubernetes_GUI.Forms
                 MessageBox.Show("Please, enter a valid Deployment name", "Invalid field!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-
+            string deploymentNamespace = cmbBoxDeploymentNamespace.SelectedItem.ToString();
             string replicas = txtDeploymentReplicas.Text;
-            if (!int.TryParse(replicas, out int value))
+            if (!int.TryParse(replicas, out int replicasInt))
             {
                 MessageBox.Show("Please, enter a valid number of Replicas", "Invalid field!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
@@ -210,7 +211,7 @@ namespace Kubernetes_GUI.Forms
             string numberOfContainers = txtDeploymentNumberContainers.Text;
             if (!int.TryParse(numberOfContainers, out int numberOfContainersInt))
             {
-                MessageBox.Show("Invalid number od Containers!", "Invalid field!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Invalid number of Containers!", "Invalid field!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
@@ -222,8 +223,6 @@ namespace Kubernetes_GUI.Forms
 
 
             Models.Container[] containers  = new Models.Container[numberOfContainersInt];
-
-
 
             for (int i = 0; i < numberOfContainersInt; i++)
             {
@@ -244,37 +243,88 @@ namespace Kubernetes_GUI.Forms
 
             }
 
-        }
-
-        private void containersGridView_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.ColumnIndex == deploymentsDataGridView.Columns["deleteCollumn"].Index)
+            Models.Deplayment deployment = new Models.Deplayment
             {
-                //deleteContainer(containersGridView[0, e.RowIndex].Value.ToString());
-                fillDeploymentsDataGridView();
+                apiVersion = "apps/v1",
+                kind = "Deployment",
+                metadata = new Models.Metadata
+                {
+                    name = deploymentName,
+                    labels = new Models.Labels
+                    {
+                        app = deploymentName,
+                        name = deploymentName
+                    },
+                },
+                spec = new Models.Spec
+                {
+                    replicas = replicasInt,
+                    selector = new Models.Selector
+                    {
+                        matchLabels = new Models.Matchlabels
+                        {
+                            app = deploymentName
+                        },
+                    },
+                    template = new Template
+                    {
+                        metadata = new Models.TemplateMetadata
+                        {
+                            labels = new TemplateLabels
+                            {
+                                app = deploymentName,
+                                name = deploymentName
+                            },
+                        },
+                        spec = new TemplateSpec
+                        {
+                            containers = containers
+                        },
+                    },
+                },
+            };
 
+
+            try
+            {
+                string url = GlobalSessionDetails.Protocol + "://" + GlobalSessionDetails.Domain + ":" + GlobalSessionDetails.Port + "/apis/apps/v1/namespaces/" + deploymentNamespace + "/deployments";
+
+                string requestJson = JsonConvert.SerializeObject(deployment);
+                var payload = new StringContent(requestJson, Encoding.UTF8, "application/json");
+
+                var request = new HttpRequestMessage(HttpMethod.Post, url)
+                {
+                    Content = payload,
+                };
+
+                var client = GlobalSessionDetails._clientFactory.CreateClient();
+
+                client.DefaultRequestHeaders.Add("X-Auth-Token", "gAAAAABiVfjacfcmk3McvrzNohg3zqvGVTYeaiuJdGgNhOAcHOcGC7-rJbqOtot-wVk3o3xfpk72Ak1RkBHbFthZV0-rhEtK2wykmwztA8V8Gp7K8ICazSjobHQ_vpslc2bZWELeVbtFfAN4fS2HrzcEfyBulTfBWJnz5AbUbelZQZg_Bg1g3D0");
+
+                client.DefaultRequestHeaders.ExpectContinue = false;
+
+                var response = client.SendAsync(request).Result;
+                var json = response.Content.ReadAsStringAsync().Result;
+
+                if (!response.IsSuccessStatusCode)
+                {
+                    MessageBox.Show(response.ReasonPhrase, "Could not create the Deployment", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+                MessageBox.Show("Deployment created with success", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
+            catch (Exception excp)
+            {
+                MessageBox.Show("Could not create the Deployment!" + excp.InnerException.Message, excp.Message, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            deploymentsTabControl.SelectedTab = deploymentsTab;
+            fillDeploymentsDataGridView();
+
         }
 
-        private void deleteContainer(string containerId)
-        {
-            
-        }
-
-       
-
-        private void onlyNumbers_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            char ch = e.KeyChar;
-            if (!char.IsDigit(ch) &&
-                ch != Convert.ToChar(Keys.Back) &&
-                    ch != Convert.ToChar(Keys.Delete))
-                e.Handled = true;
-        }
-
-        
-
-        private void txtDeploymentNumberContainers_Leave_1(object sender, EventArgs e)
+        private void btnDeploymentApply_Click(object sender, EventArgs e)
         {
             for (int i = 0; i < (txtsContainerNames == null ? 0 : txtsContainerNames.Length); i++)
             {
@@ -320,7 +370,34 @@ namespace Kubernetes_GUI.Forms
 
                 y += 61;
             }
-
         }
+
+        private void containersGridView_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.ColumnIndex == deploymentsDataGridView.Columns["deleteCollumn"].Index)
+            {
+                //deleteContainer(containersGridView[0, e.RowIndex].Value.ToString());
+                fillDeploymentsDataGridView();
+
+            }
+        }
+
+        private void deleteContainer(string containerId)
+        {
+            
+        }
+
+       
+
+        private void onlyNumbers_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char ch = e.KeyChar;
+            if (!char.IsDigit(ch) &&
+                ch != Convert.ToChar(Keys.Back) &&
+                    ch != Convert.ToChar(Keys.Delete))
+                e.Handled = true;
+        }
+
+        
     }
 }

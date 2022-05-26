@@ -214,19 +214,18 @@ namespace Kubernetes_GUI.Forms
 
                 if (!response.IsSuccessStatusCode)
                 {
-                    MessageBox.Show(response.ReasonPhrase, "Could not create the Image", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(response.ReasonPhrase, "Could not create the Pod", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
                 MessageBox.Show("Pod created with success", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch (Exception excp)
             {
-                MessageBox.Show("Could not create the Pod! " + excp.InnerException.Message, excp.Message, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Could not create the Pod!" + excp.InnerException.Message, excp.Message, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
             podsTabControl.SelectedTab = podsTab;
-
             fillPodsDataGridView();
 
         }

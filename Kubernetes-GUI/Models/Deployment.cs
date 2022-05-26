@@ -45,22 +45,22 @@ namespace Kubernetes_GUI.Models
 
     public class Template
     {
-        public Metadata1 metadata { get; set; }
-        public Spec1 spec { get; set; }
+        public TemplateMetadata metadata { get; set; }
+        public TemplateSpec spec { get; set; }
     }
 
-    public class Metadata1
+    public class TemplateMetadata
     {
-        public Labels1 labels { get; set; }
+        public TemplateLabels labels { get; set; }
     }
 
-    public class Labels1
+    public class TemplateLabels
     {
         public string app { get; set; }
         public string name { get; set; }
     }
 
-    public class Spec1
+    public class TemplateSpec
     {
         public Container[] containers { get; set; }
     }
@@ -69,7 +69,7 @@ namespace Kubernetes_GUI.Models
     {
         public string name { get; set; }
         public string image { get; set; }
-        //public Port[] ports { get; set; }
+        public Port[] ports { get; set; }
     }
 
     public class Port
