@@ -376,11 +376,8 @@ namespace Kubernetes_GUI.Forms
         {
             if (e.ColumnIndex == deploymentsDataGridView.Columns["deleteCollumn"].Index)
             {
-                MessageBox.Show("", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
                 deleteDeployment(deploymentsDataGridView[0, e.RowIndex].Value.ToString(), deploymentsDataGridView[1, e.RowIndex].Value.ToString());
                 fillDeploymentsDataGridView();
-
             }
         }
 
