@@ -18,8 +18,8 @@ namespace Kubernetes_GUI.Forms
     {
 
         private MaterialTextBox[] txtsContainerNames;
-        private MaterialTextBox[] txtstContainerImages;
-        private MaterialTextBox[] txtsContainerPorts;
+        private MaterialTextBox[] txtsContainerImages;
+        //private MaterialTextBox[] txtsContainerPorts = new MaterialTextBox[1];
         public DeploymentsForm()
         {
             InitializeComponent();
@@ -31,7 +31,31 @@ namespace Kubernetes_GUI.Forms
 
             fillDeploymentsDataGridView();
 
-            
+            getNamespaces();
+            cmbBoxDeploymentNamespace.Text = "default";
+
+            txtsContainerNames = new MaterialTextBox[1];
+            txtsContainerNames[0] = new MaterialTextBox();
+            txtsContainerNames[0].Size = new System.Drawing.Size(299, 50);
+            txtsContainerNames[0].Location = new Point(26, 343);
+            createDeploymentTab.Controls.Add(txtsContainerNames[0]);
+
+            txtsContainerImages = new MaterialTextBox[1];
+            txtsContainerImages[0] = new MaterialTextBox();
+            txtsContainerImages[0].Size = new System.Drawing.Size(299, 50);
+            txtsContainerImages[0].Location = new Point(359, 343);
+            createDeploymentTab.Controls.Add(txtsContainerImages[0]);
+
+            /*
+            txtsContainerPorts[0] = new MaterialTextBox();
+            txtsContainerPorts[0].KeyPress += onlyNumbers_KeyPress;
+            txtsContainerPorts[0].Size = new System.Drawing.Size(116, 50);
+            txtsContainerPorts[0].Location = new Point(688, 343);
+            createDeploymentTab.Controls.Add(txtsContainerPorts[0]);
+            */
+
+
+
 
         }
 
@@ -123,6 +147,105 @@ namespace Kubernetes_GUI.Forms
             }
         }
 
+        private void getNamespaces()
+        {
+            try
+            {
+                string url = GlobalSessionDetails.Protocol + "://" + GlobalSessionDetails.Domain + ":" + GlobalSessionDetails.Port + "/api/v1/namespaces";
+
+                var request = new HttpRequestMessage(HttpMethod.Get, url);
+                var client = GlobalSessionDetails._clientFactory.CreateClient();
+
+                var response = client.SendAsync(request).Result;
+                var json = response.Content.ReadAsStringAsync().Result;
+
+                if (!response.IsSuccessStatusCode)
+                {
+                    MessageBox.Show(response.ReasonPhrase, "Could not get the Namespaces", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+                JObject responseJsonObject = JObject.Parse(json);
+                JArray namespaces = (JArray)responseJsonObject["items"];
+
+                for (int i = 0; i < namespaces.Count; i++)
+                {
+
+                    var currentNamespace = namespaces[i];
+                    var name = currentNamespace["metadata"]["name"].ToString();
+
+                    if (name == null || name == "kube-system" || name == "kube-public" || name == "kube-node-lease")
+                    {
+                        continue;
+                    }
+
+                    cmbBoxDeploymentNamespace.Items.Add(name);
+
+                }
+            }
+            catch (Exception excp)
+            {
+                MessageBox.Show("Could not get the Namespaces! " + excp.InnerException.Message, excp.Message, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+        }
+
+        private void btnCreateDeployment_Click(object sender, EventArgs e)
+        {
+
+            string deploymentName = txtDeploymentName.Text;
+            if (String.IsNullOrWhiteSpace(deploymentName))
+            {
+                MessageBox.Show("Please, enter a valid Deployment name", "Invalid field!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            string replicas = txtDeploymentReplicas.Text;
+            if (!int.TryParse(replicas, out int value))
+            {
+                MessageBox.Show("Please, enter a valid number of Replicas", "Invalid field!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            string numberOfContainers = txtDeploymentNumberContainers.Text;
+            if (!int.TryParse(numberOfContainers, out int numberOfContainersInt))
+            {
+                MessageBox.Show("Invalid number od Containers!", "Invalid field!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            if(txtsContainerNames == null || txtsContainerImages ==null || txtsContainerNames.Length == 0 || txtsContainerImages.Length == 0)
+            {
+                MessageBox.Show("You need at least one container name and one container image!", "Invalid field!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+
+            Models.Container[] containers  = new Models.Container[numberOfContainersInt];
+
+
+
+            for (int i = 0; i < numberOfContainersInt; i++)
+            {
+
+                string deploymentContainerName = txtsContainerNames[i].Text;
+                string deploymentContainerimage = txtsContainerImages[i].Text;
+                
+                if (String.IsNullOrWhiteSpace(deploymentContainerName) || String.IsNullOrWhiteSpace(deploymentContainerimage))
+                {
+                    MessageBox.Show("Please, fill all containers fields", "Invalid field!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+                containers[i] = new Models.Container
+                {
+                    name = deploymentContainerName,
+                    image = deploymentContainerimage
+                };
+
+            }
+
+        }
+
         private void containersGridView_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.ColumnIndex == deploymentsDataGridView.Columns["deleteCollumn"].Index)
@@ -138,10 +261,7 @@ namespace Kubernetes_GUI.Forms
             
         }
 
-        private void btnCreateDeployment_Click(object sender, EventArgs e)
-        {
-
-        }
+       
 
         private void onlyNumbers_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -152,81 +272,30 @@ namespace Kubernetes_GUI.Forms
                 e.Handled = true;
         }
 
-        private void txtDeploymentNumberContainers_Leave(object sender, EventArgs e)
-        {
-
-
-            if(txtDeploymentNumberContainers.Text == "" || txtDeploymentNumberContainers.Text == "0")
-            {
-                txtDeploymentNumberContainers.Text = "1";
-                return;
-            }
-
-            for (int i = 0; i < (txtsContainerNames == null ? 0: txtsContainerNames.Length); i++)
-            {
-                createDeploymentTab.Controls.Remove(txtsContainerNames[i]);
-                createDeploymentTab.Controls.Remove(txtstContainerImages[i]);
-                createDeploymentTab.Controls.Remove(txtsContainerPorts[i]);
-
-            }
-
-            int size = Convert.ToInt16(txtDeploymentNumberContainers.Text);
-
-            txtsContainerNames = new MaterialTextBox[size];
-            txtstContainerImages = new MaterialTextBox[size];
-            txtsContainerPorts = new MaterialTextBox[size];
-
-            for (int i = 0; i < size; i++)
-            {
-                txtsContainerNames[i] = new MaterialTextBox();
-
-                txtstContainerImages[i] = new MaterialTextBox();
-
-                txtsContainerPorts[i] = new MaterialTextBox();
-                txtsContainerPorts[i].KeyPress += onlyNumbers_KeyPress;
-
-            }
-            int y = 343;
-            for (int i=0; i < size; i++)
-            {
-                txtsContainerNames[i].Size = new System.Drawing.Size(299, 50);
-                txtsContainerNames[i].Location = new Point(26, y);
-                createDeploymentTab.Controls.Add(txtsContainerNames[i]);
-
-                txtstContainerImages[i].Size = new System.Drawing.Size(299, 50);
-                txtstContainerImages[i].Location = new Point(359, y);
-                createDeploymentTab.Controls.Add(txtstContainerImages[i]);
-
-                txtsContainerPorts[i].Size = new System.Drawing.Size(116, 50);
-                txtsContainerPorts[i].Location = new Point(688, y);
-                createDeploymentTab.Controls.Add(txtsContainerPorts[i]);
-
-                y += 61;
-            }
-
-        }
+        
 
         private void txtDeploymentNumberContainers_Leave_1(object sender, EventArgs e)
         {
             for (int i = 0; i < (txtsContainerNames == null ? 0 : txtsContainerNames.Length); i++)
             {
                 createDeploymentTab.Controls.Remove(txtsContainerNames[i]);
-                createDeploymentTab.Controls.Remove(txtstContainerImages[i]);
-                createDeploymentTab.Controls.Remove(txtsContainerPorts[i]);
+                createDeploymentTab.Controls.Remove(txtsContainerImages[i]);
+                //createDeploymentTab.Controls.Remove(txtsContainerPorts[i]);
 
             }
 
             if (txtDeploymentNumberContainers.Text == "" || txtDeploymentNumberContainers.Text == "0")
             {
                 txtDeploymentNumberContainers.Text = "1";
-                return;
             }
 
             int size = Convert.ToInt16(txtDeploymentNumberContainers.Text);
 
+            txtsContainerNames = null;
             txtsContainerNames = new MaterialTextBox[size];
-            txtstContainerImages = new MaterialTextBox[size];
-            txtsContainerPorts = new MaterialTextBox[size];
+            txtsContainerImages = null;
+            txtsContainerImages = new MaterialTextBox[size];
+            //txtsContainerPorts = new MaterialTextBox[size];
 
             int y = 343;
             for (int i = 0; i < size; i++)
@@ -236,16 +305,18 @@ namespace Kubernetes_GUI.Forms
                 txtsContainerNames[i].Location = new Point(26, y);
                 createDeploymentTab.Controls.Add(txtsContainerNames[i]);
 
-                txtstContainerImages[i] = new MaterialTextBox();
-                txtstContainerImages[i].Size = new System.Drawing.Size(299, 50);
-                txtstContainerImages[i].Location = new Point(359, y);
-                createDeploymentTab.Controls.Add(txtstContainerImages[i]);
+                txtsContainerImages[i] = new MaterialTextBox();
+                txtsContainerImages[i].Size = new System.Drawing.Size(299, 50);
+                txtsContainerImages[i].Location = new Point(359, y);
+                createDeploymentTab.Controls.Add(txtsContainerImages[i]);
 
+                /*
                 txtsContainerPorts[i] = new MaterialTextBox();
                 txtsContainerPorts[i].KeyPress += onlyNumbers_KeyPress;
                 txtsContainerPorts[i].Size = new System.Drawing.Size(116, 50);
                 txtsContainerPorts[i].Location = new Point(688, y);
                 createDeploymentTab.Controls.Add(txtsContainerPorts[i]);
+                */
 
                 y += 61;
             }

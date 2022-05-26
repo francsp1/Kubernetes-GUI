@@ -69,7 +69,7 @@ namespace Kubernetes_GUI.Models
     {
         public string name { get; set; }
         public string image { get; set; }
-        public Port[] ports { get; set; }
+        //public Port[] ports { get; set; }
     }
 
     public class Port

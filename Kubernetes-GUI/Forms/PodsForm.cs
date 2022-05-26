@@ -33,7 +33,6 @@ namespace Kubernetes_GUI.Forms
             fillPodsDataGridView();
 
             getNamespaces();
-
             cmbBoxPodNamespace.Text = "default";
 
         }
