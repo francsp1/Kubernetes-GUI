@@ -132,7 +132,7 @@ namespace Kubernetes_GUI.Forms
 
                     deploymentsDataGridView.Rows.Add(
                         name     is null ? "" : name.ToString(),
-                        nspace   is null ? "" : name.ToString(),
+                        nspace   is null ? "" : nspace.ToString(),
                         images   is null ? "" : images.ToString(),
                         labels   is null ? "" : labels.ToString(),
                         "pods",
@@ -372,19 +372,42 @@ namespace Kubernetes_GUI.Forms
             }
         }
 
-        private void containersGridView_CellClick(object sender, DataGridViewCellEventArgs e)
+        private void deploymentsDataGridView_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.ColumnIndex == deploymentsDataGridView.Columns["deleteCollumn"].Index)
             {
-                //deleteContainer(containersGridView[0, e.RowIndex].Value.ToString());
+                MessageBox.Show("", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                deleteDeployment(deploymentsDataGridView[0, e.RowIndex].Value.ToString(), deploymentsDataGridView[1, e.RowIndex].Value.ToString());
                 fillDeploymentsDataGridView();
 
             }
         }
 
-        private void deleteContainer(string containerId)
+        private void deleteDeployment(string deploymentName, string deploymentNamespace)
         {
-            
+            try
+            {
+                string url = GlobalSessionDetails.Protocol + "://" + GlobalSessionDetails.Domain + ":" + GlobalSessionDetails.Port + "/apis/apps/v1/namespaces/" + deploymentNamespace + "/deployments/" + deploymentName;
+
+                var request = new HttpRequestMessage(HttpMethod.Delete, url);
+                var client = GlobalSessionDetails._clientFactory.CreateClient();
+
+                var response = client.SendAsync(request).Result;
+                var json = response.Content.ReadAsStringAsync().Result;
+
+                if (!response.IsSuccessStatusCode)
+                {
+                    MessageBox.Show(response.ReasonPhrase, "Could not Delete the pod!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+                MessageBox.Show("Pod deleted with success", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Exception excp)
+            {
+                MessageBox.Show("Could not Delete the pod! " + excp.InnerException.Message, excp.Message, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
         }
 
        

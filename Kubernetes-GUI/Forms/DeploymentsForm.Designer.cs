@@ -129,7 +129,7 @@ namespace Kubernetes_GUI.Forms
             this.deploymentsDataGridView.RowTemplate.Height = 24;
             this.deploymentsDataGridView.Size = new System.Drawing.Size(1505, 635);
             this.deploymentsDataGridView.TabIndex = 0;
-            this.deploymentsDataGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.containersGridView_CellClick);
+            this.deploymentsDataGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.deploymentsDataGridView_CellClick);
             // 
             // columnDeploymentName
             // 
