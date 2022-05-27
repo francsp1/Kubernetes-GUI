@@ -62,6 +62,13 @@ namespace Kubernetes_GUI.Forms
         private void fillDashboardTab()
         {
             //MessageBox.Show("Implementar dashboard", "Implementar dashboard", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            dashboardPanel.Controls.Clear();
+            DashboardForm dashboardForm = new DashboardForm();
+            dashboardForm.TopLevel = false;
+            dashboardForm.AutoScroll = true;
+            dashboardPanel.Controls.Add(dashboardForm);
+            dashboardForm.Show();
+            dashboardForm.Dock = DockStyle.Fill;
 
         }
 
