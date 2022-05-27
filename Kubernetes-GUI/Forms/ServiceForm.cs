@@ -21,13 +21,19 @@ namespace Kubernetes_GUI.Forms
         {
             InitializeComponent();
 
-            refresh();
+            //servicesDataGridView.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
+            //servicesDataGridView.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+
+            fillServicesDataGridView();
+
+            getNamespaces();
+            cmbBoxServiceNamespace.Text = "default";
         }
 
-        private void refresh()
+        private void fillServicesDataGridView()
         {
-            servicesGridView1.Rows.Clear();
-            servicesGridView1.Refresh();
+            servicesDataGridView.Rows.Clear();
+            servicesDataGridView.Refresh();
 
             getServices();
         }
@@ -98,7 +104,7 @@ namespace Kubernetes_GUI.Forms
                     created = diffOfDate.Days + " days " + diffOfDate.Hours + " hours and " + diffOfDate.Minutes + " min. ago";
                 }
 
-                servicesGridView1.Rows.Add(
+                servicesDataGridView.Rows.Add(
                     name is null ? "" : name.ToString(),
                     namespac is null ? "" : namespac.ToString(),
                     labels is null ? "" : labels.ToString(),
@@ -112,56 +118,127 @@ namespace Kubernetes_GUI.Forms
             }
         }
 
-        private void CreateKeyButton_Click(object sender, EventArgs e)
+        private void getNamespaces()
         {
-            string name = txtkeyName.Text;
-            if (String.IsNullOrWhiteSpace(name))
+            try
             {
-                MessageBox.Show("Please, enter a valid Key Pair Name", "Invalid field!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
+                string url = GlobalSessionDetails.Protocol + "://" + GlobalSessionDetails.Domain + ":" + GlobalSessionDetails.Port + "/api/v1/namespaces";
 
-            string type = typeComboBox.Text;
-            
-            KeyPair key = new KeyPair()
-            {
-                keypair = new
+                var request = new HttpRequestMessage(HttpMethod.Get, url);
+                var client = GlobalSessionDetails._clientFactory.CreateClient();
 
-                CreateKeysModel()
+                var response = client.SendAsync(request).Result;
+                var json = response.Content.ReadAsStringAsync().Result;
+
+                if (!response.IsSuccessStatusCode)
                 {
-                    Name = name,
-                    Type = type
+                    MessageBox.Show(response.ReasonPhrase, "Could not get the Namespaces", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
                 }
-            };
 
-            using (var client = new HttpClient())
+                JObject responseJsonObject = JObject.Parse(json);
+                JArray namespaces = (JArray)responseJsonObject["items"];
+
+                for (int i = 0; i < namespaces.Count; i++)
+                {
+
+                    var currentNamespace = namespaces[i];
+                    var name = currentNamespace["metadata"]["name"].ToString();
+
+                    if (name == null || name == "kube-system" || name == "kube-public" || name == "kube-node-lease")
+                    {
+                        continue;
+                    }
+
+                    cmbBoxServiceNamespace.Items.Add(name);
+
+                }
+            }
+            catch (Exception excp)
             {
-                var endpoint = new Uri(GlobalSessionDetails.Protocol + "://" + GlobalSessionDetails.Domain + ":" + GlobalSessionDetails.Port + "/compute/v2/" + GlobalSessionDetails.ProjectId + "/os-keypairs");
-
-                string requestJson = JsonConvert.SerializeObject(key);
-                var payload = new StringContent(requestJson, Encoding.UTF8, "application/json");
-
-                client.DefaultRequestHeaders.Add("X-Auth-Token", GlobalSessionDetails.ScopedToken);
-
-                client.DefaultRequestHeaders.ExpectContinue = false;
-                var result = client.PostAsync(endpoint, payload).Result;
-                var json = result.Content.ReadAsStringAsync().Result;
-
-                MessageBox.Show("Key Pair created sucessesfully", "Sucess!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                materialTabControl1.SelectedTab = tabPageServices;
-
-                refresh();
+                MessageBox.Show("Could not get the Namespaces! " + excp.InnerException.Message, excp.Message, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
             }
         }
 
+        private void btnCreateService_Click(object sender, EventArgs e)
+        {
+            string serviceName = txtServiceName.Text;
+            if (String.IsNullOrWhiteSpace(serviceName))
+            {
+                MessageBox.Show("Please, enter a valid Service name", "Invalid field!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            string deploymentName = txtServiceDeploymentName.Text;
+            if (String.IsNullOrWhiteSpace(deploymentName))
+            {
+                MessageBox.Show("Please, enter a valid deployment name", "Invalid field!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            string deploymentNamespace = cmbBoxServiceNamespace.SelectedItem.ToString();
+
+            string serviceProtocol = cmbBoxServiceProtocol.Text.ToUpper();
+            if (String.IsNullOrWhiteSpace(serviceProtocol) || (serviceProtocol != "TCP" && serviceProtocol != "UDP"))
+            {
+                MessageBox.Show("Please, enter a valid service protocol", "Invalid field!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            string servicePort = txtServicePort.Text;
+            if (!int.TryParse(servicePort, out int servicePortInt) || servicePortInt < 1 || servicePortInt > 65535)
+            {
+                MessageBox.Show("Please, enter a valid port", "Invalid field!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            string serviceTargetPort = txtServicePort.Text;
+            if (!int.TryParse(serviceTargetPort, out int serviceTargetPortInt) || serviceTargetPortInt < 1 || serviceTargetPortInt > 65535)
+            {
+                MessageBox.Show("Please, enter a valid port", "Invalid field!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            ServiceSpecPort[] ports = new ServiceSpecPort[1];
+            ports[0] = new ServiceSpecPort
+            {
+                protocol = serviceProtocol,
+                port = servicePortInt,
+                targetPort = serviceTargetPortInt,
+            };
+
+            Models.Service service = new Service
+            {
+                apiVersion = "v1",
+                kind = "Service",
+                metadata = new ServiceMetadata
+                {
+                    name = serviceName,
+                },
+                spec = new ServiceSpec
+                {
+                    selector = new ServiceSpecSelector 
+                    {
+                        app = deploymentName,
+                    },
+                    ports = ports,
+                },
+
+            };
+
+            string requestJson = JsonConvert.SerializeObject(service);
+
+        }
+
+
         private void cellclick_delete(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.ColumnIndex == servicesGridView1.Columns["deleteColumn"].Index)
+            if (e.ColumnIndex == servicesDataGridView.Columns["deleteColumn"].Index)
             {
 
-                deleteKey(servicesGridView1[0, e.RowIndex].Value.ToString());
-                refresh();
+                deleteKey(servicesDataGridView[0, e.RowIndex].Value.ToString());
+                fillServicesDataGridView();
             }
         }
 
@@ -185,12 +262,20 @@ namespace Kubernetes_GUI.Forms
                 MessageBox.Show("Key Pair deleted with success", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
             }
-            refresh();
+            fillServicesDataGridView();
         }
 
-        private void servicesGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        
+
+        private void onlyNumbers_KeyPress(object sender, KeyPressEventArgs e)
         {
-
+            char ch = e.KeyChar;
+            if (!char.IsDigit(ch) &&
+                ch != Convert.ToChar(Keys.Back) &&
+                    ch != Convert.ToChar(Keys.Delete))
+                e.Handled = true;
         }
+
+        
     }
 }

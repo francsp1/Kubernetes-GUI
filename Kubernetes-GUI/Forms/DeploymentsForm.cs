@@ -200,7 +200,9 @@ namespace Kubernetes_GUI.Forms
                 MessageBox.Show("Please, enter a valid Deployment name", "Invalid field!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
+
             string deploymentNamespace = cmbBoxDeploymentNamespace.SelectedItem.ToString();
+
             string replicas = txtDeploymentReplicas.Text;
             if (!int.TryParse(replicas, out int replicasInt))
             {
@@ -395,14 +397,14 @@ namespace Kubernetes_GUI.Forms
 
                 if (!response.IsSuccessStatusCode)
                 {
-                    MessageBox.Show(response.ReasonPhrase, "Could not Delete the pod!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(response.ReasonPhrase, "Could not Delete the deployment!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
-                MessageBox.Show("Pod deleted with success", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Deployment deleted with success", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch (Exception excp)
             {
-                MessageBox.Show("Could not Delete the pod! " + excp.InnerException.Message, excp.Message, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Could not Delete the deployment! " + excp.InnerException.Message, excp.Message, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
         }
