@@ -43,6 +43,11 @@ namespace Kubernetes_GUI.Forms
             JObject responseJsonObject = JObject.Parse(json);
             JArray pods = (JArray)responseJsonObject["items"];
 
+            int count = 0;
+            count = pods.Count;
+
+            CountPodmaterialLabel.Text = count.ToString();
+
             for (int i = 0; i < pods.Count; i++)
             {
                 var currentPod = pods[i];
@@ -71,7 +76,6 @@ namespace Kubernetes_GUI.Forms
                     node is null ? "" : node.ToString(),
                     status is null ? "" : status.ToString());                    
             }
-
         }
 
         private void getServ()
@@ -92,6 +96,11 @@ namespace Kubernetes_GUI.Forms
 
             JObject responseJsonObject = JObject.Parse(json);
             JArray services = (JArray)responseJsonObject["items"];
+
+            int count = 0;
+            count = services.Count;
+
+            CountServicesmaterialLabel.Text = count.ToString();
 
             for (int i = 0; i < services.Count; i++)
             {
@@ -120,20 +129,40 @@ namespace Kubernetes_GUI.Forms
             }
 
             JObject responseJsonObject = JObject.Parse(json);
-            JArray pods = (JArray)responseJsonObject["items"];
+            JArray dep = (JArray)responseJsonObject["items"];
 
-            for (int i = 0; i < pods.Count; i++)
+            int count = 0;
+            count = dep.Count;
+
+            CountDepmaterialLabel.Text = count.ToString();
+
+            for (int i = 0; i < dep.Count; i++)
             {
-                var currentPod = pods[i];
+                var currentDeployment = dep[i];
 
-                var name = currentPod["metadata"]["name"];
+                var name = currentDeployment["metadata"]["name"];
 
-                var status = currentPod["status"]["phase"];
+                string images = null;
+                foreach (var item in currentDeployment["spec"]["template"]["spec"]["containers"])
+                {
+                    images = images + item["image"].ToString() + "\n";
 
+                }
+                if (images != null)
+                {
+                    images = images.Replace("\"", string.Empty);
+
+                }
+                
                 dataGridView3.Rows.Add(
-                    name is null ? "" : name.ToString());
-            }
+                    name is null ? "" : name.ToString(),
+                    images is null ? "" : images.ToString(),
+                    "pods"
+                );
 
+                
+
+            }
         }
 
         private void chart1_Click(object sender, EventArgs e)
