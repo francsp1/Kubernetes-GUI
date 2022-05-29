@@ -51,12 +51,10 @@ namespace Kubernetes_GUI.Forms
             this.lblServicePort = new MaterialSkin.Controls.MaterialLabel();
             this.cmbBoxServiceProtocol = new MaterialSkin.Controls.MaterialComboBox();
             this.lblServiceProtocol = new MaterialSkin.Controls.MaterialLabel();
-            this.txtServiceDeploymentName = new MaterialSkin.Controls.MaterialTextBox();
             this.lblServiceDeployment = new MaterialSkin.Controls.MaterialLabel();
-            this.cmbBoxServiceNamespace = new MaterialSkin.Controls.MaterialComboBox();
-            this.lblServiceNamespace = new MaterialSkin.Controls.MaterialLabel();
             this.txtServiceName = new MaterialSkin.Controls.MaterialTextBox();
             this.lblDeploymentName = new MaterialSkin.Controls.MaterialLabel();
+            this.cmbBoxServiceDeploymentName = new MaterialSkin.Controls.MaterialComboBox();
             this.materialTabControl1.SuspendLayout();
             this.tabPageServices.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.servicesDataGridView)).BeginInit();
@@ -209,6 +207,7 @@ namespace Kubernetes_GUI.Forms
             // tabPageCreateService
             // 
             this.tabPageCreateService.BackColor = System.Drawing.Color.White;
+            this.tabPageCreateService.Controls.Add(this.cmbBoxServiceDeploymentName);
             this.tabPageCreateService.Controls.Add(this.btnCreateService);
             this.tabPageCreateService.Controls.Add(this.lblServiceTargetPort);
             this.tabPageCreateService.Controls.Add(this.txtServiceTargetPort);
@@ -216,10 +215,7 @@ namespace Kubernetes_GUI.Forms
             this.tabPageCreateService.Controls.Add(this.lblServicePort);
             this.tabPageCreateService.Controls.Add(this.cmbBoxServiceProtocol);
             this.tabPageCreateService.Controls.Add(this.lblServiceProtocol);
-            this.tabPageCreateService.Controls.Add(this.txtServiceDeploymentName);
             this.tabPageCreateService.Controls.Add(this.lblServiceDeployment);
-            this.tabPageCreateService.Controls.Add(this.cmbBoxServiceNamespace);
-            this.tabPageCreateService.Controls.Add(this.lblServiceNamespace);
             this.tabPageCreateService.Controls.Add(this.txtServiceName);
             this.tabPageCreateService.Controls.Add(this.lblDeploymentName);
             this.tabPageCreateService.Location = new System.Drawing.Point(4, 25);
@@ -237,7 +233,7 @@ namespace Kubernetes_GUI.Forms
             this.btnCreateService.Depth = 0;
             this.btnCreateService.HighEmphasis = true;
             this.btnCreateService.Icon = null;
-            this.btnCreateService.Location = new System.Drawing.Point(335, 404);
+            this.btnCreateService.Location = new System.Drawing.Point(335, 310);
             this.btnCreateService.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btnCreateService.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnCreateService.Name = "btnCreateService";
@@ -255,7 +251,7 @@ namespace Kubernetes_GUI.Forms
             this.lblServiceTargetPort.AutoSize = true;
             this.lblServiceTargetPort.Depth = 0;
             this.lblServiceTargetPort.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.lblServiceTargetPort.Location = new System.Drawing.Point(326, 305);
+            this.lblServiceTargetPort.Location = new System.Drawing.Point(326, 211);
             this.lblServiceTargetPort.MouseState = MaterialSkin.MouseState.HOVER;
             this.lblServiceTargetPort.Name = "lblServiceTargetPort";
             this.lblServiceTargetPort.Size = new System.Drawing.Size(79, 19);
@@ -269,7 +265,7 @@ namespace Kubernetes_GUI.Forms
             this.txtServiceTargetPort.Depth = 0;
             this.txtServiceTargetPort.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.txtServiceTargetPort.LeadingIcon = null;
-            this.txtServiceTargetPort.Location = new System.Drawing.Point(329, 326);
+            this.txtServiceTargetPort.Location = new System.Drawing.Point(329, 232);
             this.txtServiceTargetPort.MaxLength = 50;
             this.txtServiceTargetPort.MouseState = MaterialSkin.MouseState.OUT;
             this.txtServiceTargetPort.Multiline = false;
@@ -287,7 +283,7 @@ namespace Kubernetes_GUI.Forms
             this.txtServicePort.Depth = 0;
             this.txtServicePort.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.txtServicePort.LeadingIcon = null;
-            this.txtServicePort.Location = new System.Drawing.Point(193, 328);
+            this.txtServicePort.Location = new System.Drawing.Point(193, 234);
             this.txtServicePort.MaxLength = 50;
             this.txtServicePort.MouseState = MaterialSkin.MouseState.OUT;
             this.txtServicePort.Multiline = false;
@@ -303,7 +299,7 @@ namespace Kubernetes_GUI.Forms
             this.lblServicePort.AutoSize = true;
             this.lblServicePort.Depth = 0;
             this.lblServicePort.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.lblServicePort.Location = new System.Drawing.Point(190, 305);
+            this.lblServicePort.Location = new System.Drawing.Point(190, 211);
             this.lblServicePort.MouseState = MaterialSkin.MouseState.HOVER;
             this.lblServicePort.Name = "lblServicePort";
             this.lblServicePort.Size = new System.Drawing.Size(30, 19);
@@ -327,7 +323,7 @@ namespace Kubernetes_GUI.Forms
             this.cmbBoxServiceProtocol.Items.AddRange(new object[] {
             "TCP",
             "UDP"});
-            this.cmbBoxServiceProtocol.Location = new System.Drawing.Point(37, 327);
+            this.cmbBoxServiceProtocol.Location = new System.Drawing.Point(37, 233);
             this.cmbBoxServiceProtocol.MaxDropDownItems = 4;
             this.cmbBoxServiceProtocol.MouseState = MaterialSkin.MouseState.OUT;
             this.cmbBoxServiceProtocol.Name = "cmbBoxServiceProtocol";
@@ -340,29 +336,12 @@ namespace Kubernetes_GUI.Forms
             this.lblServiceProtocol.AutoSize = true;
             this.lblServiceProtocol.Depth = 0;
             this.lblServiceProtocol.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.lblServiceProtocol.Location = new System.Drawing.Point(34, 305);
+            this.lblServiceProtocol.Location = new System.Drawing.Point(34, 211);
             this.lblServiceProtocol.MouseState = MaterialSkin.MouseState.HOVER;
             this.lblServiceProtocol.Name = "lblServiceProtocol";
             this.lblServiceProtocol.Size = new System.Drawing.Size(60, 19);
             this.lblServiceProtocol.TabIndex = 44;
             this.lblServiceProtocol.Text = "Protocol";
-            // 
-            // txtServiceDeploymentNamee
-            // 
-            this.txtServiceDeploymentName.AnimateReadOnly = false;
-            this.txtServiceDeploymentName.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtServiceDeploymentName.Depth = 0;
-            this.txtServiceDeploymentName.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.txtServiceDeploymentName.LeadingIcon = null;
-            this.txtServiceDeploymentName.Location = new System.Drawing.Point(37, 140);
-            this.txtServiceDeploymentName.MaxLength = 50;
-            this.txtServiceDeploymentName.MouseState = MaterialSkin.MouseState.OUT;
-            this.txtServiceDeploymentName.Multiline = false;
-            this.txtServiceDeploymentName.Name = "txtServiceDeploymentNamee";
-            this.txtServiceDeploymentName.Size = new System.Drawing.Size(399, 50);
-            this.txtServiceDeploymentName.TabIndex = 43;
-            this.txtServiceDeploymentName.Text = "";
-            this.txtServiceDeploymentName.TrailingIcon = null;
             // 
             // lblServiceDeployment
             // 
@@ -375,40 +354,6 @@ namespace Kubernetes_GUI.Forms
             this.lblServiceDeployment.Size = new System.Drawing.Size(132, 19);
             this.lblServiceDeployment.TabIndex = 42;
             this.lblServiceDeployment.Text = "Deployment Name";
-            // 
-            // cmbBoxServiceNamespace
-            // 
-            this.cmbBoxServiceNamespace.AutoResize = false;
-            this.cmbBoxServiceNamespace.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.cmbBoxServiceNamespace.Depth = 0;
-            this.cmbBoxServiceNamespace.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
-            this.cmbBoxServiceNamespace.DropDownHeight = 174;
-            this.cmbBoxServiceNamespace.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbBoxServiceNamespace.DropDownWidth = 121;
-            this.cmbBoxServiceNamespace.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
-            this.cmbBoxServiceNamespace.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.cmbBoxServiceNamespace.FormattingEnabled = true;
-            this.cmbBoxServiceNamespace.IntegralHeight = false;
-            this.cmbBoxServiceNamespace.ItemHeight = 43;
-            this.cmbBoxServiceNamespace.Location = new System.Drawing.Point(37, 234);
-            this.cmbBoxServiceNamespace.MaxDropDownItems = 4;
-            this.cmbBoxServiceNamespace.MouseState = MaterialSkin.MouseState.OUT;
-            this.cmbBoxServiceNamespace.Name = "cmbBoxServiceNamespace";
-            this.cmbBoxServiceNamespace.Size = new System.Drawing.Size(399, 49);
-            this.cmbBoxServiceNamespace.StartIndex = 0;
-            this.cmbBoxServiceNamespace.TabIndex = 32;
-            // 
-            // lblServiceNamespace
-            // 
-            this.lblServiceNamespace.AutoSize = true;
-            this.lblServiceNamespace.Depth = 0;
-            this.lblServiceNamespace.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.lblServiceNamespace.Location = new System.Drawing.Point(34, 212);
-            this.lblServiceNamespace.MouseState = MaterialSkin.MouseState.HOVER;
-            this.lblServiceNamespace.Name = "lblServiceNamespace";
-            this.lblServiceNamespace.Size = new System.Drawing.Size(85, 19);
-            this.lblServiceNamespace.TabIndex = 31;
-            this.lblServiceNamespace.Text = "Namespace";
             // 
             // txtServiceName
             // 
@@ -438,6 +383,28 @@ namespace Kubernetes_GUI.Forms
             this.lblDeploymentName.Size = new System.Drawing.Size(96, 19);
             this.lblDeploymentName.TabIndex = 29;
             this.lblDeploymentName.Text = "Service name";
+            // 
+            // cmbBoxServiceDeploymentName
+            // 
+            this.cmbBoxServiceDeploymentName.AutoResize = false;
+            this.cmbBoxServiceDeploymentName.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.cmbBoxServiceDeploymentName.Depth = 0;
+            this.cmbBoxServiceDeploymentName.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
+            this.cmbBoxServiceDeploymentName.DropDownHeight = 174;
+            this.cmbBoxServiceDeploymentName.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbBoxServiceDeploymentName.DropDownWidth = 121;
+            this.cmbBoxServiceDeploymentName.Font = new System.Drawing.Font("Roboto Medium", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
+            this.cmbBoxServiceDeploymentName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.cmbBoxServiceDeploymentName.FormattingEnabled = true;
+            this.cmbBoxServiceDeploymentName.IntegralHeight = false;
+            this.cmbBoxServiceDeploymentName.ItemHeight = 43;
+            this.cmbBoxServiceDeploymentName.Location = new System.Drawing.Point(37, 140);
+            this.cmbBoxServiceDeploymentName.MaxDropDownItems = 4;
+            this.cmbBoxServiceDeploymentName.MouseState = MaterialSkin.MouseState.OUT;
+            this.cmbBoxServiceDeploymentName.Name = "cmbBoxServiceDeploymentName";
+            this.cmbBoxServiceDeploymentName.Size = new System.Drawing.Size(399, 49);
+            this.cmbBoxServiceDeploymentName.StartIndex = 0;
+            this.cmbBoxServiceDeploymentName.TabIndex = 51;
             // 
             // ServiceForm
             // 
@@ -483,11 +450,8 @@ namespace Kubernetes_GUI.Forms
         private System.Windows.Forms.DataGridViewTextBoxColumn externalColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn createdColumn;
         private System.Windows.Forms.DataGridViewImageColumn deleteColumn;
-        private MaterialSkin.Controls.MaterialComboBox cmbBoxServiceNamespace;
-        private MaterialSkin.Controls.MaterialLabel lblServiceNamespace;
         private MaterialSkin.Controls.MaterialTextBox txtServiceName;
         private MaterialSkin.Controls.MaterialLabel lblDeploymentName;
-        private MaterialSkin.Controls.MaterialTextBox txtServiceDeploymentName;
         private MaterialSkin.Controls.MaterialLabel lblServiceDeployment;
         private MaterialSkin.Controls.MaterialComboBox cmbBoxServiceProtocol;
         private MaterialSkin.Controls.MaterialLabel lblServiceProtocol;
@@ -496,5 +460,6 @@ namespace Kubernetes_GUI.Forms
         private MaterialSkin.Controls.MaterialTextBox txtServiceTargetPort;
         private MaterialSkin.Controls.MaterialLabel lblServiceTargetPort;
         private MaterialSkin.Controls.MaterialButton btnCreateService;
+        private MaterialSkin.Controls.MaterialComboBox cmbBoxServiceDeploymentName;
     }
 }

@@ -26,10 +26,43 @@ namespace Kubernetes_GUI.Forms
 
             fillServicesDataGridView();
 
-            getNamespaces();
-            cmbBoxServiceNamespace.Text = "default";
+            fillCmbBoxServiceDeploymentName();
+
         }
 
+        
+
+        private void fillCmbBoxServiceDeploymentName()
+        {
+
+            var deployments = DeploymentsForm.getDeployments();
+            if (deployments == null)
+            {
+                return;
+            }
+
+            for (int i = 0; i < deployments.Count; i++)
+            {
+
+                var currentNamespace = deployments[i];
+                var name = currentNamespace["metadata"]["name"].ToString();
+
+                if (name == null || 
+                    name == "kubernetes-dashboard" || 
+                    name == "dashboard-metrics-scraper" || 
+                    name == "hostpath-provisioner" ||
+                    name == "metrics-server" ||
+                    name == "coredns" ||
+                    name == "calico-kube-controllers" 
+                    )
+                {
+                    continue;
+                }
+
+                cmbBoxServiceDeploymentName.Items.Add(name);
+
+            }
+        }
         private void fillServicesDataGridView()
         {
             servicesDataGridView.Rows.Clear();
@@ -37,7 +70,6 @@ namespace Kubernetes_GUI.Forms
 
             getServices();
         }
-
         private void getServices()
         {
             string url = GlobalSessionDetails.Protocol + "://" + GlobalSessionDetails.Domain + ":" + GlobalSessionDetails.Port + "/api/v1/services";
@@ -66,10 +98,14 @@ namespace Kubernetes_GUI.Forms
                 var namespac = currentService["metadata"]["namespace"];
 
                 string labels = null;
-                foreach (var item in currentService["metadata"]["labels"])
+                if(currentService["metadata"]["labels"] != null)
                 {
-                    labels = labels + item.ToString() + currentService["component"] + currentService["provider"] + " \n ";
+                    foreach (var item in currentService["metadata"]["labels"])
+                    {
+                        labels = labels + item.ToString() + currentService["component"] + currentService["provider"] + " \n ";
+                    }
                 }
+                
                 if (labels != null)
                 {
                     labels = labels.Replace("\"", string.Empty);
@@ -118,48 +154,7 @@ namespace Kubernetes_GUI.Forms
             }
         }
 
-        private void getNamespaces()
-        {
-            try
-            {
-                string url = GlobalSessionDetails.Protocol + "://" + GlobalSessionDetails.Domain + ":" + GlobalSessionDetails.Port + "/api/v1/namespaces";
-
-                var request = new HttpRequestMessage(HttpMethod.Get, url);
-                var client = GlobalSessionDetails._clientFactory.CreateClient();
-
-                var response = client.SendAsync(request).Result;
-                var json = response.Content.ReadAsStringAsync().Result;
-
-                if (!response.IsSuccessStatusCode)
-                {
-                    MessageBox.Show(response.ReasonPhrase, "Could not get the Namespaces", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }
-
-                JObject responseJsonObject = JObject.Parse(json);
-                JArray namespaces = (JArray)responseJsonObject["items"];
-
-                for (int i = 0; i < namespaces.Count; i++)
-                {
-
-                    var currentNamespace = namespaces[i];
-                    var name = currentNamespace["metadata"]["name"].ToString();
-
-                    if (name == null || name == "kube-system" || name == "kube-public" || name == "kube-node-lease")
-                    {
-                        continue;
-                    }
-
-                    cmbBoxServiceNamespace.Items.Add(name);
-
-                }
-            }
-            catch (Exception excp)
-            {
-                MessageBox.Show("Could not get the Namespaces! " + excp.InnerException.Message, excp.Message, MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-        }
+       
 
         private void btnCreateService_Click(object sender, EventArgs e)
         {
@@ -170,14 +165,20 @@ namespace Kubernetes_GUI.Forms
                 return;
             }
 
-            string deploymentName = txtServiceDeploymentName.Text;
+            
+            string deploymentName = cmbBoxServiceDeploymentName.Text;
             if (String.IsNullOrWhiteSpace(deploymentName))
             {
                 MessageBox.Show("Please, enter a valid deployment name", "Invalid field!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
-            string deploymentNamespace = cmbBoxServiceNamespace.SelectedItem.ToString();
+
+            string serviceNamespace = DeploymentsForm.getNamespace(deploymentName);
+            if (String.IsNullOrWhiteSpace(serviceNamespace)){
+                MessageBox.Show("Could not get the deployment namespace!", "Request Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
 
             string serviceProtocol = cmbBoxServiceProtocol.Text.ToUpper();
             if (String.IsNullOrWhiteSpace(serviceProtocol) || (serviceProtocol != "TCP" && serviceProtocol != "UDP"))
@@ -223,11 +224,45 @@ namespace Kubernetes_GUI.Forms
                         app = deploymentName,
                     },
                     ports = ports,
+
+                    type = "NodePort",
                 },
 
             };
 
-            string requestJson = JsonConvert.SerializeObject(service);
+            try
+            {
+                string url = GlobalSessionDetails.Protocol + "://" + GlobalSessionDetails.Domain + ":" + GlobalSessionDetails.Port + "/api/v1/namespaces/" + serviceNamespace + "/services";
+
+                string requestJson = JsonConvert.SerializeObject(service);
+                var payload = new StringContent(requestJson, Encoding.UTF8, "application/json");
+
+                var request = new HttpRequestMessage(HttpMethod.Post, url)
+                {
+                    Content = payload,
+                };
+
+                var client = GlobalSessionDetails._clientFactory.CreateClient();
+
+                var response = client.SendAsync(request).Result;
+                var json = response.Content.ReadAsStringAsync().Result;
+
+                if (!response.IsSuccessStatusCode)
+                {
+                    MessageBox.Show(response.ReasonPhrase, "Could not create the Service", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+                MessageBox.Show("Service created with success", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Exception excp)
+            {
+                MessageBox.Show("Could not create the Service!" + excp.InnerException.Message, excp.Message, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            //deploymentsTabControl.SelectedTab = deploymentsTab;
+            //fillDeploymentsDataGridView();
+
 
         }
 

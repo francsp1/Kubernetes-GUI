@@ -65,10 +65,69 @@ namespace Kubernetes_GUI.Forms
             deploymentsDataGridView.Rows.Clear();
             deploymentsDataGridView.Refresh(); ;
 
-            getDeployments();
+            JArray deployments = getDeployments();
+
+            if(deployments == null)
+            {
+                return;
+            }
+
+            for (int i = 0; i < deployments.Count; i++)
+            {
+                var currentDeployment = deployments[i];
+                var name = currentDeployment["metadata"]["name"];
+
+                var nspace = currentDeployment["metadata"]["namespace"];
+
+                string images = null;
+                foreach (var item in currentDeployment["spec"]["template"]["spec"]["containers"])
+                {
+                    images = images + item["image"].ToString() + "\n";
+
+                }
+                if (images != null)
+                {
+                    images = images.Replace("\"", string.Empty);
+
+                }
+
+                string labels = null;
+                foreach (var item in currentDeployment["metadata"]["labels"])
+                {
+                    labels = labels + item.ToString() + "\n";
+                }
+                if (labels != null)
+                {
+                    labels = labels.Replace("\"", string.Empty);
+                }
+
+
+                string created = null;
+                var creationTimestamp = currentDeployment["metadata"]["creationTimestamp"];
+                if (creationTimestamp != null)
+                {
+                    DateTime prevDate = Convert.ToDateTime(creationTimestamp).ToUniversalTime(); ;
+                    DateTime today = DateTime.Now.ToUniversalTime();
+
+                    var diffOfDate = (today - prevDate);
+                    created = diffOfDate.Days + " days " + diffOfDate.Hours + " hours and " + diffOfDate.Minutes + " min. ago";
+                }
+
+                deploymentsDataGridView.Rows.Add(
+                    name is null ? "" : name.ToString(),
+                    nspace is null ? "" : nspace.ToString(),
+                    images is null ? "" : images.ToString(),
+                    labels is null ? "" : labels.ToString(),
+                    "pods",
+                    created is null ? "" : created.ToString()
+                    );
+            }
+
+
+
         }
 
-        private void getDeployments()
+        private void getDeploymentsss()
         {
             try
             {
@@ -148,6 +207,8 @@ namespace Kubernetes_GUI.Forms
             }
         }
 
+        
+
         private void getNamespaces()
         {
             try
@@ -190,6 +251,7 @@ namespace Kubernetes_GUI.Forms
                 return;
             }
         }
+
 
         private void btnCreateDeployment_Click(object sender, EventArgs e)
         {
@@ -301,10 +363,6 @@ namespace Kubernetes_GUI.Forms
 
                 var client = GlobalSessionDetails._clientFactory.CreateClient();
 
-                client.DefaultRequestHeaders.Add("X-Auth-Token", "gAAAAABiVfjacfcmk3McvrzNohg3zqvGVTYeaiuJdGgNhOAcHOcGC7-rJbqOtot-wVk3o3xfpk72Ak1RkBHbFthZV0-rhEtK2wykmwztA8V8Gp7K8ICazSjobHQ_vpslc2bZWELeVbtFfAN4fS2HrzcEfyBulTfBWJnz5AbUbelZQZg_Bg1g3D0");
-
-                client.DefaultRequestHeaders.ExpectContinue = false;
-
                 var response = client.SendAsync(request).Result;
                 var json = response.Content.ReadAsStringAsync().Result;
 
@@ -409,8 +467,53 @@ namespace Kubernetes_GUI.Forms
             }
         }
 
-       
+        public static JArray getDeployments()
+        {
 
+            try
+            {
+                string url = GlobalSessionDetails.Protocol + "://" + GlobalSessionDetails.Domain + ":" + GlobalSessionDetails.Port + "/apis/apps/v1/deployments";
+
+                var request = new HttpRequestMessage(HttpMethod.Get, url);
+                var client = GlobalSessionDetails._clientFactory.CreateClient();
+
+                var response = client.SendAsync(request).Result;
+                var json = response.Content.ReadAsStringAsync().Result;
+
+                if (!response.IsSuccessStatusCode)
+                {
+                    MessageBox.Show(response.ReasonPhrase, "Could not get the Deployments", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return null;
+                }
+                return (JArray)JObject.Parse(json)["items"];
+            }
+            catch (Exception excp)
+            {
+                MessageBox.Show("Could not get the Deployments! " + excp.InnerException.Message, excp.Message, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
+
+        }
+
+
+        public static string getNamespace(string deploymentName)
+        {
+            var deployments = getDeployments();
+
+            for (int i = 0; i < deployments.Count; i++)
+            {
+
+                var currentNamespace = deployments[i];
+                var name = currentNamespace["metadata"]["name"].ToString();
+
+                if (name == deploymentName)
+                {
+                    return currentNamespace["metadata"]["namespace"].ToString();
+                }
+
+            }
+            return null;
+        }
         private void onlyNumbers_KeyPress(object sender, KeyPressEventArgs e)
         {
             char ch = e.KeyChar;
@@ -419,6 +522,8 @@ namespace Kubernetes_GUI.Forms
                     ch != Convert.ToChar(Keys.Delete))
                 e.Handled = true;
         }
+
+        
 
         
     }

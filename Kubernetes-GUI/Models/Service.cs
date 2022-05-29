@@ -24,6 +24,8 @@ namespace Kubernetes_GUI.Models
     {
         public ServiceSpecSelector selector { get; set; }
         public ServiceSpecPort[] ports { get; set; }
+
+        public string type { get; set; }
     }
 
     public class ServiceSpecSelector
