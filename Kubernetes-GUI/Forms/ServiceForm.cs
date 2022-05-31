@@ -272,32 +272,35 @@ namespace Kubernetes_GUI.Forms
             if (e.ColumnIndex == servicesDataGridView.Columns["deleteColumn"].Index)
             {
 
-                deleteKey(servicesDataGridView[0, e.RowIndex].Value.ToString());
+                deleteService(servicesDataGridView[0, e.RowIndex].Value.ToString(), servicesDataGridView[1, e.RowIndex].Value.ToString());
                 fillServicesDataGridView();
             }
         }
 
-        private void deleteKey(string keyID)
+        private void deleteService(string serviceName, string serviceNamespace)
         {
-            using (var client = new HttpClient())
+            try
             {
-                var endpoint = new Uri(GlobalSessionDetails.Protocol + "://" + GlobalSessionDetails.Domain + ":" + GlobalSessionDetails.Port + "/compute/v2/" + GlobalSessionDetails.ProjectId + "/os-keypairs/" + keyID); 
+                string url = GlobalSessionDetails.Protocol + "://" + GlobalSessionDetails.Domain + ":" + GlobalSessionDetails.Port + "/api/v1/namespaces/" + serviceNamespace + "/services/" + serviceName;
 
-                client.DefaultRequestHeaders.Add("X-Auth-Token", GlobalSessionDetails.ScopedToken);
+                var request = new HttpRequestMessage(HttpMethod.Delete, url);
+                var client = GlobalSessionDetails._clientFactory.CreateClient();
 
-                client.DefaultRequestHeaders.ExpectContinue = false;
-                var result = client.DeleteAsync(endpoint).Result;
-                var json = result.Content.ReadAsStringAsync().Result;
+                var response = client.SendAsync(request).Result;
+                var json = response.Content.ReadAsStringAsync().Result;
 
-                if (!result.IsSuccessStatusCode)
+                if (!response.IsSuccessStatusCode)
                 {
-                    MessageBox.Show(result.ReasonPhrase, "Could not Delete the Key", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(response.ReasonPhrase, "Could not Delete the service!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
-                MessageBox.Show("Key Pair deleted with success", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
+                MessageBox.Show("Service deleted with success", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-            fillServicesDataGridView();
+            catch (Exception excp)
+            {
+                MessageBox.Show("Could not Delete the service! " + excp.InnerException.Message, excp.Message, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
         }
 
         
