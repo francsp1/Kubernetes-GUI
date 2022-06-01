@@ -20,21 +20,11 @@ namespace Kubernetes_GUI.Forms
 
             materialSkinInitialize();
 
-            
+            /*
             txtDomain.Text = "192.168.100.150";
             txtPort.Text = "8001";
-            /*
-            txtUsername.Text = "demo";
-            //txtPassword.Text = "secret";
-            txtPassword.Text = "password";
             */
-
-            /*
-            txtDomain.Text = "127.0.0.1";
-            txtPort.Text = "8080";
-            txtUsername.Text = "demo";
-            txtPassword.Text = "secret";
-            */
+         
 
         }
 
