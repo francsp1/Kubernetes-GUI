@@ -44,6 +44,7 @@ namespace Kubernetes_GUI.Forms
             this.deleteColumn = new System.Windows.Forms.DataGridViewImageColumn();
             this.Servicepanel = new System.Windows.Forms.Panel();
             this.tabPageCreateService = new System.Windows.Forms.TabPage();
+            this.cmbBoxServiceDeploymentName = new MaterialSkin.Controls.MaterialComboBox();
             this.btnCreateService = new MaterialSkin.Controls.MaterialButton();
             this.lblServiceTargetPort = new MaterialSkin.Controls.MaterialLabel();
             this.txtServiceTargetPort = new MaterialSkin.Controls.MaterialTextBox();
@@ -54,7 +55,6 @@ namespace Kubernetes_GUI.Forms
             this.lblServiceDeployment = new MaterialSkin.Controls.MaterialLabel();
             this.txtServiceName = new MaterialSkin.Controls.MaterialTextBox();
             this.lblDeploymentName = new MaterialSkin.Controls.MaterialLabel();
-            this.cmbBoxServiceDeploymentName = new MaterialSkin.Controls.MaterialComboBox();
             this.materialTabControl1.SuspendLayout();
             this.tabPageServices.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.servicesDataGridView)).BeginInit();
@@ -69,10 +69,10 @@ namespace Kubernetes_GUI.Forms
             this.keysTabSelector1.Dock = System.Windows.Forms.DockStyle.Top;
             this.keysTabSelector1.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.keysTabSelector1.Location = new System.Drawing.Point(0, 0);
-            this.keysTabSelector1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.keysTabSelector1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.keysTabSelector1.MouseState = MaterialSkin.MouseState.HOVER;
             this.keysTabSelector1.Name = "keysTabSelector1";
-            this.keysTabSelector1.Size = new System.Drawing.Size(1519, 48);
+            this.keysTabSelector1.Size = new System.Drawing.Size(1139, 39);
             this.keysTabSelector1.TabIndex = 0;
             this.keysTabSelector1.Text = "materialTabSelector1";
             // 
@@ -82,13 +82,12 @@ namespace Kubernetes_GUI.Forms
             this.materialTabControl1.Controls.Add(this.tabPageCreateService);
             this.materialTabControl1.Depth = 0;
             this.materialTabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.materialTabControl1.Location = new System.Drawing.Point(0, 48);
-            this.materialTabControl1.Margin = new System.Windows.Forms.Padding(4);
+            this.materialTabControl1.Location = new System.Drawing.Point(0, 39);
             this.materialTabControl1.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialTabControl1.Multiline = true;
             this.materialTabControl1.Name = "materialTabControl1";
             this.materialTabControl1.SelectedIndex = 0;
-            this.materialTabControl1.Size = new System.Drawing.Size(1519, 620);
+            this.materialTabControl1.Size = new System.Drawing.Size(1139, 504);
             this.materialTabControl1.TabIndex = 1;
             // 
             // tabPageServices
@@ -96,11 +95,10 @@ namespace Kubernetes_GUI.Forms
             this.tabPageServices.BackColor = System.Drawing.Color.White;
             this.tabPageServices.Controls.Add(this.servicesDataGridView);
             this.tabPageServices.Controls.Add(this.Servicepanel);
-            this.tabPageServices.Location = new System.Drawing.Point(4, 25);
-            this.tabPageServices.Margin = new System.Windows.Forms.Padding(4);
+            this.tabPageServices.Location = new System.Drawing.Point(4, 22);
             this.tabPageServices.Name = "tabPageServices";
-            this.tabPageServices.Padding = new System.Windows.Forms.Padding(4);
-            this.tabPageServices.Size = new System.Drawing.Size(1511, 591);
+            this.tabPageServices.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPageServices.Size = new System.Drawing.Size(1131, 478);
             this.tabPageServices.TabIndex = 0;
             this.tabPageServices.Text = "Services";
             // 
@@ -109,7 +107,6 @@ namespace Kubernetes_GUI.Forms
             this.servicesDataGridView.AllowUserToAddRows = false;
             this.servicesDataGridView.BackgroundColor = System.Drawing.Color.White;
             this.servicesDataGridView.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.servicesDataGridView.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.servicesDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.servicesDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.NameColumn,
@@ -122,11 +119,10 @@ namespace Kubernetes_GUI.Forms
             this.createdColumn,
             this.deleteColumn});
             this.servicesDataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.servicesDataGridView.Location = new System.Drawing.Point(4, 4);
-            this.servicesDataGridView.Margin = new System.Windows.Forms.Padding(4);
+            this.servicesDataGridView.Location = new System.Drawing.Point(3, 3);
             this.servicesDataGridView.Name = "servicesDataGridView";
             this.servicesDataGridView.RowHeadersWidth = 51;
-            this.servicesDataGridView.Size = new System.Drawing.Size(1503, 583);
+            this.servicesDataGridView.Size = new System.Drawing.Size(1125, 472);
             this.servicesDataGridView.TabIndex = 0;
             this.servicesDataGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.cellclick_delete);
             // 
@@ -143,7 +139,7 @@ namespace Kubernetes_GUI.Forms
             this.nameSpaceColumn.HeaderText = "Namespace";
             this.nameSpaceColumn.MinimumWidth = 6;
             this.nameSpaceColumn.Name = "nameSpaceColumn";
-            this.nameSpaceColumn.Width = 112;
+            this.nameSpaceColumn.Width = 89;
             // 
             // labelsColumn
             // 
@@ -198,10 +194,9 @@ namespace Kubernetes_GUI.Forms
             // Servicepanel
             // 
             this.Servicepanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.Servicepanel.Location = new System.Drawing.Point(4, 4);
-            this.Servicepanel.Margin = new System.Windows.Forms.Padding(4);
+            this.Servicepanel.Location = new System.Drawing.Point(3, 3);
             this.Servicepanel.Name = "Servicepanel";
-            this.Servicepanel.Size = new System.Drawing.Size(1503, 583);
+            this.Servicepanel.Size = new System.Drawing.Size(1125, 472);
             this.Servicepanel.TabIndex = 1;
             // 
             // tabPageCreateService
@@ -218,13 +213,35 @@ namespace Kubernetes_GUI.Forms
             this.tabPageCreateService.Controls.Add(this.lblServiceDeployment);
             this.tabPageCreateService.Controls.Add(this.txtServiceName);
             this.tabPageCreateService.Controls.Add(this.lblDeploymentName);
-            this.tabPageCreateService.Location = new System.Drawing.Point(4, 25);
-            this.tabPageCreateService.Margin = new System.Windows.Forms.Padding(4);
+            this.tabPageCreateService.Location = new System.Drawing.Point(4, 22);
             this.tabPageCreateService.Name = "tabPageCreateService";
-            this.tabPageCreateService.Padding = new System.Windows.Forms.Padding(4);
-            this.tabPageCreateService.Size = new System.Drawing.Size(1511, 591);
+            this.tabPageCreateService.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPageCreateService.Size = new System.Drawing.Size(1131, 478);
             this.tabPageCreateService.TabIndex = 1;
             this.tabPageCreateService.Text = "Create Service";
+            // 
+            // cmbBoxServiceDeploymentName
+            // 
+            this.cmbBoxServiceDeploymentName.AutoResize = false;
+            this.cmbBoxServiceDeploymentName.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.cmbBoxServiceDeploymentName.Depth = 0;
+            this.cmbBoxServiceDeploymentName.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
+            this.cmbBoxServiceDeploymentName.DropDownHeight = 174;
+            this.cmbBoxServiceDeploymentName.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbBoxServiceDeploymentName.DropDownWidth = 121;
+            this.cmbBoxServiceDeploymentName.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
+            this.cmbBoxServiceDeploymentName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.cmbBoxServiceDeploymentName.FormattingEnabled = true;
+            this.cmbBoxServiceDeploymentName.IntegralHeight = false;
+            this.cmbBoxServiceDeploymentName.ItemHeight = 43;
+            this.cmbBoxServiceDeploymentName.Location = new System.Drawing.Point(28, 114);
+            this.cmbBoxServiceDeploymentName.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cmbBoxServiceDeploymentName.MaxDropDownItems = 4;
+            this.cmbBoxServiceDeploymentName.MouseState = MaterialSkin.MouseState.OUT;
+            this.cmbBoxServiceDeploymentName.Name = "cmbBoxServiceDeploymentName";
+            this.cmbBoxServiceDeploymentName.Size = new System.Drawing.Size(300, 49);
+            this.cmbBoxServiceDeploymentName.StartIndex = 0;
+            this.cmbBoxServiceDeploymentName.TabIndex = 51;
             // 
             // btnCreateService
             // 
@@ -233,8 +250,8 @@ namespace Kubernetes_GUI.Forms
             this.btnCreateService.Depth = 0;
             this.btnCreateService.HighEmphasis = true;
             this.btnCreateService.Icon = null;
-            this.btnCreateService.Location = new System.Drawing.Point(335, 310);
-            this.btnCreateService.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.btnCreateService.Location = new System.Drawing.Point(251, 252);
+            this.btnCreateService.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.btnCreateService.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnCreateService.Name = "btnCreateService";
             this.btnCreateService.NoAccentTextColor = System.Drawing.Color.Empty;
@@ -251,7 +268,8 @@ namespace Kubernetes_GUI.Forms
             this.lblServiceTargetPort.AutoSize = true;
             this.lblServiceTargetPort.Depth = 0;
             this.lblServiceTargetPort.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.lblServiceTargetPort.Location = new System.Drawing.Point(326, 211);
+            this.lblServiceTargetPort.Location = new System.Drawing.Point(244, 171);
+            this.lblServiceTargetPort.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblServiceTargetPort.MouseState = MaterialSkin.MouseState.HOVER;
             this.lblServiceTargetPort.Name = "lblServiceTargetPort";
             this.lblServiceTargetPort.Size = new System.Drawing.Size(79, 19);
@@ -265,12 +283,13 @@ namespace Kubernetes_GUI.Forms
             this.txtServiceTargetPort.Depth = 0;
             this.txtServiceTargetPort.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.txtServiceTargetPort.LeadingIcon = null;
-            this.txtServiceTargetPort.Location = new System.Drawing.Point(329, 232);
+            this.txtServiceTargetPort.Location = new System.Drawing.Point(247, 188);
+            this.txtServiceTargetPort.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtServiceTargetPort.MaxLength = 50;
             this.txtServiceTargetPort.MouseState = MaterialSkin.MouseState.OUT;
             this.txtServiceTargetPort.Multiline = false;
             this.txtServiceTargetPort.Name = "txtServiceTargetPort";
-            this.txtServiceTargetPort.Size = new System.Drawing.Size(107, 50);
+            this.txtServiceTargetPort.Size = new System.Drawing.Size(80, 50);
             this.txtServiceTargetPort.TabIndex = 48;
             this.txtServiceTargetPort.Text = "";
             this.txtServiceTargetPort.TrailingIcon = null;
@@ -283,12 +302,13 @@ namespace Kubernetes_GUI.Forms
             this.txtServicePort.Depth = 0;
             this.txtServicePort.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.txtServicePort.LeadingIcon = null;
-            this.txtServicePort.Location = new System.Drawing.Point(193, 234);
+            this.txtServicePort.Location = new System.Drawing.Point(145, 190);
+            this.txtServicePort.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtServicePort.MaxLength = 50;
             this.txtServicePort.MouseState = MaterialSkin.MouseState.OUT;
             this.txtServicePort.Multiline = false;
             this.txtServicePort.Name = "txtServicePort";
-            this.txtServicePort.Size = new System.Drawing.Size(107, 50);
+            this.txtServicePort.Size = new System.Drawing.Size(80, 50);
             this.txtServicePort.TabIndex = 47;
             this.txtServicePort.Text = "";
             this.txtServicePort.TrailingIcon = null;
@@ -299,7 +319,8 @@ namespace Kubernetes_GUI.Forms
             this.lblServicePort.AutoSize = true;
             this.lblServicePort.Depth = 0;
             this.lblServicePort.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.lblServicePort.Location = new System.Drawing.Point(190, 211);
+            this.lblServicePort.Location = new System.Drawing.Point(142, 171);
+            this.lblServicePort.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblServicePort.MouseState = MaterialSkin.MouseState.HOVER;
             this.lblServicePort.Name = "lblServicePort";
             this.lblServicePort.Size = new System.Drawing.Size(30, 19);
@@ -323,11 +344,12 @@ namespace Kubernetes_GUI.Forms
             this.cmbBoxServiceProtocol.Items.AddRange(new object[] {
             "TCP",
             "UDP"});
-            this.cmbBoxServiceProtocol.Location = new System.Drawing.Point(37, 233);
+            this.cmbBoxServiceProtocol.Location = new System.Drawing.Point(28, 189);
+            this.cmbBoxServiceProtocol.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.cmbBoxServiceProtocol.MaxDropDownItems = 4;
             this.cmbBoxServiceProtocol.MouseState = MaterialSkin.MouseState.OUT;
             this.cmbBoxServiceProtocol.Name = "cmbBoxServiceProtocol";
-            this.cmbBoxServiceProtocol.Size = new System.Drawing.Size(121, 49);
+            this.cmbBoxServiceProtocol.Size = new System.Drawing.Size(92, 49);
             this.cmbBoxServiceProtocol.StartIndex = 0;
             this.cmbBoxServiceProtocol.TabIndex = 45;
             // 
@@ -336,7 +358,8 @@ namespace Kubernetes_GUI.Forms
             this.lblServiceProtocol.AutoSize = true;
             this.lblServiceProtocol.Depth = 0;
             this.lblServiceProtocol.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.lblServiceProtocol.Location = new System.Drawing.Point(34, 211);
+            this.lblServiceProtocol.Location = new System.Drawing.Point(26, 171);
+            this.lblServiceProtocol.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblServiceProtocol.MouseState = MaterialSkin.MouseState.HOVER;
             this.lblServiceProtocol.Name = "lblServiceProtocol";
             this.lblServiceProtocol.Size = new System.Drawing.Size(60, 19);
@@ -348,7 +371,8 @@ namespace Kubernetes_GUI.Forms
             this.lblServiceDeployment.AutoSize = true;
             this.lblServiceDeployment.Depth = 0;
             this.lblServiceDeployment.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.lblServiceDeployment.Location = new System.Drawing.Point(34, 118);
+            this.lblServiceDeployment.Location = new System.Drawing.Point(26, 96);
+            this.lblServiceDeployment.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblServiceDeployment.MouseState = MaterialSkin.MouseState.HOVER;
             this.lblServiceDeployment.Name = "lblServiceDeployment";
             this.lblServiceDeployment.Size = new System.Drawing.Size(132, 19);
@@ -362,12 +386,13 @@ namespace Kubernetes_GUI.Forms
             this.txtServiceName.Depth = 0;
             this.txtServiceName.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.txtServiceName.LeadingIcon = null;
-            this.txtServiceName.Location = new System.Drawing.Point(37, 46);
+            this.txtServiceName.Location = new System.Drawing.Point(28, 37);
+            this.txtServiceName.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtServiceName.MaxLength = 50;
             this.txtServiceName.MouseState = MaterialSkin.MouseState.OUT;
             this.txtServiceName.Multiline = false;
             this.txtServiceName.Name = "txtServiceName";
-            this.txtServiceName.Size = new System.Drawing.Size(399, 50);
+            this.txtServiceName.Size = new System.Drawing.Size(299, 50);
             this.txtServiceName.TabIndex = 30;
             this.txtServiceName.Text = "";
             this.txtServiceName.TrailingIcon = null;
@@ -377,47 +402,25 @@ namespace Kubernetes_GUI.Forms
             this.lblDeploymentName.AutoSize = true;
             this.lblDeploymentName.Depth = 0;
             this.lblDeploymentName.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.lblDeploymentName.Location = new System.Drawing.Point(34, 24);
+            this.lblDeploymentName.Location = new System.Drawing.Point(26, 20);
+            this.lblDeploymentName.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblDeploymentName.MouseState = MaterialSkin.MouseState.HOVER;
             this.lblDeploymentName.Name = "lblDeploymentName";
             this.lblDeploymentName.Size = new System.Drawing.Size(96, 19);
             this.lblDeploymentName.TabIndex = 29;
             this.lblDeploymentName.Text = "Service name";
             // 
-            // cmbBoxServiceDeploymentName
-            // 
-            this.cmbBoxServiceDeploymentName.AutoResize = false;
-            this.cmbBoxServiceDeploymentName.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.cmbBoxServiceDeploymentName.Depth = 0;
-            this.cmbBoxServiceDeploymentName.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
-            this.cmbBoxServiceDeploymentName.DropDownHeight = 174;
-            this.cmbBoxServiceDeploymentName.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbBoxServiceDeploymentName.DropDownWidth = 121;
-            this.cmbBoxServiceDeploymentName.Font = new System.Drawing.Font("Roboto Medium", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
-            this.cmbBoxServiceDeploymentName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.cmbBoxServiceDeploymentName.FormattingEnabled = true;
-            this.cmbBoxServiceDeploymentName.IntegralHeight = false;
-            this.cmbBoxServiceDeploymentName.ItemHeight = 43;
-            this.cmbBoxServiceDeploymentName.Location = new System.Drawing.Point(37, 140);
-            this.cmbBoxServiceDeploymentName.MaxDropDownItems = 4;
-            this.cmbBoxServiceDeploymentName.MouseState = MaterialSkin.MouseState.OUT;
-            this.cmbBoxServiceDeploymentName.Name = "cmbBoxServiceDeploymentName";
-            this.cmbBoxServiceDeploymentName.Size = new System.Drawing.Size(399, 49);
-            this.cmbBoxServiceDeploymentName.StartIndex = 0;
-            this.cmbBoxServiceDeploymentName.TabIndex = 51;
-            // 
             // ServiceForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.ClientSize = new System.Drawing.Size(1519, 668);
+            this.ClientSize = new System.Drawing.Size(1139, 543);
             this.ControlBox = false;
             this.Controls.Add(this.materialTabControl1);
             this.Controls.Add(this.keysTabSelector1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "ServiceForm";
